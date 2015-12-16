@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>jQuery图片模糊插件crossfade.js</title>
+<style>
+.banner { position: relative; height: 500px;}
+body{text-align: center;}
+</style>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/crossfade.jquery.js"></script>
+<script>
+$(function(){
+	$('.crossfade2').crossfade({
+		start: 'img/1.jpg',
+		end: 'img/2.jpg',
+		threshold: 0.1,
+		backgroundPosition: 'center center'
+	});
+	$('.crossfade1').crossfade({
+		start: 'img/01.jpg',
+		end: 'img/01-blur.jpg',
+		threshold: 0.1,
+		backgroundPosition: 'center center'
+	});
+});
+</script>
+</head>
+
+<body>
+<h3>图片切换插件，也可以作为模糊插件</h3>
+<br><br><br><br>
+<!-- Demo -->
+<div class="banner crossfade1">
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="banner crossfade2">
+</div>
+<h4>@小茶叶</h4>
+<!-- Demo end -->
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

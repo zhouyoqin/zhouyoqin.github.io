@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击放大图标预览图片</title>
+    <style>
+        #img-big{
+            position: fixed;
+            left: 0;top: 0;
+            width: 100%;height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        #img-big img{
+            position: absolute;
+            width: 90%;max-height: 90%;
+            top: 5%;left: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="imgs/md1.jpg" alt="">
+        <img class="big" src="bigger.svg" alt="md1">
+    </div>
+    <div class="box">
+        <img src="imgs/md2.jpg" alt="">
+        <img class="big" src="bigger.svg" alt="md2">
+    </div>
+    <div class="box">
+        <img src="imgs/md3.jpg" alt="">
+        <img class="big" src="bigger.svg" alt="md3">
+    </div>
+    <div id="img-big" style="display:none"></div>
+    <script src="../../js/jquery-2.1.3.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function() {
+            $(".big").click(function () {
+                $("#img-big").css({
+                    'display' : 'block'
+                })
+                var a = $(this).attr("alt");
+                $("<img id='imgsbig' src='imgsbig/"+ a +".jpg'>").appendTo("#img-big");
+            });
+            $("#img-big").click(function () {
+                $("#img-big").css({
+                    'display' : 'none'
+                })
+                $("#imgsbig").remove();
+            });
+        });
+    </script> 
+</body>
+</html>

@@ -1,0 +1,177 @@
+@charset "utf-8";
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: #DEDEDE;
+}
+#header {
+  height: 60px;
+  width: 100%;
+  background-color: #333;
+}
+#header h1 {
+  position: absolute;
+  left: 10px;
+  font-weight: bold;
+  line-height: 60px;
+  color: #dedede;
+  padding-left: 10px;
+}
+#header ul {
+  float: right;
+}
+#header ul li {
+  display: inline-block;
+  line-height: 60px;
+}
+#header ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+#content {
+  margin-right: 475px;
+}
+#content .essays {
+  width: 100%;
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px 10px;
+  box-shadow: 1px 1px 1px 1px #949494;
+}
+#content .essays h2 {
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+}
+#content .essays h3 {
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+}
+#content .essays p {
+  font-size: 14px;
+  text-indent: 2em;
+  line-height: 25px;
+  padding: 10px 0;
+}
+#content .essays ul {
+  list-style: none;
+  padding: 10px 0;
+}
+#content .essays ul li {
+  height: 25px;
+  line-height: 25px;
+}
+#content .essays ol {
+  padding: 10px 40px;
+}
+#content .essays ol li {
+  height: 25px;
+  line-height: 25px;
+}
+#content .essays table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#content .essays table td {
+  height: 25px;
+  border: 1px solid #ccc;
+}
+#content .essays table tr {
+  background-color: #fff;
+}
+#content .essays table tr.tableHead {
+  color: #fff;
+  background-color: #333;
+}
+#content .essays table tr.tableBottom {
+  font-style: bold;
+  background-color: #CCCCCC;
+}
+#content .essays .essaysWriter {
+  text-indent: 0;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+}
+#content .essays .picCard {
+  display: inline-block;
+  height: 110px;
+  width: 100px;
+  border: 1px solid #eddede;
+  overflow: hidden;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+}
+#content .essays .picCard p {
+  width: 100%;
+  text-indent: 0;
+  margin: 0;
+  padding: 0;
+}
+#content .essays .picCard img {
+  height: 60px;
+}
+#submitBox {
+  float: right;
+  width: 375px;
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px 10px;
+  box-shadow: 1px 1px 1px 1px #949494;
+}
+#submitBox h2 {
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  border-left: 3px solid #C9C9C9;
+  padding-left: 10px;
+}
+#submitBox form {
+  width: 100%;
+  line-height: 40px;
+}
+#submitBox form label {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+}
+#submitBox form .tips {
+  margin-left: 32%;
+  font-size: 12px;
+  color: #000;
+}
+#submitBox form input,
+#submitBox form select,
+#submitBox form textarea {
+  margin-left: 2%;
+  font-size: 14px;
+  color: #000;
+}
+#submitBox form input[type=radio],
+#submitBox form input[type=checkbox] {
+  margin-right: 5px;
+}
+#submitBox form textarea {
+  width: 65%;
+}
+#submitBox form #submit {
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 96%;
+  height: 30px;
+  background-color: rgba(98, 174, 251, 0.66);
+  border-radius: 2px;
+  border: none;
+}
+footer {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background-color: #333;
+  color: rgba(255, 255, 255, 0.5);
+}

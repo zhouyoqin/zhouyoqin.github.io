@@ -1,0 +1,16 @@
+
+var daycount = new AV.Query('MTTRecord');
+var sumMiles = 0;
+daycount.startsWith('date', request.param.day);
+
+  daycount.find({
+    success: function(results) {
+        for (var i = results.length - 1; i >= 0; i--) {
+        	sumMiles = sumMiles + results[i].get('totalMile');
+        }
+        response.success(results.length + "-------------"+sumMiles);
+    },
+    error: function() {
+      response.error('搜索失败');
+    }
+  });

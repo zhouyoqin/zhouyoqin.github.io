@@ -1,0 +1,175 @@
+@charset "utf-8";
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-color: #DEDEDE;
+}
+@font:10px;
+#header{
+	@header-h:60px;
+	height: @header-h;width: 100%;
+	background-color: #333;
+	h1{
+		position: absolute;
+		left: 10px;
+		font-weight: bold;
+		line-height: @header-h;
+		color: #dedede;
+		padding-left: 10px;
+	}
+	ul{
+		float: right;
+		li{
+			display: inline-block;
+			line-height: @header-h;
+			a{
+				text-decoration: none;
+				color: #fff;
+			}
+		}
+	}
+}
+.essays{
+	@h:50px;
+	background-color: #fff;
+	margin: 20px;padding: 20px 10px;
+	box-shadow: 1px 1px 1px 1px #949494;
+	h2{
+		height: @h;
+		line-height: @h;
+		font-size: 2*@font;
+	}
+	h3{
+		height: @h*.6;
+		line-height: @h*.6;
+		font-size: @font*1.6;
+	}
+	p{
+		font-size: 1.4*@font;
+		text-indent: 2em;
+		line-height: @h*.5;
+		padding: 10px 0; 
+	}
+	ul{
+		list-style: none;
+		padding: 10px 0;
+		li{
+			height: .5*@h;
+			line-height: .5*@h;
+		}
+	}
+	ol{
+		padding: 10px 40px;
+		li{
+			height: .5*@h;
+			line-height: .5*@h;
+		}
+	}
+	table{
+		width: 100%;
+		border-collapse : collapse;
+		border: 1px solid #ccc;
+		td{
+			height: 25px;
+			border: 1px solid #ccc;
+		}
+		tr{
+			background-color: #fff;
+		}
+		tr.tableHead{
+			color: #fff;
+			background-color: #333;
+		}
+		tr.tableBottom{
+			font-style:bold;
+			background-color: #CCCCCC;
+		}
+	}
+	.essaysWriter{
+		text-indent: 0;
+		height: @h*.6;
+		line-height: @h*.6;
+		font-size: @font*1.2;
+	}
+	.picCard{
+		@x:200px;
+		height: @x;width: @x;
+		border: 1px solid #eddede;
+		overflow: hidden;
+		text-align: center;
+		margin: 10px 40px;
+		p{
+			width: 100%;text-indent: 0;
+		}
+		img{
+			height: .6*@x;
+		}
+	}
+}
+#submitBox{
+	@h:40px;
+	background-color: #fff;
+	margin: 20px 40px 20px 20px;padding: 20px 10px;
+	box-shadow: 1px 1px 1px 1px #949494;
+	h2{
+		font-size: 1.6*@font;
+		height: @h;line-height: @h;
+		border-left: 3px solid #C9C9C9;
+		padding-left: 10px;
+	}
+	form{
+		width: 100%;
+		line-height: @h;
+		label{
+			display: inline-block;
+			width: 30%;
+			text-align: right;
+		}
+		.tips{
+			margin-left: 32%;
+			font-size: 1.2*@font;
+			color: #000;
+		}
+		input,select,textarea{
+			margin-left: 2%;
+			font-size: 1.4*@font;
+			color: #000;
+		}
+		input[type=radio],input[type=checkbox]{
+			margin-right:5px;
+		}
+		textarea{
+			width: 67%;
+		}
+		#submit{
+			margin-left: 2%;
+			margin-right: 2%;
+			width: 96%;height: 30px;
+			background-color: rgba(98, 174, 251, 0.66);
+			border-radius: 2px;
+			border:none;
+		}
+	}
+}
+
+footer{
+	height: 100px;line-height: 100px;
+	text-align: center;
+	background-color: #333;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

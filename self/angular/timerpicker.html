@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一个简单的日期选择器</title>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <style>
+        body {
+            background: #fff;
+        }
+        .container{
+            width: 500px;height: 300px;
+            margin: 0 auto;margin-top: 200px;
+        }
+    </style>
+
+</head>
+<body>
+    <div ng-controller="myController" class="container">
+         <div class="param nopadding">
+            <a href="" ng-click="getDay(-7)"><span class="glyphicon glyphicon-backward"></span></a>
+            <a href="" ng-click="getDay(-1)"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <input ng-model="requst_time_string" type="text" class="didi-input" disabled>
+            <span class="time-icon"></span>
+            <a href="" ng-click="getDay(1)"><span class="glyphicon glyphicon-chevron-right"></a>
+            <a href="" ng-click="getDay(7)"><span class="glyphicon glyphicon-forward"></a>
+        </div>
+    </div>
+    <script src="../../js/angular.min.js"></script>
+    <script>
+    
+        //日历控件区
+        angular.module('myapp', [])
+        .controller('myController', function ($scope) {
+                $scope.requst_time = new Date();
+                $scope.requst_time_string = $scope.requst_time.toLocaleDateString();
+                $scope.getDay = function(inter){
+                    $scope.requst_time = +$scope.requst_time + 1000*60*60*24*inter;
+                    $scope.requst_time = new Date($scope.requst_time);
+                    $scope.requst_time_string = $scope.requst_time.toLocaleDateString();
+                }
+            });
+
+        angular.bootstrap(document, ['myapp']);
+    
+    </script>
+</body>
+</html>

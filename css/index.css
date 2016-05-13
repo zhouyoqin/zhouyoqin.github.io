@@ -24,6 +24,7 @@
   text-indent: 2em;
 }
 .section ul li {
+  position: relative;
   list-style: none;
   display: inline-block;
   width: 100px;
@@ -45,4 +46,25 @@
   text-align: center;
   text-decoration: none;
   color: #e1efd1;
+}
+.section a:hover + .tip {
+  display: block;
+}
+.section .tip {
+  display: none;
+  position: absolute;
+  height: 30px;
+  width: 120px;
+  background-color: #f3d6d6;
+  padding: 0 30px;
+}
+.section .tip p {
+  line-height: 30px;
+}
+.section .tip .tri {
+  display: block;
+  position: absolute;
+  border: 6px solid transparent;
+  border-bottom: 9px solid #f3d6d6;
+  top: -14px;
 }

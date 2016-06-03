@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>saveInput</title>
+</head>
+<body>
+	<input type="text" id="test">
+	<input type="text" id="test2">
+	<input type="submit" onclick="changeUrl()">
+	<input type="submit" onclick="getAllParams()">
+	<script>
+		var test = document.getElementById("test");
+		var test2 = document.getElementById("test2");
+		//替换指定传入参数的值,paramName为参数,replaceWith为新值
+		function replaceParamVal(paramName,replaceWith) {
+		    var oUrl = window.location.hash;
+		    if(oUrl.indexOf(paramName+"=") < 0){
+		        //没有
+		        if (oUrl != "") {
+		            window.location.hash = oUrl + "&" + paramName+'='+replaceWith;
+		        }else{
+		            window.location.hash = oUrl + paramName+'='+replaceWith;
+		        }
+		    }else{
+		        var re=eval('/('+ paramName+'=)([^&]*)/gi');
+		        window.location.hash = oUrl.replace(re,paramName+'='+replaceWith);
+		    }
+		}
+		function getAllParams(){
+		    var oUrl = window.location.hash;
+    		if (oUrl === "") {return {}};
+		    var params = oUrl.split("#")[1].split("&");
+		    var paramObj = new Object();
+		    for (var i = 0; i < params.length; i++) {
+		        paramObj[params[i].split("=")[0]] = decodeURI(params[i].split("=")[1]);
+		    };
+		    return paramObj;
+		}
+		function changeUrl() {
+			replaceParamVal(test.value,test2.value);
+			
+			// var src = window.location.href;
+			// var params = src.split("?")[1].split("&");
+			// var paramObj = new Object();
+			// for (var i = 0; i < params.length; i++) {
+			// 	paramObj[params[i].split("=")[0]] = params[i].split("=")[1];
+			// };
+			// paramObj[test.value] = test2.value;
+			// var str = "";
+			// for (var i = 0; i < params.length; i++) {
+			// 	if(str != ""){
+			// 		str = str + "&"
+			// 	}
+			// 	if(paramObj[params[i].split("=")[0]] != ""){
+			// 		str = str + params[i].split("=")[0] + "="+ paramObj[params[i].split("=")[0]];
+			// 	}
+			// };
+			// window.location.href = src.split("?")[0] + "?" + str ;
+		}
+	</script>
+</body>
+</html>

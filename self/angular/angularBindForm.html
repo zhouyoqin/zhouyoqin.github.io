@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一些表单控件的绑定</title>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <style>
+        body {
+            background: #fff;
+        }
+        .container{
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        .param{
+            border-bottom: 1px solid #eee;
+        }
+        .param h2{font-size: 20px;}
+    </style>
+
+</head>
+<body>
+    <div ng-controller="myController" class="container">
+        <div class="param">
+            <h2>radio绑定</h2>
+            <input type="radio" name="myradio" value="fir" ng-model="myradio">第一
+            <input type="radio" name="myradio" value="sec" ng-model="myradio">第二
+            <input type="radio" name="myradio" value="thi" ng-model="myradio">第三
+            <input type="radio" name="myradio" value="for" ng-model="myradio">第四
+            
+            <p>选择的值：<span ng-bind="myradio"></span></p>
+        </div>
+        <div class="param">
+            <h2>checkbox绑定</h2>
+            <input type="checkbox" ng-model="mycheck1"><p>选择的值：<span ng-bind="mycheck1"></span></p>
+            <input type="checkbox" ng-model="mycheck2" ng-true-value="'yesCheckbox'" ng-false-value="'noCheckbox'"><p>选择的值：<span ng-bind="mycheck2"></span></p>
+            <p>ng-true/false-value: only accept constant expressions, like 'truthyValue'/0.(bad:someValue/{foo: someScopeValue})</p>
+        </div>
+    </div>
+    <script src="../../js/angular.min.js"></script>
+    <script>
+    
+        angular.module('myapp', [])
+        .controller('myController', function ($scope) {
+            $scope.yesCheckbox = "是的呀";
+            $scope.noCheckbox = "不是呀";
+        });
+
+        angular.bootstrap(document, ['myapp']);
+    
+    </script>
+</body>
+</html>

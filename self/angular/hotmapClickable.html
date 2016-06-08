@@ -13,7 +13,7 @@
         }
         .container{
             position: relative;
-            width: 480px;height: 300px;
+            width: 720px;height: 300px;
             margin: 0 auto;margin-top: 50px;
         }
         .block{
@@ -24,18 +24,33 @@
             box-sizing:border-box;
             border: 1px solid #8E7D7D;
         }
+        #tip {
+            display: none;
+            position: absolute;
+            background-color: rgba(243,214,214,.8);
+            padding: 15px;
+            border-radius: 5px;
+            transition:all 1s;
+        }
+        #tip p {
+            line-height: 30px;
+        }
     </style>
 
 </head>
 <body>
     <div ng-controller="myController" class="container">
-        <a class="block" ng-repeat="item in mapdata" href="{{item.link}}" target="_blank" style="background-color:RGBA(170, 51, 78,{{item.position[2]/10}});left:{{item.position[1]*30}}px;top:{{item.position[0]*30}}px;">
+        <a class="block" ng-repeat="item in mapdata" href="{{item.link}}" target="_blank" style="background-color:RGBA(170, 51, 78,{{item.position[2]/10}});left:{{item.position[1]*30}}px;top:{{item.position[0]*30}}px;" ng-mouseover="onhover(item)" ng-mouseleave="onleave()">
         </a>
+        <div id="tip">
+            <p>CSS模拟报纸</p>
+        </div>
         <div id="test"></div>
     </div>
     <script src="../../js/angular.min.js"></script>
     <script src="map.json"></script>
     <script>
+        var tip = document.getElementById("tip");
         //日历控件区
         angular.module('myapp', []).controller('myController', function ($scope) {
             $scope.mapdata = mapdata;
@@ -44,6 +59,18 @@
 
             //     $scope.mapdata[i]
             // };
+            $scope.onhover = function(item){
+                var position = item.position;
+                var link = item.link;
+                tip.style.display = 'block';
+                tip.style.left = (position[1]+1)*30-5 + 'px';
+                tip.style.top  = (position[0]+1)*30-5 + 'px';
+                tip.innerHTML = 'position:' + position + "</br>" + link;
+            };
+
+            $scope.onleave = function(position){
+                tip.style.display = 'none';
+            };
         });
         angular.bootstrap(document, ['myapp']);
     

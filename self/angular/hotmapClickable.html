@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可点击的热力图</title>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <style>
+        *{
+            margin:0;padding: 0;
+         }
+        body {
+            background: #fff;
+        }
+        .container{
+            position: relative;
+            width: 480px;height: 300px;
+            margin: 0 auto;margin-top: 50px;
+        }
+        .block{
+            display: inline-block;
+            width: 30px;height: 30px;
+            overflow: hidden;
+            position: absolute;
+            box-sizing:border-box;
+            border: 1px solid #8E7D7D;
+        }
+    </style>
+
+</head>
+<body>
+    <div ng-controller="myController" class="container">
+        <a class="block" ng-repeat="item in mapdata" href="{{item.link}}" target="_blank" style="background-color:RGBA(170, 51, 78,{{item.position[2]/10}});left:{{item.position[1]*30}}px;top:{{item.position[0]*30}}px;">
+        </a>
+        <div id="test"></div>
+    </div>
+    <script src="../../js/angular.min.js"></script>
+    <script src="map.json"></script>
+    <script>
+        //日历控件区
+        angular.module('myapp', []).controller('myController', function ($scope) {
+            $scope.mapdata = mapdata;
+            // var test = document.getElementById("test");
+            // for (var i = 0; i < $scope.mapdata.length; i++) {
+
+            //     $scope.mapdata[i]
+            // };
+        });
+        angular.bootstrap(document, ['myapp']);
+    
+    </script>
+</body>
+</html>

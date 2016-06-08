@@ -60,10 +60,10 @@ div {
 .section .tip {
   display: none;
   position: absolute;
-  height: 30px;
   width: 120px;
   background-color: #f3d6d6;
   padding: 0 30px;
+  border-radius: 5px;
 }
 .section .tip p {
   line-height: 30px;

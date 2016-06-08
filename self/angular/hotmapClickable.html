@@ -43,7 +43,7 @@
         <a class="block" ng-repeat="item in mapdata" href="{{item.link}}" target="_blank" style="background-color:RGBA(170, 51, 78,{{item.position[2]/10}});left:{{item.position[1]*30}}px;top:{{item.position[0]*30}}px;" ng-mouseover="onhover(item)" ng-mouseleave="onleave()">
         </a>
         <div id="tip">
-            <p>CSS模拟报纸</p>
+            <p></p>
         </div>
         <div id="test"></div>
     </div>
@@ -51,14 +51,8 @@
     <script src="map.json"></script>
     <script>
         var tip = document.getElementById("tip");
-        //日历控件区
         angular.module('myapp', []).controller('myController', function ($scope) {
             $scope.mapdata = mapdata;
-            // var test = document.getElementById("test");
-            // for (var i = 0; i < $scope.mapdata.length; i++) {
-
-            //     $scope.mapdata[i]
-            // };
             $scope.onhover = function(item){
                 var position = item.position;
                 var link = item.link;

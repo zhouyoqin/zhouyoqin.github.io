@@ -2,14 +2,15 @@
 *{
 	margin: 0;
 	padding: 0;
+	font-family: 'billy';
 }
-.loop(@counter) when (@counter > 0) {
-  .loop((@counter - 1));    // 递归调用自身
-  width: (10px * @counter); // 每次调用时产生的样式代码
-}
-
-div {
-  .loop(5); // 调用循环
+@font-face {
+    font-family: 'billy';
+    src: url('../fonts/billy.ttf')  format('truetype'), /* Safari, Android, iOS */
+    	url('../fonts/billy-webfont.woff2') format('woff2'),
+        url('../fonts/billy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 #header{
 	height: 100px;
@@ -47,6 +48,7 @@ div {
 			}
 			a{
 				display: block;
+				font-size: 26px;
 				width: 100%;height: 100%;
 				text-align: center;
 				text-decoration: none;

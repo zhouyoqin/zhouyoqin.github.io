@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>柱图</title>
+	<style>
+	.axis path,
+	.axis line{
+		fill: none;
+		stroke: black;
+		shape-rendering: crispEdges;
+	}
+	.axis text {
+		font-family: sans-serif;
+		font-size: 11px;
+	}
+		.zzRect{
+			fill: steelblue;
+		}
+		.zzText{
+			fill: #fff;
+			text-anchor: middle;
+		}
+	</style>
+</head>
+<body>
+	<script src="d3.js"></script>
+	<script>
+		var bigwidth = 800;
+		var width = 400;
+		var height = 500;
+		var svg = d3.select("body")
+					.append("svg")
+					.attr("width", bigwidth)
+					.attr("height", height);
+
+		var datasetleft = [10,20,30,40,30,20,10];
+		var datasetright = [40,30,20,10,20,30,40];
+
+		var xScale = d3.scale.linear()
+							 .domain([0,d3.max(datasetleft)])
+							 .range([0,width]);
+		var yScale = d3.scale.ordinal()
+							 .domain(d3.range(datasetleft.length))
+							 .rangeRoundBands([0,width]);
+		var xScaleline = d3.scale.linear()
+							 .domain([0,d3.max(datasetleft)])
+							 .range([width,0]);
+		var yScaleline = d3.scale.ordinal()
+							 .domain(d3.range(datasetleft.length))
+							 .rangeRoundBands([width,0]);
+
+		var xAxis = d3.svg.axis()
+					  .scale(xScaleline)
+					  .orient("bottom");
+		var yAxis = d3.svg.axis()
+					  .scale(yScaleline)
+					  .orient("right");
+
+		var rectPadding = 10;
+
+		var rects = svg.selectAll(".zzRect")
+					   .data(datasetleft)
+					   .enter()
+					   .append("rect")
+					   .attr("class","zzRect")
+					   .attr("x",function(d){
+					   	return width-xScale(d);
+					   })
+					   .attr("y",function(d,i){
+					   		return yScale(i) + rectPadding/2;
+					   })
+					   .attr("width",function(d){
+					   		return xScale(d);
+					   })
+					   .attr("height",yScale.rangeBand()-rectPadding);
+
+		var texts = svg.selectAll(".zzText")
+					   .data(datasetleft)
+					   .enter()
+					   .append("text")
+					   .attr("class","zzText")
+					   .attr("x",function(d){
+					   		return width - xScale(d);
+					   })
+					   .attr("y",function(d,i){
+					   		return yScale(i) + rectPadding/2;
+					   })
+					   .attr("dy",(yScale.rangeBand() - rectPadding)/2+6)
+					   .attr("dx",10)
+					   .text(function(d){return d;});
+
+		svg.append("g")
+		   .attr("class","axis")
+		   .attr("transform","translate(0," + yScale.rangeBand()*datasetleft.length + ")")
+		   .call(xAxis);
+		svg.append("g")
+		   .attr("class","axis")
+		   .attr("transform","translate(" + width + ",0)")
+		   .call(yAxis);
+	</script>
+</body>
+</html>

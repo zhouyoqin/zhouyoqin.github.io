@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弦图</title>
+	<style>
+		ul li{
+			font-family: sans-serif;
+			font-size: 16px;
+			color: #333;
+		}
+		ul li span{
+			color: RGBA(240, r121, 104, 1.00);
+		}
+	</style>
+</head>
+<body>
+	<ul>tips
+		<li>对于每个时间间隔执行func<span>
+		force.on("tick",func)
+		</span></li>
+	</ul>
+	<script src="d3.js"></script>
+	<script>
+		var color = d3.scale.category20();
+		
+		var city_name = [ "北京" , "上海" , "广州" , "深圳" , "香港"  ];
+        var population = [
+          [ 1000,  3045　 , 4567　, 1234 , 3714 ],
+          [ 3214,  2000　 , 2060　, 124  , 3234 ],
+          [ 8761,  6545　 , 3000　, 8045 , 647  ],
+          [ 3211,  1067  , 3214 , 4000  , 1006 ],
+          [ 2146,  1034　 , 6745 , 4764  , 5000 ]
+        ];
+		var width  = 500;
+		var height = 500;
+		var svg = d3.select("body").append("svg")
+					.attr("width",width)
+					.attr("height",height);
+
+		var chord = d3.layout.chord()
+							 .padding(0.03)
+							 .sortSubgroups(d3.descending)
+							 .matrix(population);
+		var groups = chord.groups();
+		var chords = chord.chords();
+
+		var innerRadius = width/2 * .7;
+		var outerRadius   = innerRadius * 1.1;
+
+		svg.append("g")
+		   .attr("transform","translate(" + width/2 + ", "+ height/2 + ")")
+
+
+		var outer_arc = d3.svg.arc()
+					      .innerRadius(innerRadius)
+					      .outerRadius(outerRadius);
+		var g_outer = svg.append("g");
+		g_outer.selectAll("path")
+			   .data(groups)
+			   .enter().append("path")
+			   .style("fill",function(d){return color(d.index);})
+			   .style("stroke",function(d){return color(d.index);})
+			   .attr("d",outer_arc);
+		g_outer.selectAll("text")
+			   .data(groups)
+			   .enter().append("text")
+			   .each(function(d,i){
+			   		d.angle = (d.startAngle + d.endAngle)/2;
+			   		d.name = city_name[i]
+			   })
+
+	</script>
+</body>
+</html>

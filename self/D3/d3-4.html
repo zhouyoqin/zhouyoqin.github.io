@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>力导向图</title>
+	<style>
+		ul li{
+			font-family: sans-serif;
+			font-size: 16px;
+			color: #333;
+		}
+		ul li span{
+			color: RGBA(240, r121, 104, 1.00);
+		}
+	</style>
+</head>
+<body>
+	<ul>tips
+		<li>定义一个力导向图<span>d3.layout.force()</span></li>
+		<li>使节点可以被拖动<span>call(force.drag)</span></li>
+		<li>对于每个时间间隔执行func<span>
+		force.on("tick",func)
+		</span></li>
+	</ul>
+	<script src="d3.js"></script>
+	<script>
+		var color = d3.scale.category20();
+		var nodes = [ { name: "A" }, { name: "B" },
+		              { name: "C" }, { name: "D" },
+		              { name: "E" }, { name: "F" },
+		              { name: "G" } ];
+		 
+		 var edges = [ { source : 0 , target: 1 } , { source : 0 , target: 2 } ,
+		               { source : 0 , target: 3 } , { source : 1 , target: 4 } ,
+		               { source : 1 , target: 5 } , { source : 1 , target: 6 } ];
+		var width  = 500;
+		var height = 500;
+		var svg = d3.select("body").append("svg")
+					.attr("width",width)
+					.attr("height",height);
+
+		var force = d3.layout.force()
+					  .nodes(nodes)
+					  .links(edges)
+					  .size([width,height])
+					  .linkDistance(250)
+					  .charge([-400]);
+		force.start();
+
+		var svg_edges = svg.selectAll("line")
+						   .data(edges)
+						   .enter().append("line")
+						   .style("stroke","#ccc")
+						   .style("stroke-width",1);
+		var svg_nodes = svg.selectAll("circle")
+						   .data(nodes)
+						   .enter().append("circle")
+						   .attr("r",20)
+						   .style("fill",function(d,i) {
+						   		return color(i);
+						   })
+						   .call(force.drag);
+		var svg_texts = svg.selectAll("text")
+						   .data(nodes)
+						   .enter().append("text")
+						   .style("fill","black")
+						   .attr("dx",-5)
+						   .attr("dy",5)
+						   .text(function(d){
+						   	return d.name;
+						   });
+		svg_edges.attr("x1",function(d){return d.source.x})
+			         .attr("y1",function(d){return d.source.y})
+			         .attr("x2",function(d){return d.target.x})
+			         .attr("y2",function(d){return d.target.y});
+			svg_nodes.attr("cx",function(d){return d.x})
+			         .attr("cy",function(d){return d.y});
+			svg_texts.attr("x",function(d){return d.x})
+			         .attr("y",function(d){return d.y});
+		force.on("tick",function(){
+			svg_edges.attr("x1",function(d){return d.source.x})
+			         .attr("y1",function(d){return d.source.y})
+			         .attr("x2",function(d){return d.target.x})
+			         .attr("y2",function(d){return d.target.y});
+			svg_nodes.attr("cx",function(d){return d.x})
+			         .attr("cy",function(d){return d.y});
+			svg_texts.attr("x",function(d){return d.x})
+			         .attr("y",function(d){return d.y});
+		});
+	</script>
+</body>
+</html>

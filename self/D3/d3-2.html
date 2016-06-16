@@ -1,8 +1,11 @@
+<!-- 
+tips：fill样式不能写在css里，要用.attr
+ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>一个简单的柱图</title>
+	<title>带交互的柱图</title>
 	<style>
 	svg{
 		border: 1px solid #000;
@@ -18,9 +21,9 @@
 			font-size: 11px;
 		}
 
-		.MyRect {
-			fill: steelblue;
-		}
+		/*.MyRect {*/
+			/*fill: steelblue;*/
+		/*}*/
 
 		.MyText {
 			fill: white;
@@ -81,24 +84,35 @@
 		            return xScale(i) + rectPadding/2;
 		        } )
 		        .attr("width", xScale.rangeBand() - rectPadding )
-		        .attr("y",function(d){
-					var min = yScale.domain()[0];
-					return yScale(min);
-				})
-				.attr("height", function(d){
-					return 0;
-				})
-				.transition()
-				.delay(function(d,i){
-					return i * 200;
-				})
-				.duration(2000)
-				.ease("bounce")
+		  //       .attr("y",function(d){
+				// 	var min = yScale.domain()[0];
+				// 	return yScale(min);
+				// })
+				// .attr("height", function(d){
+				// 	return 0;
+				// })
+				// .transition()
+				// .delay(function(d,i){
+				// 	return i * 200;
+				// })
+				// .duration(2000)
+				// .ease("bounce")
 				.attr("y",function(d){
 					return yScale(d);
 				})
 				.attr("height", function(d){
 					return height - padding.top - padding.bottom - yScale(d);
+				})
+			    .attr("fill","steelblue")
+				.on("mouseover",function(d,i){
+			        d3.select(this)
+			            .attr("fill","yellow");
+			    })
+			    .on("mouseout",function(d,i){
+			        d3.select(this)
+			            .transition()
+			            .duration(500)
+			            .attr("fill","steelblue");
 			    });
 
 		//添加文字元素
@@ -111,16 +125,16 @@
 		        .attr("x", function(d,i){
 		            return xScale(i) + rectPadding/2;
 		        } )
-		        .attr("y",function(d){
-		        	var min = yScale.domain()[0];
-		        	return yScale(min);
-		        })
-		        .transition()
-		        .delay(function(d,i){
-		        	return i*200
-		        })
-		        .duration(2000)
-		        .ease("bounce")
+		        // .attr("y",function(d){
+		        // 	var min = yScale.domain()[0];
+		        // 	return yScale(min);
+		        // })
+		        // .transition()
+		        // .delay(function(d,i){
+		        // 	return i*200
+		        // })
+		        // .duration(2000)
+		        // .ease("bounce")
 		        .attr("y",function(d){
 		            return yScale(d);
 		        })

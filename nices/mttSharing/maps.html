@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+	<title>骑行轨迹</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=	BqKYyQDHcbVw0EtaAGjwa6qR">
+	</script>
+	<style>
+		html,body{
+			margin: 0;padding: 0;
+			height: 100%;width: 100%;
+		}
+		#map{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+		}
+		.icon{
+			display: block;
+			position: fixed;
+			bottom: 30px;right: 30px;
+			width:25px;height:25px;
+			background-image: url("imgs/icon.png");
+			background-repeat: no-repeat;
+			background-position: -50px -329px;
+		}
+		.bac{
+		    position: fixed;
+		    bottom: 23px;
+		    right: 23px;
+		    width: 40px;
+		    height: 40px;
+		    border-radius: 35px;
+		    background-color: #FFFFFF;
+		}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+	<div class="bac"></div>
+	<a class="icon" href="index.html"></a>
+	<script src="js/path.js"></script>
+	<script type="text/javascript">
+		var pathP = [];
+		var maxLong = path[0].longtitude;
+		var minLong = path[0].longtitude;
+		var maxLat = path[0].latitude;
+		var minLat = path[0].latitude;
+		for(var i=0,l=path.length;i<l;i++){
+			maxLong = path[i].longtitude>maxLong ? path[i].longtitude : maxLong;
+			maxLat = path[i].latitude>maxLat ? path[i].latitude : maxLat;
+			minLong = path[i].longtitude<minLong ? path[i].longtitude : minLong;
+			minLat = path[i].latitude<minLat ? path[i].latitude : minLat;
+			pathP[i]=new BMap.Point(path[i].longtitude, path[i].latitude);
+		}
+		var map = new BMap.Map("map");          // 创建地图实例  
+		 // 创建点坐标  
+		map.centerAndZoom(new BMap.Point(minLong+(maxLong-minLong)/2.0,minLat+(maxLat-minLat)/2.0), 15);                 // 初始化地图，设置中心点坐标和地图级别  
+		var polyline = new BMap.Polyline(pathP,    
+		 {strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5}    
+		);    
+		map.addOverlay(polyline);
+    </script>
+</body>
+</html>

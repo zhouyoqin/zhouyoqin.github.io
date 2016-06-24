@@ -1,0 +1,349 @@
+@charset "utf-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+@font-base:10px;
+@download-h:50px;
+h1{	font-size: @font-base *2;}
+p{	font-size: @font-base *1.4;}
+.hr{
+	margin: 5px 0;
+	height: 2px;width: 100%;
+	border: none;border-top: 1px solid #dedede;
+}
+.icon{
+	@x:25px;
+	position: absolute;
+	width: @x;height: @x;
+	background-image: url("../imgs/icon.png");
+	background-repeat: no-repeat;
+}
+.icon{background-position: -50px -329px}
+.text{font-size: 12px;line-height: 20px;}
+#download{
+	z-index: 9999;
+	position: fixed;
+	left: 0;top: 0;
+	width: 100%;height: @download-h;
+	background-color: #fff;
+	overflow: hidden;
+	img{position: absolute;height: @download-h*.6;top: @download-h*.2;left: @download-h*.2;}
+	p{position: absolute;line-height: @download-h;left: @download-h;font-size: 16px;}
+	a{
+		display: block;
+		position: absolute;
+		top: @download-h*.25;right: @download-h*.2;
+		width: @download-h*1.5;height: @download-h*.5;line-height: @download-h*.5;
+		text-decoration: none;
+		border-radius: 3px; 
+		text-align: center;
+		color: #fff;
+		background-color: #f34949;
+		font-size: 14px;
+	}
+}
+
+#sliderHeader{
+	margin-top:50px; 
+	position: relative;
+	width: 100%;
+	height: 400px;
+	.flicker-example{
+		position: absolute;
+		left: 0;top: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+#userHeader{
+	@base:80px;
+	height: 0.8*@base;
+	width: 100%;
+	position: relative;
+	background-color: #132742;
+	#userPic{
+		height: @base;
+		width: @base;
+		position: absolute;
+		left: .1*@base;bottom: 0;
+		overflow: hidden;
+		border: 1px solid #E9ECEA;
+		border-radius: .5*@base;
+		background-color: #d3d3d3;
+		background-image: url("../imgs/userpic.jpg");
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		#level{
+			position: absolute;
+			left: 0;bottom: 0;
+			width: @base;height: .2*@base;
+			text-align: center;color: rgba(255, 255, 255, 0.8);
+			background-color: rgba(243, 73, 73, 0.8);
+		}
+	}
+	#userName{
+		@username-h:.8*@base;
+		height: @username-h;
+		position: absolute;
+		left: 1.2*@base;bottom: 0;
+		h1{
+			line-height: .55*@username-h;
+			font-size: 2*@font-base;
+			color: #52A296;
+		}
+		ul{
+			width: 150px;
+			position: absolute;
+			left: 0;top: .5*@username-h;
+			height: .3*@username-h;
+			li{
+				@x:18px;
+				list-style: none;
+				display: inline-block;
+				width: @x;height: @x;
+				img{width: @x;}
+			}
+			.star-yes{
+				background-position: -75px -49px;
+			}
+			.star-no{
+				background-position: -25px -49px;
+			}
+		}
+	}
+	#pos{
+		text-align: right;padding-right: 20px;			
+		font-size: 1.8*@font-base;
+		height: @base*.8;line-height: @base*.8;
+		color: #fff;
+		position: relative;
+		span{
+			right: 58px;top: 16px;
+			background-position: 0 -125px;
+		}
+	}
+	#userFollow{
+		@aBase:.8*@base;
+		display: block;
+		position: absolute;
+		right: .3*@aBase;top: .2*@aBase;
+		width: 1.2*@aBase;height: .6*@aBase;
+		background-color:#dggege;
+		border-radius: 2px;
+		border: 1px solid #f34949;
+		text-align: center; 
+		text-decoration: none;
+		font-size: 2*@font-base;color: #f34949;
+		line-height: .6*@aBase;
+	}
+	.hr{
+		position: absolute;
+		left: 15%;bottom: 0;
+		height: 2px;width: 85%;
+		border: none;border-top: 1px solid #dedede;
+	}
+}
+#dataContent{
+	@dbase : 70px;
+	width: 100%;
+	position: relative;
+	.dataCard{
+		height: @dbase;
+		position: relative;
+		padding: .1*@dbase .5*@dbase;
+		overflow: hidden;
+		li{
+			position: absolute;top: .2*@dbase;
+			list-style: none;
+			height: .8*@dbase;width: 24%;
+			display: inline-block;
+			text-align: center;
+			.cardT{
+				position: absolute;
+				top: 0.1*@dbase;left: 0;
+				width: 100%;height: 0.3*@dbase;
+				color: #9C9C9C;
+				font-size: 12px;
+			}
+			.cardB{
+				position: absolute;
+				top: 0.4*@dbase;left: 0;
+				width: 100%;height: 0.6*@dbase;
+				color: #464646;
+				font-size: 18px;
+				span{
+					font-size: 12px;
+				}
+			}
+		}
+		.line{
+			position: absolute;top: .25*@dbase;
+			display: inline-block;
+			height: .6*@dbase;width: 1px;
+			background-color: #B0B0B0;
+		}
+		.first{left: 10%;}
+		.fir{left: 35%;}
+		.second{left: 37%;}
+		.sec{left: 65%}
+		.third{right: 10%}
+	}
+	#sumCard{
+		li{height: @dbase;}
+		.cardT{
+			position: absolute;
+			top: 0;left: 0;
+			width: 100%;height: 0.3*@dbase;
+			color: #9C9C9C;
+			font-size: 12px;
+		}
+		.cardB{
+			position: absolute;
+			top: 0.3*@dbase;left: 0;
+			width: 100%;height: 0.4*@dbase;
+			color: #464646;
+			font-size: 22px;
+			font-family: "MTT-Hei";
+			span{
+				font-size: 12px;
+			}
+		}
+		.cardI{
+			position: absolute;
+			top: 0.7*@dbase;left: 0;
+			width: 100%;height: 0.3*@dbase;
+			color: #9C9C9C;
+			font-size: 12px;
+		}
+	}
+
+	#speedCard{
+		@spbase : 50px;
+		text-align: center;
+		h1{
+			margin-top: 20px;
+			position: relative;
+			height: @spbase;
+			line-height: @spbase;
+			span{
+				left: 28%;top:.2*@spbase;
+				background-position: -50px -227px;
+			}
+		}
+		#speedChart{
+			height: @dbase*3.5;
+			background-color: #dedede;
+		}
+	}
+	#heightCard{
+		@spbase : 50px;
+		text-align: center;
+		h1{
+			margin-top: 20px;
+			position: relative;
+			height: @spbase;
+			line-height: @spbase;
+			span{
+				left: 28%;top:.2*@spbase;
+				background-position: -50px -304px;
+			}
+		}
+		#heightChart{
+			height: @dbase*3.5;
+			background-color: #dedede;
+		}
+	}
+}
+
+#talk{
+	@h:50px;
+	h1{
+		height: @h*1.5;line-height: @h*1.5;
+		text-align: center;
+	}
+	#likes{
+		position: relative;
+		height: @h;
+		span{
+			left: 5px;top:10px;
+			background-position: -75px -0px;
+		}
+		ul{
+			position: absolute;
+			right: 0;top: 0;
+			height: 100%;width: 88%;
+			li{
+				@w:30px;display: inline-block;
+				width: @w;height: @w;
+				margin-right: @w*.2;margin-top: @w*.15;
+				border-radius: @w;
+				overflow: hidden;
+				img{width: @w;}
+			}
+		}
+	}
+	#comments{
+		position: relative;
+		background-color: #434343;
+		span{
+			left: 5px;top:5px;
+			background-position: -75px -380px;
+		}
+		ul{
+			position: absolute;
+			right: 0;top: 0;
+			height: 100%;width: 88%;
+			li{
+				@w:30px;
+				overflow: hidden;
+				position: relative;
+				height: -10+@h;width: 100%;
+				.usrHead{
+					display: inline-block;
+					width: @w;height: @w;
+					margin-right: @w*.2;margin-top: @w*.15;
+					border-radius: @w;
+					overflow: hidden;
+					img{width: @w;}
+				}
+				.usrName{
+					position: absolute;
+					left: @w+10;top:3px;
+					color: #B0B0B0;
+					font-size: 12px;
+				}
+				.usrTime{
+					position: absolute;
+					right: 15px;top:3px;
+					color: #B0B0B0;
+					font-size: 12px;
+				}
+				.usrCom{
+					position: absolute;
+					left: @w+10;bottom:0;
+					color: #7B7B7B;
+					font-size: 16px;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

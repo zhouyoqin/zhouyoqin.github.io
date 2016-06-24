@@ -1,0 +1,239 @@
+@charset "utf-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 20px;
+}
+p {
+  font-size: 14px;
+}
+#sliderHeader {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+#sliderHeader #text {
+  position: absolute;
+  left: 0%;
+  top: 10%;
+  width: 100%;
+  height: 80%;
+  z-index: 99;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+#sliderHeader #text h1 {
+  font-weight: 700;
+  line-height: 50px;
+}
+#sliderHeader #text h1#score {
+  font-size: 45px;
+  font-weight: 900;
+  color: #FEFE00;
+}
+#sliderHeader #text p {
+  font-size: 14px;
+  line-height: 30px;
+}
+#sliderHeader #text p#pos {
+  position: absolute;
+  right: 5%;
+  bottom: -5%;
+}
+#sliderHeader .flicker-example {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+#userHeader {
+  height: 64px;
+  width: 100%;
+  position: relative;
+}
+#userHeader #userPic {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  left: 8px;
+  bottom: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 40px;
+  background-color: #d3d3d3;
+  background-image: url("../imgs/userpic.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#userHeader #userPic #level {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 80px;
+  height: 16px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(243, 73, 73, 0.8);
+}
+#userHeader #userName {
+  height: 64px;
+  position: absolute;
+  left: 96px;
+  bottom: 0;
+}
+#userHeader #userName h1 {
+  line-height: 64px;
+  font-size: 20px;
+  color: #000;
+}
+#userHeader #userFollow {
+  display: block;
+  position: absolute;
+  right: 19.2px;
+  top: 12.8px;
+  width: 76.8px;
+  height: 38.4px;
+  background-color: #dggege;
+  border-radius: 2px;
+  border: 1px solid #f34949;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  color: #f34949;
+  line-height: 38.4px;
+}
+#userHeader .hr {
+  position: absolute;
+  left: 15%;
+  bottom: 0;
+  height: 2px;
+  width: 85%;
+  border: none;
+  border-top: 1px solid #dedede;
+}
+#dataContent {
+  width: 100%;
+  position: relative;
+}
+#dataContent .hTag {
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+}
+#dataContent .dataCard {
+  height: 80px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 16px 40px;
+  overflow: hidden;
+}
+#dataContent .dataCard li {
+  position: absolute;
+  top: 16px;
+  list-style: none;
+  height: 80px;
+  width: 24%;
+  display: inline-block;
+  text-align: center;
+}
+#dataContent .dataCard li .cardT {
+  line-height: 25px;
+  color: #B0B0B0;
+}
+#dataContent .dataCard li .cardB {
+  line-height: 25px;
+  font-size: 22px;
+  color: #2F2F2F;
+}
+#dataContent .dataCard li .cardB span {
+  font-size: 12px;
+  color: #B0B0B0;
+}
+#dataContent .dataCard .line {
+  position: absolute;
+  top: 16px;
+  display: inline-block;
+  height: 48px;
+  width: 1px;
+  background-color: #B0B0B0;
+}
+#dataContent .dataCard .first {
+  left: 10%;
+}
+#dataContent .dataCard .fir {
+  left: 35%;
+}
+#dataContent .dataCard .second {
+  left: 37%;
+}
+#dataContent .dataCard .sec {
+  left: 65%;
+}
+#dataContent .dataCard .third {
+  right: 10%;
+}
+#dataContent #mapCard {
+  position: relative;
+}
+#dataContent #mapCard #map {
+  height: 240px;
+  width: 100%;
+  background-color: #dedede;
+}
+#dataContent #scoreCard {
+  background-color: #FFDD00;
+  text-align: center;
+}
+#dataContent #scoreCard h1 {
+  font-size: 50px;
+  height: 50px;
+  padding-top: 15px;
+}
+#dataContent #scoreCard p {
+  font-size: 16px;
+  line-height: 20px;
+}
+#dataContent #scoreCard .dataCard li .cardT {
+  color: rgba(255, 255, 255, 0.8);
+}
+#dataContent #scoreCard .dataCard li .cardB {
+  color: #2F2F2F;
+}
+#dataContent #scoreCard .dataCard li .cardB span {
+  color: rgba(255, 255, 255, 0.8);
+}
+#dataContent #scoreCard .dataCard .line {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+#dataContent #speedCard {
+  text-align: center;
+}
+#dataContent #speedCard h1 {
+  height: 50px;
+  line-height: 75px;
+}
+#dataContent #speedCard h1 img {
+  vertical-align: text-bottom;
+}
+#dataContent #speedCard #speedChart {
+  height: 280px;
+  background-color: #dedede;
+}
+#dataContent #heightCard {
+  text-align: center;
+}
+#dataContent #heightCard h1 {
+  height: 50px;
+  line-height: 75px;
+}
+#dataContent #heightCard h1 img {
+  vertical-align: text-bottom;
+}
+#dataContent #heightCard #heightChart {
+  height: 280px;
+  background-color: #dedede;
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+	<title>日常骑行</title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/flickerplate.css">
+	<link rel="stylesheet" href="css/font.css">
+	<link rel="stylesheet" href="css/sharing.css">
+    <script src="js/echarts.min.js"></script>
+</head>
+<body>
+	<div id="download">
+		<img src="imgs/logo.ico" alt="MTT">
+		<p>马蹄骑行</p>
+		<a href="#">马上下载</a>
+	</div>
+	<div id="sliderHeader">
+		<div class="flicker-example" data-block-text="false" data-auto-flick-delay="6" data-dot-alignment="center" data-theme="dark">
+			<ul>
+				<li data-background="imgs/f1.png">
+					<div class="flick-bottom">
+						<a class="icon" href="maps.html"></a>
+					</div>
+				</li>
+				<li data-background="imgs/f2.png">
+					<div class="flick-bottom">
+						<div class="voiceMes">
+							<img src="imgs/icon-voice.png" alt="">
+						</div>
+					</div>
+				</li>
+				<li data-background="imgs/f3.png">
+					<div class="flick-bottom">
+						<div class="text">
+							踏着前任的足迹，行走于绿洲、戈壁，永远不可能预料下一刻出现在你眼前的是怎样的风景。沿着河西走廊一路行进，名胜古迹让人目不……
+						</div>
+					</div>
+				</li>
+				<li data-background="imgs/f4.png">
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="userHeader">
+		<div id="userPic">
+			<div id="level"><p>LV 3</p></div>
+		</div>
+		<div id="userName">
+			<h1>super马蹄铁</h1>
+			<ul>
+				<li class="star star-yes">
+					<img src="imgs/icon-star.png" alt="">
+				</li>
+				<li class="star star-yes">
+					<img src="imgs/icon-star.png" alt="">
+				</li>
+				<li class="star star-yes">
+					<img src="imgs/icon-star.png" alt="">
+				</li>
+				<li class="star star-yes">
+					<img src="imgs/icon-star.png" alt="">
+				</li>
+				<li class="star star-no">
+					<img src="imgs/icon-star.png" alt="">
+				</li>
+			</ul>
+		</div>
+		<p id="pos"><span class="icon"></span>北京</p>
+	</div>
+	<div id="dataContent">
+		<div id="sumCard">
+			<ul class="dataCard">
+				<li class="first">
+					<p class="cardT">骑行时间</p>
+					<p class="cardB">04:25'32"</p>
+				</li>
+				<li class="second">
+					<p class="cardT">骑行里程</p>
+					<p class="cardB">70.87</p>
+					<p class="cardI">公里</p>
+				</li>
+				<li class="third">
+					<p class="cardT">平均时速</p>
+					<p class="cardB">16.1</p>
+					<p class="cardI">公里/时</p>
+				</li>
+			</ul>
+		</div>
+		<div class="hr"></div>
+		<div id="speedCard">
+			<h1><span class="icon"></span>速度与踏频</h1>
+			<ul class="dataCard">
+				<li class="first">
+					<p class="cardT">平均时速</p>
+					<p class="cardB">16.1<span>km.h</span></p>
+				</li>
+				<div class="line fir"></div>
+				<li class="second">
+					<p class="cardT">最高时速</p>
+					<p class="cardB">34.6<span>km.h</span></p>
+				</li>
+				<div class="line sec"></div>
+				<li class="third">
+					<p class="cardT">平均踏频</p>
+					<p class="cardB">85<span>米</span></p>
+				</li>
+			</ul>
+			<div id="speedChart"></div>
+		</div>
+		<div id="heightCard">
+			<h1><span class="icon"></span>海拔与爬升</h1>
+			<ul class="dataCard">
+				<li class="first">
+					<p class="cardT">里程</p>
+					<p class="cardB">277.9<span>公里</span></p>
+				</li>
+				<div class="line fir"></div>
+				<li class="second">
+					<p class="cardT">骑行时间</p>
+					<p class="cardB">16:36'32"</p>
+				</li>
+				<div class="line sec"></div>
+				<li class="third">
+					<p class="cardT">累计爬升</p>
+					<p class="cardB">3300<span>米</span></p>
+				</li>
+			</ul>
+			<div id="heightChart"></div>
+		</div>
+	</div>
+	<div id="talk">
+		<h1>互动</h1>
+		<div id="likes">
+			<span class="icon"></span>
+			<ul>
+				<li>
+					<img src="imgs/usr1.png" alt="">
+				</li>
+				<li>
+					<img src="imgs/usr2.png" alt="">
+				</li>
+				<li>
+					<img src="imgs/usr3.jpeg" alt="">
+				</li>
+				<li>
+					<img src="imgs/usr4.png" alt="">
+				</li>
+			</ul>
+		</div>
+		<div class="hr"></div>
+		<div id="comments">
+			<span class="icon"></span>
+			<ul>
+				<li>
+					<span class="usrHead">
+						<img src="imgs/usr1.png" alt="">
+					</span>
+					<p class="usrName">茉菇</p>
+					<p class="usrTime">1小时前</p>
+					<p class="usrCom">真好！下次带上我吧</p>
+				</li>
+				<div class="hr"></div>
+				<li>
+					<span class="usrHead">
+						<img src="imgs/usr2.png" alt="">
+					</span>
+					<p class="usrName">子曰</p>
+					<p class="usrTime">2小时前</p>
+					<p class="usrCom">爬坡不错 学习很重要！</p>
+				</li>
+				<div class="hr"></div>
+				<li>
+					<span class="usrHead">
+						<img src="imgs/usr3.jpeg" alt="">
+					</span>
+					<p class="usrName">韩锋</p>
+					<p class="usrTime">昨天 09:06</p>
+					<p class="usrCom">下次我们再一起骑，一定会比这次更好~</p>
+				</li>
+				<div class="hr"></div>
+				<li>
+					<span class="usrHead">
+						<img src="imgs/usr4.png" alt="">
+					</span>
+					<p class="usrName">小茶叶</p>
+					<p class="usrTime">昨天 07:32</p>
+					<p class="usrCom">好的风景照片，传我一份呢~</p>
+				</li>
+				<div class="hr"></div>
+
+			</ul>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+	<script src="js/jquery-finger-v0.1.0.min.js"></script>
+	<script src="js/modernizr-custom-v2.7.1.min.js"></script>
+	<script src="js/flickerplate.js"></script>
+	<script src="js/path.js"></script>
+	<script src="js/charts.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.flicker-example').flicker({
+				flick_animation: 'jquery-slide',
+				arrows : false
+			});
+		});
+    </script>
+</body>
+</html>

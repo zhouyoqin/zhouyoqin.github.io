@@ -23,6 +23,11 @@
 <body>
     <div ng-controller="myController" class="container">
         <div class="param">
+            输入校验：只能为数字
+            <input ng-model="myinput" type="text" class="didi-input" ng-change="isNum(myinput)">
+            <p ng-if="!myinputres">*只能输入数字</p>
+        </div>
+        <div class="param">
             <h2>radio绑定</h2>
             <input type="radio" name="myradio" value="fir" ng-model="myradio">第一
             <input type="radio" name="myradio" value="sec" ng-model="myradio">第二
@@ -43,8 +48,12 @@
     
         angular.module('myapp', [])
         .controller('myController', function ($scope) {
+            $scope.myinputres = true;
             $scope.yesCheckbox = "是的呀";
             $scope.noCheckbox = "不是呀";
+            $scope.isNum = function(a){
+                $scope.myinputres =  !isNaN(a);
+            }
         });
 
         angular.bootstrap(document, ['myapp']);

@@ -1,0 +1,406 @@
+@charset "utf-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 20px;
+}
+p {
+  font-size: 14px;
+}
+.hr {
+  margin: 5px 0;
+  height: 2px;
+  width: 100%;
+  border: none;
+  border-top: 1px solid #dedede;
+}
+.icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-image: url("../imgs/icon.png");
+  background-repeat: no-repeat;
+}
+.icon {
+  background-position: -50px -329px;
+}
+.text {
+  font-size: 12px;
+  line-height: 20px;
+}
+#download {
+  z-index: 9999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  overflow: hidden;
+}
+#download img {
+  position: absolute;
+  height: 30px;
+  top: 10px;
+  left: 10px;
+}
+#download p {
+  position: absolute;
+  line-height: 50px;
+  left: 50px;
+  font-size: 16px;
+}
+#download a {
+  display: block;
+  position: absolute;
+  top: 12.5px;
+  right: 10px;
+  width: 75px;
+  height: 25px;
+  line-height: 25px;
+  text-decoration: none;
+  border-radius: 3px;
+  text-align: center;
+  color: #fff;
+  background-color: #f34949;
+  font-size: 14px;
+}
+#sliderHeader {
+  margin-top: 50px;
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+#sliderHeader .flicker-example {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+#userHeader {
+  height: 64px;
+  width: 100%;
+  position: relative;
+  background-color: #132742;
+}
+#userHeader #userPic {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  left: 8px;
+  bottom: 0;
+  overflow: hidden;
+  border: 1px solid #E9ECEA;
+  border-radius: 40px;
+  background-color: #d3d3d3;
+  background-image: url("../imgs/userpic.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#userHeader #userPic #level {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 80px;
+  height: 16px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(243, 73, 73, 0.8);
+}
+#userHeader #userName {
+  height: 64px;
+  position: absolute;
+  left: 96px;
+  bottom: 0;
+}
+#userHeader #userName h1 {
+  line-height: 35.2px;
+  font-size: 20px;
+  color: #52A296;
+}
+#userHeader #userName ul {
+  width: 150px;
+  position: absolute;
+  left: 0;
+  top: 32px;
+  height: 19.2px;
+}
+#userHeader #userName ul li {
+  list-style: none;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+}
+#userHeader #userName ul li img {
+  width: 18px;
+}
+#userHeader #userName ul .star-yes {
+  background-position: -75px -49px;
+}
+#userHeader #userName ul .star-no {
+  background-position: -25px -49px;
+}
+#userHeader #pos {
+  text-align: right;
+  padding-right: 20px;
+  font-size: 18px;
+  height: 64px;
+  line-height: 64px;
+  color: #fff;
+  position: relative;
+}
+#userHeader #pos span {
+  right: 58px;
+  top: 16px;
+  background-position: 0 -125px;
+}
+#userHeader #userFollow {
+  display: block;
+  position: absolute;
+  right: 19.2px;
+  top: 12.8px;
+  width: 76.8px;
+  height: 38.4px;
+  background-color: #dggege;
+  border-radius: 2px;
+  border: 1px solid #f34949;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  color: #f34949;
+  line-height: 38.4px;
+}
+#userHeader .hr {
+  position: absolute;
+  left: 15%;
+  bottom: 0;
+  height: 2px;
+  width: 85%;
+  border: none;
+  border-top: 1px solid #dedede;
+}
+#dataContent {
+  width: 100%;
+  position: relative;
+}
+#dataContent .dataCard {
+  height: 70px;
+  position: relative;
+  padding: 7px 35px;
+  overflow: hidden;
+}
+#dataContent .dataCard li {
+  position: absolute;
+  top: 14px;
+  list-style: none;
+  height: 56px;
+  width: 24%;
+  display: inline-block;
+  text-align: center;
+}
+#dataContent .dataCard li .cardT {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 100%;
+  height: 21px;
+  color: #9C9C9C;
+  font-size: 12px;
+}
+#dataContent .dataCard li .cardB {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  width: 100%;
+  height: 42px;
+  color: #464646;
+  font-size: 18px;
+}
+#dataContent .dataCard li .cardB span {
+  font-size: 12px;
+}
+#dataContent .dataCard .line {
+  position: absolute;
+  top: 17.5px;
+  display: inline-block;
+  height: 42px;
+  width: 1px;
+  background-color: #B0B0B0;
+}
+#dataContent .dataCard .first {
+  left: 10%;
+}
+#dataContent .dataCard .fir {
+  left: 35%;
+}
+#dataContent .dataCard .second {
+  left: 37%;
+}
+#dataContent .dataCard .sec {
+  left: 65%;
+}
+#dataContent .dataCard .third {
+  right: 10%;
+}
+#dataContent #sumCard li {
+  height: 70px;
+}
+#dataContent #sumCard .cardT {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 21px;
+  color: #9C9C9C;
+  font-size: 12px;
+}
+#dataContent #sumCard .cardB {
+  position: absolute;
+  top: 21px;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  color: #464646;
+  font-size: 22px;
+  font-family: "MTT-Hei";
+}
+#dataContent #sumCard .cardB span {
+  font-size: 12px;
+}
+#dataContent #sumCard .cardI {
+  position: absolute;
+  top: 49px;
+  left: 0;
+  width: 100%;
+  height: 21px;
+  color: #9C9C9C;
+  font-size: 12px;
+}
+#dataContent #speedCard {
+  text-align: center;
+}
+#dataContent #speedCard h1 {
+  margin-top: 20px;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+}
+#dataContent #speedCard h1 span {
+  left: 28%;
+  top: 10px;
+  background-position: -50px -227px;
+}
+#dataContent #speedCard #speedChart {
+  height: 245px;
+  background-color: #dedede;
+}
+#dataContent #heightCard {
+  text-align: center;
+}
+#dataContent #heightCard h1 {
+  margin-top: 20px;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+}
+#dataContent #heightCard h1 span {
+  left: 28%;
+  top: 10px;
+  background-position: -50px -304px;
+}
+#dataContent #heightCard #heightChart {
+  height: 245px;
+  background-color: #dedede;
+}
+#talk h1 {
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+}
+#talk #likes {
+  position: relative;
+  height: 50px;
+}
+#talk #likes span {
+  left: 5px;
+  top: 10px;
+  background-position: -75px 0px;
+}
+#talk #likes ul {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 88%;
+}
+#talk #likes ul li {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 6px;
+  margin-top: 4.5px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+#talk #likes ul li img {
+  width: 30px;
+}
+#talk #comments {
+  position: relative;
+  background-color: #434343;
+}
+#talk #comments span {
+  left: 5px;
+  top: 5px;
+  background-position: -75px -380px;
+}
+#talk #comments ul {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 88%;
+}
+#talk #comments ul li {
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+  width: 100%;
+}
+#talk #comments ul li .usrHead {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 6px;
+  margin-top: 4.5px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+#talk #comments ul li .usrHead img {
+  width: 30px;
+}
+#talk #comments ul li .usrName {
+  position: absolute;
+  left: 40px;
+  top: 3px;
+  color: #B0B0B0;
+  font-size: 12px;
+}
+#talk #comments ul li .usrTime {
+  position: absolute;
+  right: 15px;
+  top: 3px;
+  color: #B0B0B0;
+  font-size: 12px;
+}
+#talk #comments ul li .usrCom {
+  position: absolute;
+  left: 40px;
+  bottom: 0;
+  color: #7B7B7B;
+  font-size: 16px;
+}

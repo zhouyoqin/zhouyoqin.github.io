@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'MTT-Hei';
+  src: url('font/MTT-Hei.eot');
+  src: url('font/MTT-Hei.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('font/MTT-Hei.woff') format('woff'), /* Modern Browsers */ url('font/MTT-Hei.ttf') format('truetype'), /* Safari, Android, iOS */ url('font/MTT-Hei.svg#MTT-Hei') format('svg');
+  
+  /* IE9 Compat Modes */
+  /* Legacy iOS */
+}

@@ -1,0 +1,54 @@
+
+/***********body****************/
+body{
+    background-color: #E5E5E5;
+}
+.section{
+    width: 100%;
+    /*意义在于 每个section都是独占一节页面的版块*/
+    clear: both;
+    /*最小宽度设置后，可以适应宽度为980+的网页*/
+    /*min-width: 768px;*/
+}
+#main{
+    position: relative;
+    padding: 0;
+}
+#main img{
+    width: 100%;
+}
+
+#content{
+    width: 100%;
+    margin: 0 auto;
+}
+#content .section{
+    width: 100%;
+    height: 700px;
+    position: relative;
+}
+.box{
+    position: absolute;
+    font-family: arial, helvetica, sans-serif;
+}
+.box h1{
+    color: #000;
+    font-weight: lighter;
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeiti","Microsoft YaHei",Arial,sans-serif;
+}
+.box h2{
+    color: #737373;
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeiti","Microsoft YaHei",Arial,sans-serif;
+}
+.box h4{
+    color: #000;
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeiti","Microsoft YaHei",Arial,sans-serif;
+}
+.box p{
+    font-size: 14px;
+    color: #737373;
+}
+.box span{
+    font-size: 25px;
+    color: #F34949;
+}

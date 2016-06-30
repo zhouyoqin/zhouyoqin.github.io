@@ -1,0 +1,103 @@
+#main{
+    position: relative;
+    padding: 0;
+}
+#main img{
+    width: 100%;
+}
+#buy-box{
+    height: 20%;
+    width: 40%;
+    position: absolute;
+    bottom: 30%;
+    left: 7%;
+    text-align: left;
+    color: #f34949;
+    line-height: 14px;
+}
+#buy-box p{
+    font-size: 14px;
+}
+#buy-box span{
+    font-size: 20px;
+}
+#buy-now{
+    text-align: center;
+    font-size: 14px;
+    padding: 7px 20px;
+    color: #fff;
+    background-color: #F14A4A;
+    min-width: 21px;
+    margin-top: -5px;
+}
+#buy-now:hover {
+    background-color: #f12528;
+}
+
+#mtt-video{
+    padding: 35px 5% 20px;
+    background-color: #E4E5E6;
+    text-align: center;
+}
+#mtt-video h3{
+    font-size: 12px;
+    color: #252525;
+}
+#mtt-video p{
+    font-size: 8px;
+    color: #a5a5a5;
+}
+.thumbnail{
+    padding: 0;
+}
+
+.video-cell{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1,1,1,0.9);
+    z-index: 999999;
+}
+.video-cell embed{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 10%;
+}
+.videobox{
+    position: relative;
+    /*background-color: #fff;*/
+    padding-bottom: 10px;
+    height: 200px;
+}
+.videobox img{
+    /*width: 100%;*/
+    position: absolute;
+    left: 0;
+    bottom: 35%;
+    width: 100%;
+}
+.textbox{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 35%;
+    text-align: center;
+    background-color: #fff;
+}
+/*@media screen and  (max-width: 768px) {*/
+    /*.videobox{*/
+        /*margin-top: 10px;*/
+        /*height: 200px;*/
+    /*}*/
+    /*.textbox{*/
+        /*height: 50%;*/
+    /*}*/
+
+/*}*/
+/*@media screen and  (min-width: 768px) {*/
+/*}*/

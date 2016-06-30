@@ -1,0 +1,196 @@
+@charset "utf-8";
+
+@wrap-w:90%;
+@max-wrap:1200px;
+@min-wrap:600px;
+@font-base:10px;
+
+@header-h: 60px;
+@header-li-marginL :30px;
+@footer-h: 200px;
+@footer-circle : 38px;
+@footer-c-p : #acacae;
+@footer-c-f : #666;
+
+@header-f-size : @font-base * 1.2;
+@footer-f-size : @font-base * 1.2;
+@font-family: "Microsoft YaHei","微软雅黑";
+
+@mtt-c-white : #fff;
+@mtt-c-black : #000;
+@mtt-c-gray  : #f5f5f5;
+@mtt-c-red   : #f34949;
+@mtt-c-h2    : #595857;
+@mtt-c-h2s	 : #969592;
+@header-f-color : #666;
+
+.wrap{
+	width: @wrap-w;
+	min-width: @min-wrap;
+	max-width: @max-wrap;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+#header{
+	height: @header-h;
+	background-color: @mtt-c-white;
+	img{
+		margin-top: 18px;
+		height: 29px;
+	}
+	ul{
+		float: right;
+		li{
+			list-style: none;
+			float: left;
+			margin-left: @header-li-marginL;
+			a{
+				font-size: @header-f-size;
+				font-family: @font-family;
+				line-height: @header-h;
+				text-decoration: none;
+				color: @header-f-color;
+				&:hover,&.active{
+					color:@mtt-c-red;
+				}
+			}
+		}
+	}
+}
+#pros{
+	z-index: 99;
+	position: fixed;
+	top: 60px;
+	height: 0px;
+	width: 100%;
+	background-color: #fff;
+	text-align: right;
+	overflow: hidden;
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+	.pro{
+		text-decoration: none;
+		text-align: center;
+		color: #000;
+		display: inline-block;
+		width: 70px;
+		img{width: 60px;height: 65px;}
+		h2{text-align: center;font-size: 12px;}
+		&.active h2{color: #f34949;}
+	}
+}
+#footer{
+	height: @footer-h;
+	background-size: cover;
+	background-image: url(../img/foot-bg.jpg);
+	background-position: center right;
+	background-repeat: no-repeat;
+	text-align: center;
+	position: relative;
+	p{
+		width: 100%;
+		font-size: @footer-f-size;
+		color: @footer-c-p;
+		position: absolute;
+		top: 40px;
+	}
+	ul{
+		li{
+			list-style: none;
+			a{
+				text-decoration: none;
+			}
+		}
+	}
+	#mtt-links{
+	 	width: 232px;
+    	margin-left: -116px;
+		display: inline-block;
+		position: absolute;
+		top: 80px;
+		li{float: left;margin-right: 20px;}
+		a{
+			display: inline-block;
+		    width: @footer-circle;
+		    height: @footer-circle;    
+		    border-radius: @footer-circle;
+		    background-color: #7E7B7E;
+		    background-image: url(../img/img.png);
+		    &:hover{background-color: #E54948;}
+		    &#weibo{
+			    background-position: -7px 2px;
+		    }
+		    &#weixin{
+		    	background-position: -50px 2px;
+		    }
+		    &#app{
+		    	background-position: -93px 2px;
+		    }
+		    &#bbs{
+		    	background-position: -136px 3px;
+		    }
+		}
+	}
+	#about-mtt{
+		width: 100%;
+		position: absolute;
+		top: 135px;
+		font-size: @footer-f-size;
+		color: @footer-c-f;
+		li{
+			display: inline-block;
+			margin: 0 3px 0 3px;
+		}
+		a{
+			color: @footer-c-f;
+			&:hover{color:@mtt-c-red;cursor: pointer;}
+		}
+	}
+	.c{
+		position: absolute;
+		top: 148px;
+		color: @footer-c-f;
+		padding-top: 10px;
+		padding-bottom: 0px;
+	}
+	#card{
+		display: none;
+		@card-h : 70px;
+		position: absolute;
+		background-color: #fff;
+		width: @card-h;
+		height: @card-h - 3px;
+		border-radius: 3px;
+		left: 18%;
+    	top: -77px;
+    	.tri{
+    		position: absolute;
+    		border-width:8px 5px;
+    		border-color:#fff transparent transparent transparent;
+    		border-style:solid;
+    		left: 29px;
+    		bottom: -16px;
+    		line-height:0;
+    	}
+    	.top{
+			@card-h : 60px;
+    		position: absolute;
+    		width: @card-h;
+    		height: @card-h;
+    		background-image: url(../img/code-weixin.jpg);
+    		background-position: center;
+    		background-size: contain;
+    		background-repeat: no-repeat;
+    		left: 5px;
+    		top: 2px;
+    	}
+	}
+}
+
+
+
+
+

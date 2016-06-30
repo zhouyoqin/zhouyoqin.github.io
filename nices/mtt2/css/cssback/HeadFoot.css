@@ -1,0 +1,145 @@
+@charset "utf-8";
+.wrap {
+  width: 90%;
+  min-width: 600px;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+#header {
+  height: 60px;
+  background-color: #ffffff;
+}
+#header img {
+  margin-top: 18px;
+  height: 29px;
+}
+#header ul {
+  float: right;
+}
+#header ul li {
+  list-style: none;
+  float: left;
+  margin-left: 30px;
+}
+#header ul li a {
+  font-size: 12px;
+  font-family: "Microsoft YaHei", "微软雅黑";
+  line-height: 60px;
+  text-decoration: none;
+  color: #666666;
+}
+#header ul li a:hover,
+#header ul li a.active {
+  color: #f34949;
+}
+#footer {
+  height: 200px;
+  background-size: cover;
+  background-image: url(../img/foot-bg.jpg);
+  text-align: center;
+  position: relative;
+}
+#footer p {
+  width: 100%;
+  font-size: 12px;
+  color: #acacae;
+  position: absolute;
+  top: 40px;
+}
+#footer ul li {
+  list-style: none;
+}
+#footer ul li a {
+  text-decoration: none;
+}
+#footer #mtt-links {
+  width: 232px;
+  margin-left: -116px;
+  display: inline-block;
+  position: absolute;
+  top: 80px;
+}
+#footer #mtt-links li {
+  float: left;
+  margin-right: 20px;
+}
+#footer #mtt-links a {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  border-radius: 38px;
+  background-color: #7E7B7E;
+  background-image: url(../img/img.png);
+}
+#footer #mtt-links a:hover {
+  background-color: #E54948;
+}
+#footer #mtt-links a#weibo {
+  background-position: -7px 2px;
+}
+#footer #mtt-links a#weixin {
+  background-position: -50px 2px;
+}
+#footer #mtt-links a#app {
+  background-position: -93px 2px;
+}
+#footer #mtt-links a#bbs {
+  background-position: -136px 3px;
+}
+#footer #about-mtt {
+  width: 100%;
+  position: absolute;
+  top: 135px;
+  font-size: 12px;
+  color: #666666;
+}
+#footer #about-mtt li {
+  display: inline-block;
+  margin: 0 3px 0 3px;
+}
+#footer #about-mtt a {
+  color: #666666;
+}
+#footer #about-mtt a:hover {
+  color: #f34949;
+  cursor: pointer;
+}
+#footer .c {
+  position: absolute;
+  top: 148px;
+  color: #666666;
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+#footer #card {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  width: 70px;
+  height: 67px;
+  border-radius: 3px;
+  left: 18%;
+  top: -77px;
+}
+#footer #card .tri {
+  position: absolute;
+  border-width: 8px 5px;
+  border-color: #fff transparent transparent transparent;
+  border-style: solid;
+  left: 29px;
+  bottom: -16px;
+  line-height: 0;
+}
+#footer #card .top {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url(../img/code-weixin.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  left: 5px;
+  top: 2px;
+}

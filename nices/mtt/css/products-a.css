@@ -1,0 +1,207 @@
+
+.section1,.section3,.section5{
+    background-color: #fff;
+}
+.section2,.section4{
+    background-color: #e5e5e5;
+}
+@media screen and (max-width:768px) {
+    body {
+        background-color: #fff;
+    }
+    .box h1{
+        font-size: 28px;
+    }
+    .box h2{
+        font-size: 14px;
+        margin: 0;
+        margin-top: 5px;
+    }
+    .box h4{
+        font-size: 14px;
+    }
+    #content .section{
+        height: 400px;
+    }
+    #content .section1{
+        height: 500px;
+    }
+    #content .section4{
+        /*height: 600px;*/
+    }
+    #box1-text{
+        left: 7%;
+        top: 0;
+        text-align: center;
+        width: 86%;
+        height: 50%;
+    }
+    #box1-text h1 {
+        font-size: 35px;
+        letter-spacing: 0.1em;
+    }
+    #box1-text h2 {
+        font-size: 20px;
+    }
+    #box2-text,#box4-text{
+        height: 30%;
+        left: 5%;
+        top: 0;
+        text-align: center;
+        width: 90%;
+    }
+    #box3-text,#box5-text{
+        top: 10%;
+        height: 30%;
+        left: 5%;
+        text-align: center;
+        width: 90%;
+    }
+    #box1-img{
+        top: 50%;
+        right: 0;
+        width: 100%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-1.png");
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box2-img{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-2.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box3-img{
+        top: 40%;
+        right: 0;
+        width: 100%;
+        height: 70%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-3-sm.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box4-img{
+        bottom: 5%;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-4.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box5-img{
+        top: 20%;
+        right: 0;
+        width: 100%;
+        height: 80%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-5.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+@media screen and  (min-width: 768px) {
+    .box h1 {
+        font-size: 35px;
+    }
+    .box h2 {
+        font-size: 20px;
+        margin: 0;
+        margin-top: 5px;
+    }
+    .box h4 {
+        font-size: 14px;
+    }
+    #box1-text {
+        left: 55%;
+        top: 30%;
+        text-align: left;
+        width: 45%;
+        height: 50%;
+    }
+    #box2-text {
+        text-align: right;
+        width: 95%;
+        height: 15%;
+        right: 5%;
+        top: 5%;
+    }
+    #box3-text {
+        text-align: left;
+        width: 90%;
+        left: 5%;
+        top: 5%;
+    }
+    #box4-text {
+        text-align: center;
+        width: 90%;
+        height: 20%;
+        left: 5%;
+        top: 5%;
+    }
+    #box5-text {
+        text-align: center;
+        width: 100%;
+        height: 20%;
+        left: 0;
+        top: 5%;
+    }
+
+    #box1-img {
+        top: 25%;
+        right: 50%;
+        width: 50%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-1.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box2-img {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-2.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box3-img {
+        width: 100%;
+        height: 100%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-3.png");
+        background-position: bottom left;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box4-img {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-4.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box5-img {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fbtn-v2-5.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+/***********body****************/

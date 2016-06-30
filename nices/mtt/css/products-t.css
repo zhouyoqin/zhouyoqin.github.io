@@ -1,0 +1,311 @@
+
+#btn-left a,
+#btn-right a{
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid #F34949;
+    color: #F34949;
+    padding: 5px 15px;
+}
+#btn-left a:hover,
+#btn-right a:hover{
+    color: #fff;
+    background-color: #F34949;
+}
+#btn-left p,
+#btn-right p{
+    font-size: 24px;
+    color: #F34949;
+    padding-top: 5px;
+}
+.section1,.section3,.section5{
+    background-color: #fff;
+}
+.section2,.section4,.section6{
+    background-color: #e5e5e5;
+}
+@media screen and (max-width:768px) {
+    .box h1{
+        font-size: 30px;
+    }
+    .box h2{
+        font-size: 16px;
+        margin: 0;
+        margin-top: 5px;
+    }
+    .box h4{
+        font-size: 16px;
+    }
+    #content .section{
+        height: 400px;
+    }
+    #content .section1{
+        height: 500px;
+    }
+    #box1-text{
+        left: 7%;
+        top: 0;
+        text-align: center;
+        width: 86%;
+        height: 50%;
+    }
+    #box1-text h1 {
+        font-size: 35px;
+        letter-spacing: 0.1em;
+    }
+    #box1-text h2 {
+        font-size: 20px;
+    }
+    #box2-text,#box4-text{
+        height: 30%;
+        left: 7%;
+        top: 0;
+        text-align: center;
+        width: 86%;
+    }
+    #box3-text,#box5-text,#box6-text{
+        top: 10%;
+        height: 30%;
+        left: 7%;
+        text-align: center;
+        width: 86%;
+    }
+    #box1-img{
+        top: 50%;
+        right: 0;
+        width: 100%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-1.png");
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box2-img{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-2.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box3-img{
+        top: 37%;
+        right: 0;
+        width: 100%;
+        height: 60%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-3.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box4-img{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-4.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box5-img{
+        top: 40%;
+        right: 0;
+        width: 100%;
+        height: 60%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-5.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .section6 hr{
+        width: 1px;
+        height: 40%;
+        left: 50%;
+        top: 25%;
+        background-color:  #BFBFBF;
+    }
+    #box6-img-left{
+        top: 25%;
+        right: 55%;
+        width: 45%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-61.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box6-img-right{
+        top: 25%;
+        left: 55%;
+        width: 45%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-62.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #btn-left{
+        position: absolute;
+        left: 0;
+        bottom: 10%;
+        width: 40%;
+        text-align: center;
+    }
+    #btn-right{
+        position: absolute;
+        right: 0;
+        bottom: 10%;
+        width: 40%;
+        text-align: center;
+    }
+}
+@media screen and  (min-width: 768px){
+    .box h1{
+        font-size: 35px;
+    }
+    .box h2{
+        font-size: 20px;
+        margin: 0;
+        margin-top: 5px;
+    }
+    .box h4{
+        font-size: 20px;
+    }
+    #box1-img{
+        top: 25%;
+        right: 50%;
+        width: 50%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-1.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box1-text{
+        left: 55%;
+        top: 30%;
+        text-align: left;
+        width: 40%;
+        height: 50%;
+    }
+    #box2-img{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-2.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box2-text{
+        text-align: left;
+        width: 95%;
+        height: 15%;
+        left: 5%;
+        bottom: 10%;
+    }
+    #box3-img{
+        top: 25%;
+        left: 35%;
+        width: 65%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-3.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box3-text{
+        right: 50%;
+        top: 30%;
+        text-align: center;
+        width: 47%;
+        height: 50%;
+    }
+    #box4-img{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-4.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box4-text{
+        text-align: center;
+        width: 90%;
+        height: 25%;
+        left: 5%;
+        bottom: 0;
+    }
+    #box5-img{
+        top: 25%;
+        right: 40%;
+        width: 60%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-5.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box5-text{
+        left: 60%;
+        top: 35%;
+        text-align: left;
+        width: 40%;
+        height: 50%;
+    }
+    .section6 hr{
+        width: 1px;
+        height: 60%;
+        left: 50%;
+        top: 25%;
+        background-color:  #BFBFBF;
+    }
+    #box6-text{
+        text-align: center;
+        width: 90%;
+        height: 90%;
+        left: 5%;
+        top: 5%;
+    }
+    #box6-img-left{
+        top: 25%;
+        right: 55%;
+        width: 45%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-61.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box6-img-right{
+        top: 25%;
+        left: 55%;
+        width: 45%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Ftapin-v2-62.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #btn-left{
+        position: absolute;
+        left: 15%;
+        bottom: 20%;
+        width: 20%;
+        text-align: center;
+    }
+    #btn-right{
+        position: absolute;
+        right: 15%;
+        bottom: 20%;
+        width: 20%;
+        text-align: center;
+    }
+}
+/***********body****************/

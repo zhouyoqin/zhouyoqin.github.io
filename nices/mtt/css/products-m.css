@@ -1,0 +1,417 @@
+@-webkit-keyframes change {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/***********body****************/
+#footerHr {
+    background-color: #BDB8B8;
+}
+#btn-left a,
+#btn-right a{
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid #F34949;
+    color: #F34949;
+    padding: 5px 15px;
+}
+#btn-left a:hover,
+#btn-right a:hover{
+    color: #fff;
+    background-color: #F34949;
+}
+#btn-left p,
+#btn-right p{
+    font-size: 24px;
+    color: #F34949;
+    padding-top: 5px;
+}
+.section1,.section3,.section5,.section7{
+    background-color: #fff;
+}
+.section2,.section4,.section6,.section8{
+    background-color: #e5e5e5;
+}
+@media screen and (max-width:768px) {
+    #img-box{
+        display: none;
+    }
+    .box h1{
+        font-size: 28px;
+    }
+    .box h2{
+        font-size: 14px;
+        margin: 0;
+        margin-top: 5px;
+    }
+    .box h4{
+        font-size: 14px;
+    }
+    #content .section{
+        height: 400px;
+    }
+    #content .section1{
+        height: 500px;
+    }
+    #content .section5{
+        height: 450px;
+    }
+    #box1-text{
+        left: 7%;
+        top: 0;
+        text-align: center;
+        width: 86%;
+        height: 50%;
+    }
+    #box1-text h1 {
+        font-size: 35px;
+        letter-spacing: 0.1em;
+    }
+    #box1-text h2 {
+        font-size: 20px;
+    }
+    #box2-text,#box4-text,#box6-text{
+        height: 30%;
+        left: 5%;
+        top: 0;
+        text-align: center;
+        width: 90%;
+    }
+    #box3-text,#box5-text,#box7-text,#box8-text{
+        top: 10%;
+        height: 30%;
+        left: 5%;
+        text-align: center;
+        width: 90%;
+    }
+    #box1-img{
+        top: 50%;
+        right: 0;
+        width: 100%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-1.png");
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box2-img{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-2.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box3-img{
+        top: 37%;
+        right: 0;
+        width: 100%;
+        height: 60%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-3.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box4-img{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-4.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box5-img{
+        top: 40%;
+        right: 0;
+        width: 100%;
+        height: 60%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-5.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box6-img{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-6.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box7-img {
+        bottom: 0;
+        left: 5%;
+        width: 90%;
+        height: 80%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-7.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .section8 hr{
+        width: 1px;
+        height: 40%;
+        left: 50%;
+        top: 25%;
+        background-color:  #BFBFBF;
+    }
+    #box8-img-left{
+        top: 25%;
+        right: 55%;
+        width: 45%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-81.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box8-img-right{
+        top: 25%;
+        left: 55%;
+        width: 45%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-82.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #btn-left{
+        position: absolute;
+        left: 0;
+        bottom: 10%;
+        width: 40%;
+        text-align: center;
+    }
+    #btn-right{
+        position: absolute;
+        right: 0;
+        bottom: 10%;
+        width: 40%;
+        text-align: center;
+    }
+}
+@media screen and  (min-width: 768px){
+    .box h1{
+        font-size: 35px;
+    }
+    .box h2{
+        font-size: 20px;
+        margin: 0;
+        margin-top: 5px;
+    }
+    .box h4{
+        font-size: 14px;
+    }
+    #box1-text{
+        left: 55%;
+        top: 30%;
+        text-align: left;
+        width: 45%;
+        height: 50%;
+    }
+    #box2-text{
+        text-align: left;
+        width: 95%;
+        height: 15%;
+        left: 5%;
+        bottom: 10%;
+    }
+    #box3-text{
+        text-align: center;
+        width: 90%;
+        height: 90%;
+        left: 5%;
+        top: 5%;
+    }
+    #box4-text{
+        text-align: left;
+        width: 90%;
+        height: 20%;
+        left: 5%;
+        bottom: 5%;
+    }
+    #box4-text h1{
+        color: #fff;
+    }
+    #box4-text h2{
+        color: #fff;
+    }
+    .section5{
+        background-color: #fff;
+    }
+    #box5-text{
+        text-align: center;
+        width: 100%;
+        height: 20%;
+        left: 0;
+        top: 5%;
+    }
+    .section6 h1{
+        color: #fff;
+    }
+    .section6 h2{
+        color: #fff;
+    }
+    #box6-text{
+        text-align: right;
+        width: 90%;
+        height: 15%;
+        right: 5%;
+        bottom: 10%;
+    }
+    #box7-text{
+        text-align: center;
+        width: 90%;
+        height: 20%;
+        left: 5%;
+        top: 5%;
+    }
+    #box8-text{
+        text-align: center;
+        width: 90%;
+        height: 20%;
+        left: 5%;
+        top: 5%;
+    }
+    #box1-img{
+        top: 25%;
+        right: 50%;
+        width: 50%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-1.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box2-img{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-2.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #img-box{
+        position: absolute;
+        top: 5%;
+        right: 10%;
+        width: 20%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-22.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: .5;
+        -webkit-animation-name: change;
+        -webkit-animation-duration: 2s;/*动画持续时间*/
+        -webkit-animation-timing-function: ease-in-out; /*动画频率，和transition-timing-function是一样的*/
+        -webkit-animation-delay: 0s;/*动画延迟时间*/
+        -webkit-animation-iteration-count: infinite;/*定义循环资料，infinite为无限次*/
+        -webkit-animation-direction: alternate;/*定义动画方式*/
+
+    }
+    #box3-img{
+        top: 35%;
+        width: 100%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-3.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box4-img{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-4.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box5-img{
+        top: 30%;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-5.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box6-img{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-6.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #box7-img{
+        top: 30%;
+        left: 5%;
+        width: 90%;
+        height: 60%;
+        background-color: #fff;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-7.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box8-img-left{
+        top: 25%;
+        left: 10%;
+        width: 35%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-81.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #box8-img-right{
+        top: 25%;
+        right: 10%;
+        width: 35%;
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fproducts%2Fmabiao-v2-82.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .section8 hr{
+        width: 1px;
+        height: 60%;
+        left: 50%;
+        top: 25%;
+        background-color:  #BFBFBF;
+    }
+    #btn-left{
+        position: absolute;
+        left: 0;
+        bottom: 15%;
+        width: 50%;
+        text-align: center;
+    }
+    #btn-right{
+        position: absolute;
+        right: 0;
+        bottom: 15%;
+        width: 50%;
+        text-align: center;
+    }
+}
+/***********body****************/

@@ -1,0 +1,183 @@
+@charset "utf-8";
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 100;
+  font-family: "Microsoft YaHei", "微软雅黑";
+}
+html {
+  background-color: #f5f5f5;
+}
+#header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: #313131;
+  margin-top: 0;
+}
+#header ul li a {
+  color: #fff;
+}
+#sub {
+  position: fixed;
+  top: 60px;
+  margin-top: 0;
+  background-color: #dfe3e6;
+  height: 30px;
+  width: 100%;
+  z-index: 1;
+}
+#sub a {
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  color: #4f4d4d;
+  line-height: 30px;
+}
+#sub ul {
+  float: right;
+}
+#sub ul li {
+  list-style: none;
+  float: left;
+  padding: 0 20px;
+}
+#sub ul li:hover,
+#sub ul li.active {
+  background-color: #C0C3C5;
+}
+#sub ul li a {
+  font-size: 10px;
+  line-height: 30px;
+  text-decoration: none;
+  color: #4f4d4d;
+}
+#content,
+#header,
+#sub {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+#content {
+  margin-top: 90px;
+}
+#content .page {
+  margin-top: -160px;
+  padding-top: 135px;
+}
+#content .imgs {
+  position: relative;
+  width: 90%;
+  min-width: 600px;
+  max-width: 1200px;
+  margin: 30px auto;
+  overflow: hidden;
+}
+#content .ibox,
+#content .hbox {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  height: 240px;
+  width: 30%;
+  margin: 1% 1%;
+}
+#content .ibox p,
+#content .hbox p {
+  font-size: 16px;
+  color: #666;
+  line-height: 20px;
+}
+#content .ibox p img,
+#content .hbox p img {
+  width: 20px;
+}
+#content .hbox {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+#content .hbox .con {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 5%;
+  box-sizing: border-box;
+  border: 1px dashed #ddd;
+  text-align: center;
+}
+#content .hbox .con h3 {
+  font-size: 26px;
+  color: #666;
+  margin-top: 15%;
+  margin-bottom: 5%;
+}
+#content .hbox .con h2 {
+  font-size: 36px;
+  color: #f34949;
+  line-height: 40px;
+}
+#content .ibox {
+  background-color: #121212;
+}
+#content .ibox > img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+#content .ibox .foo {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 55px;
+  width: 100%;
+  background-color: #fff;
+}
+#content .ibox .foo p {
+  text-indent: 10px;
+  line-height: 30px;
+}
+#content .ibox .foo p.dat {
+  position: relative;
+  color: #999;
+  font-size: 12px;
+  line-height: 20px;
+}
+#content .ibox .foo p.dat a {
+  display: block;
+}
+#content .ibox .foo p.dat .dow {
+  position: absolute;
+  right: 5px;
+  top: -5px;
+}
+#content .ibox .foo p.dat .big {
+  position: absolute;
+  right: 30px;
+  top: -5px;
+}
+#img-big {
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#img-big img {
+  position: absolute;
+  width: 90%;
+  height: auto;
+  max-height: 90%;
+  left: 5%;
+  top: 5%;
+}

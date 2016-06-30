@@ -1,0 +1,317 @@
+/*字体*/
+/*小屏字体*/
+.header-text-nav {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeiti","Microsoft YaHei",Arial,sans-serif;
+}
+.header-text2{
+    color: #a9a9a9;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeiti","Microsoft YaHei",Arial,sans-serif;
+}
+.footer-ul-text{
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeiti","Microsoft YaHei",Arial,sans-serif;
+
+}
+.footer-li-text{
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeiti","Microsoft YaHei",Arial,sans-serif;
+}
+
+body{
+    font-size: 20px;
+    font-family: "微软雅黑","Microsoft Yahei", sans-serif;
+    position: relative;
+}
+#mttNav {
+    background-color: #373737;
+    font-size: 20px;
+}
+#bs-example-navbar-collapse-1{
+    float: right;
+}
+#bs-example-navbar-collapse-1>ul li{
+    margin-right: 30px;
+}
+#mttNav img{
+     margin-top: -5px;
+    margin-right: 20px;
+ }
+#mttNav .container{
+    margin-top: 10px;
+}
+#mttNav a{
+    color: #d9d9d9;
+}
+#mttNav .active a{
+    background-color: #373737;
+    color: #F34949;
+}
+#mttNav a:hover{
+    color: #F34949;
+}
+
+#mttNav .dropdown-menu{
+    background-color: #373737;
+    font-size: 22px;
+}
+#mttNav>.dropdown-menu > a:hover{
+    background-color: #373737;
+}
+
+#mttNav .buy{
+    margin-top: 8px;
+    border-radius: 3px;
+    padding: 6px 24px;
+    background-color: #F34949;
+}
+#mttNav a:hover{
+    color: #F34949;
+}
+#mttNav .buy:hover{
+    color: #958f8f;
+    background-color: #c82e2e;
+}
+/**********sub-nav start*************************/
+#sub-header{
+    width: 100%;
+    clear: both;
+    background-color: #444444;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 59px;
+}
+#sub-header .sub-nav{
+    display: inline;
+    float: left;
+    margin-left: 10%;
+}
+.sub-nav a{
+    color: #D9D9D9;
+    font-size: 14px;
+}
+.sub-nav .ul{
+    overflow: hidden;
+}
+.sub-nav ul li{
+    display: inline;
+    float: left;
+    padding-right: 2em;
+    text-align: center;
+}
+.sub-nav span{
+    display: none;
+}
+.sub-nav .current{
+    color: #F34949;
+}
+.sub-nav a:hover{
+    color: #F34949;
+}
+/*********************footer*********************/
+#mttFooterInfo{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+ }
+#footerHr{
+    height: 2px;
+    border: none;
+    background-color: #e5e5e5;
+ }
+#mttFooterInfo li{
+    margin-bottom: 5px;
+}
+#mttFooterInfo a{
+    color: #333;
+}
+#mttFooterInfo a:hover{
+    color: #F34949;
+}
+#mttFooterInfo a:hover,a:visited,a:link{
+    text-decoration: none;
+}
+footer {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    font-size: 14px;
+    color:#CECECE;
+    background-color: #373737;
+    text-transform:uppercase;
+    padding:10px 0 10px 0;
+}
+footer p {
+    display:block;
+    margin-top:6px;
+    text-align: center;
+}
+#footerWeixinCode{
+    position: absolute;
+    right: 14%;
+    bottom: 60px;
+    width: 200px;
+    height: auto;
+}
+
+/**/
+@media screen and (min-width:768px) {
+    #header2{
+        display: none;
+    }
+    /*#content{*/
+        /*margin-top: 61px;*/
+    /*}*/
+    #sub-header{
+        display: block;
+    }
+}
+@media screen and (max-width:768px) {
+    body{
+        margin: 0;
+    }
+    nav{
+        display: none;
+    }
+    #sub-header{
+        display: none;
+    }
+    #header2{
+        display: block;
+        width: 100%;
+    }
+    #content{
+        margin-top: 0;
+        padding-top: 0;
+    }
+    .content {
+        margin: 0 auto;
+    }
+    .wrap-small{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    #header-logo{
+        background-color: #373737;
+        height: 61px;
+    }
+    #header-logo a{
+        margin-top: 18px;
+    }
+    #header-ico{
+        float: left;
+    }
+    #header-switch{
+        float: right;
+        width: 30px;
+        height: 30px;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fswitch-open.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #header-switch2{
+        float: right;
+        width: 30px;
+        height: 30px;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fswitch-close.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #header-pros{
+        background-color: #efefef;
+        height: 140px;
+        margin: 0 auto;
+    }
+    #header-pros .pro{
+        display: inline-block;
+        width: 25%;
+        text-align: center;
+        height: 80%;
+        margin-top: 2%;
+        float: left;
+    }
+    #header-pros .pro a{
+        display: block;
+        width: 70%;
+        height: 70%;
+        margin: 0 auto;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #pro-img1{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-a1.png");
+    }
+    #pro-img2{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-m1.png");
+    }
+    #pro-img3{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-t1.png");
+    }
+    #pro-img4{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-z1.png");
+    }
+    #pro-img11{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-a2.png");
+    }
+    #pro-img22{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-m2.png");
+    }
+    #pro-img33{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-t2.png");
+    }
+    #pro-img44{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-z2.png");
+    }
+    #pro-img1:hover{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-a2.png");
+    }
+    #pro-img2:hover{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-m2.png");
+    }
+    #pro-img3:hover{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-t2.png");
+    }
+    #pro-img4:hover{
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fbtn-z2.png");
+    }
+    #header-ul{
+        width: 100%;
+        background-color: #fff;
+        margin:0;
+        padding: 0;
+        list-style: none;
+    }
+    #header-ul li a{
+        display: block;
+        line-height: 61px;
+        height: 61px;
+        border-bottom: 1px solid #efefef;
+        padding-left: 8%;
+    }
+    #header-ul li.active a{
+        color: #f34949;
+    }
+    #header-ul li a:hover{
+        color: #f34949;
+    }
+    #main{
+        height: 50%;
+        background-image: url("http://mttsmart.oss-cn-beijing.aliyuncs.com/mtt%2Fmain-small.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}

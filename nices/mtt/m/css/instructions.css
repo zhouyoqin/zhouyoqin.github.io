@@ -1,0 +1,124 @@
+.page{
+    margin: 0 auto;
+    text-align: center;
+}
+#pageOne h1{
+    color: #292929;
+    font-size: 30px;
+    font-family:'MicrosoftJhengHei';
+}
+#pageOne h2{
+    color: #979797;
+    font-size:30px;
+    font-weight:900;
+    font-family:'MicrosoftJhengHei';
+}
+#pageOne h3{
+    color: #292929;
+    font-size: 16px;
+}
+#pageOne img{
+    width: 150px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+#pageTwo{
+    text-align: left;
+}
+#pageTwo h2{
+    text-align: center;
+    color: #F34949;
+    font-size:22px;
+    font-weight: 900;
+    font-family:'MicrosoftJhengHei';
+}
+#pageTwo img{
+    width: 40%;
+    height: auto;
+    margin: 0 10px 0 0;
+}
+
+#pagebfThree{
+    text-align: left;
+}
+#pagebfThree h2{
+    font-size: 22px;
+    display: inline;
+    float: left;
+    font-weight: 900;
+    font-family:'MicrosoftJhengHei';
+}
+#pagebfThree h3{
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #F34949;
+}
+#pagebfThree p{
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+#pagebfThree img{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+#pageThree{
+    text-align: left;
+}
+#pageThree h1{
+    display: inline;
+    float: right;
+    color: #F34949;
+    font-size: 45px;
+    font-weight: 700;
+}
+#pageThree h2{
+    font-size: 22px;
+    display: inline;
+    float: left;
+    font-weight: 900;
+    font-family:'MicrosoftJhengHei';
+}
+#pageThree h3{
+    font-size: 16px;
+    font-weight: 900;
+    color: #F34949;
+}
+#pageThree p{
+    font-size: 14px;
+}
+#pageThree img{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+
+#pageFour{
+    text-align: left;
+    line-height: 1.4;
+}
+#pageFour h2{
+    font-size: 22px;
+    display: inline;
+    float: left;
+    font-weight: 900;
+    font-family:'MicrosoftJhengHei';
+}
+#pageFour h3{
+    font-size: 16px;
+    font-weight: 900;
+    color: #F34949;
+}
+#pageFour ul{
+    margin: 0 0 0 -20px;
+}
+.text-danger{
+    color: #F34949;
+}

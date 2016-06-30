@@ -1,0 +1,243 @@
+@charset "utf-8";
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 100;
+  font-family: "Microsoft YaHei", "微软雅黑";
+}
+#header {
+  background-color: #313131;
+}
+#header ul li a {
+  color: #fff;
+}
+#content {
+  background-color: #f5f5f5;
+}
+#content .wrap {
+  background-color: #fff;
+  border: 25px solid #f5f5f5;
+}
+#content .title {
+  color: #f34949;
+  text-align: center;
+  font-size: 16px;
+  line-height: 60px;
+}
+#content p {
+  color: #666;
+  text-indent: 2em;
+  font-size: 12px;
+  line-height: 20px;
+}
+#content #a-1 {
+  height: 55px;
+  line-height: 55px;
+}
+#content #a-1 ul {
+  font-size: 12px;
+  color: #b0b0b0;
+}
+#content #a-1 ul li {
+  display: inline-block;
+  margin: 0 15px;
+}
+#content #a-1 ul a {
+  text-decoration: none;
+  color: #b0b0b0;
+}
+#content #a-1 ul a:hover,
+#content #a-1 ul a.active {
+  color: #f34949;
+  cursor: pointer;
+}
+#content #a1,
+#content #a2,
+#content #a3 {
+  padding-top: 48px;
+  width: 80%;
+  margin: 0 auto;
+}
+#content #a0 {
+  height: 140px;
+  background-image: url(../img/about-header.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: #666;
+  background-position: top center;
+}
+#content #a0 img {
+  width: 100px;
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: 35px;
+}
+#content #a0 h1,
+#content #a0 h2 {
+  text-align: center;
+}
+#content #a0 h1 {
+  font-size: 18px;
+  line-height: 66px;
+}
+#content #a0 h2 {
+  font-size: 14px;
+  margin-top: -5px;
+}
+#content #a3 h3 {
+  color: #424242;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+}
+#content #a3 .timeline {
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+#content #a3 .timeline li {
+  list-style: none;
+  width: 100%;
+  height: 40px;
+  position: relative;
+}
+#content #a3 .timeline li p {
+  display: inline-block;
+}
+#content #a3 .timeline li i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: #f34949;
+  position: absolute;
+  left: 18%;
+  top: 7%;
+}
+#content #a3 .timeline li hr {
+  border: none;
+  height: 100%;
+  width: 1px;
+  background-color: #e0e0e0;
+  position: absolute;
+  left: 18%;
+  top: 0;
+  margin-top: 11px;
+  margin-left: 4px;
+}
+#content #a3 .timeline li .time-h {
+  position: absolute;
+  left: 5%;
+}
+#content #a3 .timeline li .time-p {
+  position: absolute;
+  left: 30%;
+}
+#content #a3 .ye li i {
+  background-color: #ffac13;
+}
+#content .a {
+  width: 80%;
+  margin: 0 auto;
+  line-height: 25px;
+  padding: 15px 0;
+}
+#content .a h2 {
+  color: #f34949;
+  text-align: left;
+  font-size: 20px;
+}
+#content .a h3 {
+  color: #666;
+  text-align: left;
+  font-size: 16px;
+  line-height: 35px;
+}
+#content .a p {
+  text-indent: 0;
+  font-size: 12px;
+  line-height: 20px;
+}
+#content .c {
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+#content .c h2 {
+  color: #0A0A11;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  font-size: 18px;
+}
+#content .c h3 {
+  color: #0A0A11;
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+#content .c .line {
+  position: relative;
+  height: 50px;
+}
+#content .c .line .left {
+  position: absolute;
+  left: 0;
+  width: 50%;
+}
+#content .c .line .right {
+  position: absolute;
+  left: 50%;
+  width: 50%;
+}
+#content .c .line i {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  background-color: #e54948;
+  background-image: url(../img/about-ico.png);
+  background-repeat: no-repeat;
+  border-radius: 3px;
+}
+#content .c .line i.i1 {
+  background-position: 2px 2px;
+}
+#content .c .line i.i2 {
+  background-position: 2px -34px;
+}
+#content .c .line i.i3 {
+  background-position: 2px -68px;
+}
+#content .c .line i.i4 {
+  background-position: 2px -105px;
+}
+#content .c .line i.i5 {
+  background-position: 2px -140px;
+}
+#content .c .line i.i6 {
+  background-position: 2px -176px;
+}
+#content .c .line i.i7 {
+  background-position: 2px -212px;
+}
+#content .c .line i.i8 {
+  background-position: 2px -247px;
+}
+#content .c .line p {
+  text-indent: 0;
+  color: #0A0A11;
+  font-size: 9px;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  margin-top: -15px;
+}
+#map {
+  height: 450px;
+}

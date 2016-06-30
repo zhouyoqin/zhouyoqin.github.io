@@ -1,0 +1,474 @@
+@charset "utf-8";
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 100;
+  font-family: "Microsoft YaHei", "微软雅黑";
+}
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #313131;
+  margin-top: 0;
+}
+#header ul li a {
+  color: #fff;
+}
+#sub {
+  position: fixed;
+  top: 60px;
+  margin-top: 0;
+  background-color: #dfe3e6;
+  height: 30px;
+  width: 100%;
+}
+#sub a {
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  color: #4f4d4d;
+  line-height: 30px;
+}
+#sub ul {
+  float: right;
+}
+#sub ul li {
+  list-style: none;
+  float: left;
+  padding: 0 20px;
+}
+#sub ul li:hover,
+#sub ul li.active {
+  background-color: #C0C3C5;
+}
+#sub ul li a {
+  font-size: 10px;
+  line-height: 30px;
+  text-decoration: none;
+  color: #4f4d4d;
+}
+#pages .section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+#pages .box {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 60%;
+}
+#pages .box h1 {
+  color: #e94746;
+  font-size: 32px;
+  line-height: 50px;
+}
+#pages .box h2 {
+  color: #333333;
+  font-size: 24px;
+  line-height: 50px;
+}
+#pages .box h3 {
+  color: #595757;
+  font-size: 18px;
+}
+#pages .box p {
+  color: #333333;
+  font-size: 18px;
+}
+#pages .boxa {
+  position: absolute;
+  left: 5%;
+  top: 10%;
+  width: 90%;
+  height: 80%;
+}
+#pages .boxa h1 {
+  font-size: 28px;
+  color: #666;
+  line-height: 50px;
+}
+#pages .boxa h2 {
+  font-size: 16px;
+  color: #666;
+  line-height: 25px;
+}
+#pages .boxa .left,
+#pages .boxa .right {
+  height: 100%;
+  width: 50%;
+  max-width: 400px;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#pages .boxa .left {
+  right: 52%;
+}
+#pages .boxa .right {
+  left: 50%;
+}
+#pages .a1 {
+  background-size: cover;
+  background-image: url(../img/pro/a1-bg.png);
+}
+#pages .a1 h1 {
+  font-size: 22px;
+  color: #f34949;
+  margin-top: 50px;
+}
+#pages .a1 p {
+  font-size: 14px;
+  color: #666;
+  line-height: 25px;
+}
+#pages .a1 .boxa {
+  left: 15%;
+  width: 70%;
+}
+#pages .a1 .img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/pro/a1-img.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#pages .a1 img {
+  width: 150px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+#pages .a2 .left {
+  background-image: url(../img/pro/a2-img.png);
+}
+#pages .a2 .right {
+  background-image: url(../img/pro/a2-txt.png);
+}
+#pages .a2 .right h1 {
+  position: absolute;
+  top: 34%;
+  right: 0;
+}
+#pages .a2 .right h2 {
+  position: absolute;
+  top: 48%;
+  right: 0;
+}
+#pages .a3 .left h1 {
+  position: absolute;
+  top: 43%;
+  left: 0;
+}
+#pages .a3 .left h2 {
+  position: absolute;
+  top: 56%;
+  left: 0;
+}
+#pages .a3 .right {
+  background-image: url(../img/pro/a3-img.png);
+}
+#pages .a4 .left {
+  background-image: url(../img/pro/a4-img.png);
+}
+#pages .a4 .right h1 {
+  position: absolute;
+  top: 38%;
+  right: 0;
+}
+#pages .a4 .right h2 {
+  text-align: right;
+  position: absolute;
+  top: 51%;
+  right: 0;
+}
+#pages .s1 {
+  background-image: url(../img/pro/c1-bg.jpg);
+}
+#pages .s1 .box {
+  height: 30%;
+  width: 50%;
+  left: 50%;
+  top: 30%;
+  text-align: center;
+  min-width: 150px;
+}
+#pages .s1 .box p {
+  margin-top: 10%;
+}
+#pages .s2 {
+  background-image: url(../img/pro/c2-bg.png);
+}
+#pages .s2 .box {
+  height: 70%;
+  width: 50%;
+  left: 25%;
+  top: 10%;
+  text-align: center;
+}
+#pages .s2 .box img {
+  width: 90%;
+  max-width: 440px;
+}
+#pages .s3 {
+  background-image: url(../img/pro/c3-bg.jpg);
+}
+#pages .s3 .box {
+  width: 30%;
+  right: 10%;
+  top: 10%;
+  text-align: center;
+}
+#pages .s3 .box img {
+  width: 150px;
+  margin-top: 5%;
+}
+#pages .s3 .box h3 {
+  margin-bottom: 20%;
+}
+#pages .s4 {
+  background-image: url(../img/pro/c4-bg.jpg);
+}
+#pages .s4 .box {
+  width: 300px;
+  margin-left: -150px;
+  left: 50%;
+  top: 17%;
+  text-align: center;
+}
+#pages .s4 .box h2 {
+  margin-top: 50px;
+}
+#pages .s5 {
+  background-image: url(../img/pro/c5-bg.jpg);
+}
+#pages .s5 .box {
+  height: 80%;
+  width: 100%;
+  min-width: 300px;
+  top: 60px;
+  background-image: url(../img/pro/c5.png);
+}
+#pages .t1 .box {
+  width: 40%;
+  left: 30%;
+  top: 25%;
+  background-image: url(../img/pro/t1.png);
+}
+#pages .t2 .box {
+  width: 100%;
+  top: 10%;
+  height: 80%;
+  background-image: url(../img/pro/t2.png);
+}
+#pages .t3 {
+  background-image: url(../img/pro/t3-bg.png);
+}
+#pages .t3 .box {
+  width: 100%;
+  height: 87%;
+  top: 10%;
+  min-height: 300px;
+  background-image: url(../img/pro/t3.png);
+}
+#pages .t4 {
+  background-image: url(../img/pro/t4-bg.png);
+}
+#pages .t4 .box {
+  width: 40%;
+  height: 25%;
+  max-height: 130px;
+  min-height: 100px;
+  left: 30%;
+  top: 10%;
+  background-image: url(../img/pro/t4.png);
+}
+#pages .t5 {
+  background-image: url(../img/pro/t5-bg.png);
+}
+#pages .t5 .box {
+  height: 80%;
+  width: 100%;
+  min-width: 300px;
+  top: 60px;
+  background-image: url(../img/pro/t5.png);
+}
+#pages .t6 {
+  background-image: url(../img/pro/m6-bg.jpg);
+}
+#pages .t6 .box {
+  width: 80%;
+  left: 10%;
+  top: 5%;
+  height: 80%;
+}
+#pages .t6 .box h1 {
+  text-align: center;
+  color: #fff;
+  line-height: 150px;
+  font-size: 30px;
+}
+#pages .t6 .box .imgbox {
+  position: absolute;
+  width: 45%;
+}
+#pages .t6 .box .imgbox img {
+  width: 100%;
+}
+#pages .t6 .box .imgbox a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: left;
+  color: #fff;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#pages .t6 .box .imgbox a:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+#pages .t6 .box .imgbox a span {
+  position: absolute;
+  left: 20px;
+  bottom: 15px;
+  font-size: 16px;
+}
+#pages .t6 .box .imgbox a span i {
+  font-size: 12px;
+}
+#pages .t6 .box .left {
+  left: 0;
+}
+#pages .t6 .box .right {
+  right: 0;
+}
+#pages .m1 {
+  position: relative;
+}
+#pages .m1 .box {
+  height: 100%;
+  width: 100%;
+  left: 0%;
+  top: 60px;
+  background-image: url(../img/pro/m1.jpg);
+  background-size: cover;
+  background-position: top;
+}
+#pages .m2 {
+  background-image: url(../img/pro/m2-bg.png);
+}
+#pages .m2 .box {
+  height: 25%;
+  width: 100%;
+  left: 0%;
+  top: 15%;
+  background-image: url(../img/pro/m2.png);
+}
+#pages .m3 .box {
+  height: 70%;
+  top: 10%;
+  width: 100%;
+  min-height: 350px;
+  max-height: 600px;
+  background-image: url(../img/pro/m3.png);
+  background-size: contain;
+}
+#pages .m4 .box {
+  height: 65%;
+  top: 15%;
+  width: 100%;
+  min-height: 300px;
+  max-height: 600px;
+  background-image: url(../img/pro/m4.png);
+  background-size: contain;
+}
+#pages .m5 {
+  background-image: url(../img/pro/m5-bg.png);
+}
+#pages .m5 .box {
+  height: 80%;
+  width: 100%;
+  min-width: 300px;
+  top: 60px;
+  background-image: url(../img/pro/m5.png);
+}
+#pages .m6 {
+  background-image: url(../img/pro/m6-bg.jpg);
+}
+#pages .m6 .box {
+  width: 80%;
+  left: 10%;
+  top: 5%;
+  height: 80%;
+}
+#pages .m6 .box h1 {
+  text-align: center;
+  color: #fff;
+  line-height: 150px;
+  font-size: 30px;
+}
+#pages .m6 .box .imgbox {
+  position: absolute;
+  width: 45%;
+}
+#pages .m6 .box .imgbox img {
+  width: 100%;
+}
+#pages .m6 .box .imgbox a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: left;
+  color: #fff;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#pages .m6 .box .imgbox a:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+#pages .m6 .box .imgbox a span {
+  position: absolute;
+  left: 20px;
+  bottom: 15px;
+  font-size: 16px;
+}
+#pages .m6 .box .imgbox a span i {
+  font-size: 12px;
+}
+#pages .m6 .box .left {
+  left: 0;
+}
+#pages .m6 .box .right {
+  right: 0;
+}
+#content,
+#footer {
+  position: fixed;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+#content {
+  top: 0;
+}
+#footer {
+  bottom: -100%;
+  width: 100%;
+}

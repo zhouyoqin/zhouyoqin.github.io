@@ -1,0 +1,29 @@
+{
+    "times":[	"00:00"...
+		"23:59"],
+	"data":[
+	    {
+	        "00:00":[
+	            {
+	                "cityId":1,
+        	        "name":"beijing",
+                    "zh_name":"北京",
+                    "geo":[121.15,31.89]
+                    //longtitude,latitude
+                    "value":44
+	            },
+	            {
+	                 "cityId":2,
+        	        "name":"tianjing",
+                    "zh_name":"天津",
+                    ...
+	            }
+	        ]
+	        ...
+        },
+        {
+            "00:01":[{...}]
+        },
+        ...
+	]
+}

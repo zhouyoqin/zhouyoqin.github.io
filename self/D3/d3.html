@@ -8,19 +8,62 @@
 	</style>
 </head>
 <body>
-	<p>update</p>
-	<p>update</p>
-	<p>update</p>
-	<script src="d3.js"></script>
+	<script src="js/d3.js"></script>
 	<script>
-		var dataset = [5];
+		var width  = 500;
+		var height = 500;
+
+		var svg = d3.select("body")
+					.append("svg")
+					.attr("width", width)
+					.attr("height", height);
+		// 数据绑定模板
 		var p = d3.select("body").selectAll("p");
-		var update = p.data(dataset);
-		var exit = update.exit();
-		update.text(function(d) {
-			return "update " + d;
-		});
-		exit.remove();
+
+			var update = p.data(area);
+			var enter = update.enter();
+			var exit = update.exit();
+			
+			update.text(function(d) {return d;});
+			enter.append("p").text(function(d) {return d;});
+			exit.remove();
+		// 颜色插值
+		var a = d3.rgb(255,100,0);
+		var b = d3.rgb(0,100,255);
+		var compute = d3.interpolate(a,b);
+		var linear = d3.scale.linear()
+					   .domain([0,150])
+					   .range([0,1]);
+		var rects = svg.selectAll("rect")
+					   .data(d3.range(150))
+					   .enter()
+					   .append("rect")
+					   .attr("x", function(d,i){return i%15 *15})
+					   .attr("y", function(d,i){return Math.floor(i/15) *15})
+					   .attr("width", 15)
+					   .attr("height", 15)
+					   .style("fill", function(d){return compute(linear(d));});
+
+		// 线性渐变过滤器
+		var defs = svg.append("defs");
+		var linearGradient = defs.append("linearGradient")
+								 .attr("id", "linearColor")
+								 .attr("x1", "0%")
+								 .attr("y1", "0%")
+								 .attr("x2", "100%")
+								 .attr("y2", "0%");
+		var stop1 = linearGradient.append("stop")
+								  .attr("offset", "0%")
+								  .attr("stop-color", a.toString());
+		var stop2 = linearGradient.append("stop")
+								  .attr("offset", "100%")
+								  .attr("stop-color", b.toString());
+		var colorRect = svg.append("rect")
+						   .attr("x", 15)
+						   .attr("y", 200)
+						   .attr("width", 200)
+						   .attr("height", 30)
+						   .style("fill", "url(#" + linearGradient.attr("id") + ")");
 	</script>
 </body>
 </html>

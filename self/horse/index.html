@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Document</title>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="../../css/bootstrap.css">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body ng-app="horse">
+	<div id="main" ng-controller="horseController" class="container">
+		<div class="row btn-row">
+			<div class="col-sm-3">
+				<button class="btn btn-success" ng-click="alertOpen()">添加</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="table-responsive">
+				<table class="table table-bordered">
+					<tr>
+						<th>编号</th>
+						<th>名字</th>
+						<th>所有者</th>
+						<th>骑者</th>
+						<th>操作</th>
+					</tr>
+					<tr ng-repeat="horse in horseinfo">
+						<td><span ng-bind="horse.id"></span></td>
+						<td><span ng-bind="horse.name"></span></td>
+						<td><span ng-bind="horse.owner"></span></td>
+						<td><span ng-bind="horse.rider"></span></td>
+						<td>
+                        	<a href="javascript:void(0)" ng-click="deleteHorse($index)">删除</a>
+						</td>
+					</tr>
+				</table>
+				</div>
+			</div>
+		</div>
+		<div id="add-alert" ng-show="showAlert">
+			<form class="form-horizontal">
+			  <div class="form-group">
+			    <label for="horse-id" class="control-label">horseid:</label>
+			    <input type="text" class="form-control" id="horse-id" placeholder="请输入马的编号" ng-model="newHorse.id">
+			  </div>
+			  <div class="form-group">
+			    <label for="horse-name">horsename:</label>
+			    <input type="text" class="form-control" id="horse-name" placeholder="请输入马的名字" ng-model="newHorse.name">
+			  </div>
+			  <div class="form-group">
+			    <label for="horse-owner">horse owner:</label>
+			    <input type="text" class="form-control" id="horse-owner" placeholder="请输入马的所有者" ng-model="newHorse.owner">
+			  </div>
+			  <div class="form-group">
+			    <label for="horse-rider">horseride:</label>
+			    <input type="text" class="form-control" id="horse-rider" placeholder="请输入骑手" ng-model="newHorse.rider">
+			  </div>
+			  <div class="form-group button-group">
+			    <button type="submit" class="btn btn-success" ng-click="alertSubmit()">Submit</button>
+			  	<button type="submit" class="btn btn-default" ng-click="alertCancel()">Cancel</button>
+			  </div>
+			 
+			</form>
+		</div>
+	</div>
+	<script src="../../js/angular.min.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>

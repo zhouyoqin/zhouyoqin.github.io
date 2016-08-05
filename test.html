@@ -3,124 +3,67 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style type="text/css">
-	html {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-.blur {
-   color: transparent; text-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-		#test{
-			width: 300px;
-			height: 300px;
-			background-color: #333;
-			border: 1px solid #000;
-		}
-		#fir{
-			height: 10px;
-			width: 100%;
-			background-color: #eee;
-		}
-		#sec{
-			max-height: 300px;
-			overflow: auto;
-		}
-		#sec .blocks{
-			height: 25px;
-			width: 100px;
-			background-color: pink;
-			margin-bottom: 10px;
-		}
-		.section{
-			width: 100%;height: 400px;
-		}
-		ul > li:not(:last-child)::after {
-		  content: ",";
-		}
-	</style>
 </head>
 <body>
-	<div id="test">
-		<div id="fir"></div>
-		<div id="sec">
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-			<div class="blocks"></div>
-		</div>
-	</div>
-	<div class="section">
-		<ul>
-			<li>
-				阿勒勒乐乐
-			</li>
-			<li class="blur">
-				阿勒勒乐乐阿勒勒乐乐
-			</li>
-			<li>
-				阿勒勒乐乐
-			</li>
-			<li>
-				阿勒勒乐乐
-			</li>
-		</ul>
-	</div>
 	<script>
-		var stage1 = {
-			begin:"07:00",
-			end:"24:00",
-			v_absolute_less:"",
-			v_absolute_more:"",
-			v_circle_less:"",
-			v_circle_more:"",
-			v_circlechange_less:"",
-			v_circlechange_more:"",
-			v_same_less:"1000",
-			v_same_more:"",
-			v_samechange_less:"",
-			v_samechange_more:""
-		};
-		var stage2 = {
-			begin:"07:00",
-			end:"24:00",
-			v_absolute_less:"",
-			v_absolute_more:"",
-			v_circle_less:"",
-			v_circle_more:"",
-			v_circlechange_less:"",
-			v_circlechange_more:"",
-			v_same_less:"",
-			v_same_more:"",
-			v_samechange_less:"",
-			v_samechange_more:""
-		};
-		validate();
-		function validate(stage) {
-			for(var name in stage){
-	            if (name.indexOf("v_")==0 && stage[name] != ""){
-	            	return true;
-	            };
-	        }
-	        return false;
-		};
-		console.dir(validate(stage1));
-		console.dir(validate(stage2));
+	/*
+	Time Limit: 6000/2000 MS (Java/Others) Memory Limit: 65536/65536 K (Java/Others)
+Problem Description:
+数学老师上完课后，给小B布置了一个作业。尽管作业描述很简单，但结果却不那么简单。题目要求是，对于区间[a, b]中的所有正整数和给定的正整数k，计算其中最小因数为k的整数个数。遗憾的是，老师上课的时候，小B正在和周公神游天外，这是她不得不向你求助的原因。作为好朋友，你愿意帮助她吗？
+
+测试数据有多组，每组测试数据为一行，包括三个整数a、b和k（1=< a=<b <=2*10^9, 2=<k=2*10^9）
+样例输入
+1 10 2
+12 23 3
+6 19 5
+样例输出
+5
+2
+0
+*/
+switch(i){
+    case 0:
+    	break;
+    case 1:
+    	break;
+    case 2:
+    	break;
+    case 3:
+    	break;
+}
+
+function sortNumber(a,b)
+{
+return a - b
+}
+		var line = [6,19,5];
+		debugger;
+				line = line.sort(sortNumber);
+		var start = line[0];
+		var end = line[1];
+		var minP = line[2];
+
+		var count = 0;
+		var hasless = false;
+		for(var i = 0; i+start <= end; i++){
+			if ((i+start)%minP == 0) {
+				// 如果能整除
+				for(var j = 2; j < minP; j++){
+					if ((i+start)%j == 0) {
+						hasless = true;
+						break;
+					};
+				}
+				// 判断有没有更小的因子
+				if(hasless){
+					hasless = false;
+				}else{
+					count++;
+				}
+			};
+			
+		}
+		console.dir(count);
 	</script>
 </body>
 </html>

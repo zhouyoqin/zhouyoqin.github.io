@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var line;
+while(line = read_line()){
+    line = line.split(' ');
+  	var numstart = parseInt(line[0]);
+    var numend = parseInt(line[1]);
+    var minP = parseInt(line[2]);
+      
+      var count = 0;
+      var hasless = false;
+      for(var i = 0; (i+numstart) <= numend; i++){
+            if ( ((i+numstart) % minP) == 0) {
+                  for(var j = 2; j < minP; j++){
+                        if ( ((i+numstart) % j) == 0) {
+                              hasless = true;
+                              break;
+                        }
+                  }
+                  if(hasless){
+                        hasless = false;
+                  }else{
+                        count++;
+                  }
+            }
+      }
+      print(count)
+}
+
+
+	</script>
+</body>
+</html>

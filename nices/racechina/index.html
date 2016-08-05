@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>basic</title>
+	<link rel="stylesheet" href="css/basic.css">
+	<script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+</head>
+<body ng-app="main" ng-controller="mainController">
+	<div class="header">
+		<a href="#" id="logo">logo</a>
+		<a href="#" class="user_box">
+			<img src="img/usr4.png" alt="">
+			<span ng-bind="currentUser">username</span>
+			<span class="quit" ng-click="quitUser()">退出</span>
+		</a>
+	</div>
+	<div class="content">
+		<div class="leftsidebar_box">
+			<div class="line"></div>
+			<dl>
+				<dt>马匹信息化<img src="img/select_xl01.png"></dt>
+				<dd class="first_dd"><a href="#">马匹库</a></dd>
+				<dd><a href="#">马匹登记</a></dd>
+				<dd><a href="#">马匹审核</a></dd>
+				<dd><a href="#">育马者管理</a></dd>
+			</dl>
+			<dl>
+				<dt>马主管理<img src="img/select_xl01.png"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt>马场管理<img src="img/select_xl01.png"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt>赛事管理<img src="img/select_xl01.png"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt>其他<img src="img/select_xl01.png"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+		</div>
+		<div class="right_box">
+			<div class="table_basic">
+				<table>
+					<thead>
+						<tr><td colspan="13">马匹列表</td></tr>
+						<tr>
+							<th>英文名</th>
+							<th>中文名</th>
+							<th>护照号</th>
+							<th>芯片号</th>
+							<th>毛色</th>
+							<th>出生日期</th>
+							<th>性别</th>
+							<th>种类</th>
+							<th>来源</th>
+							<th>品种</th>
+							<th>护照是否发放</th>
+							<th>马匹状态</th>
+							<th>进口日期</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="horse in horseInfo">
+							<td><span ng-bind="horse.nameEng"></span></td>
+							<td><span ng-bind="horse.nameChi"></span></td>
+							<td><span ng-bind="horse.lifeNumber"></span></td>
+							<td><span ng-bind="horse.microchipNumber"></span></td>
+							<td><span ng-bind="horse.color"></span></td>
+							<td><span ng-bind="horse.birthday"></span></td>
+							<td><span ng-bind="horse.sex"></span></td>
+							<td><span ng-bind="horse.sort"></span></td>
+							<td><span ng-bind="horse.source"></span></td>
+							<td><span ng-bind="horse.breed"></span></td>
+							<td><span ng-bind="horse.passportFlag == '1' ? '已发放':'未发放'"></span></td>
+							<td>
+								<span ng-bind="horse.status1"></span>/<span ng-bind="horse.status2"></span>
+							</td>
+							<td><span ng-bind="horse.importDate"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+	$(".leftsidebar_box dt").css({"background-color":"#3F3F3F"});
+	$(".leftsidebar_box dt img").attr("src","img/select_xl01.png");
+	$(function(){
+		$(".leftsidebar_box dd").hide();
+		$(".leftsidebar_box dt").click(function(){
+			$(".leftsidebar_box dt").css({"background-color":"#3F3F3F","color":"#818181"})
+			$(this).css({"background-color": "#2DB7F5","color":"#fff"});
+			$(this).parent().find('dd').removeClass("menu_chioce");
+			$(".leftsidebar_box dt img").attr("src","img/select_xl01.png");
+			$(this).parent().find('img').attr("src","img/select_xl.png");
+			$(".menu_chioce").slideUp(); 
+			$(this).parent().find('dd').slideToggle();
+			$(this).parent().find('dd').addClass("menu_chioce");
+		});
+	})
+	</script>
+
+</body>
+</html>

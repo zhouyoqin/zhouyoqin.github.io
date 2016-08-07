@@ -199,7 +199,6 @@
 					$scope.warning.valid_phone_new = "";
 				}
 
-				手机已经填写
 				AV.Cloud.requestSmsCode($scope.usernew_cellphone).then(function (success) {
 					var second = 60;
 					timePromise = undefined;

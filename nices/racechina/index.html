@@ -83,20 +83,22 @@
 						</tr>
 					</tbody>
 				</table>
+				<div id="kkpager"></div>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/angular.min.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript">
+	<script src="js/jquery.js"></script>
+	<script src="js/kkpager.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/index.js"></script>
+	<script>
 	$(".leftsidebar_box dt").css({"background-color":"#3F3F3F"});
 	$(".leftsidebar_box dt img").attr("src","img/select_xl01.png");
 	$(function(){
 		$(".leftsidebar_box dd").hide();
 		$(".leftsidebar_box dt").click(function(){
 			$(".leftsidebar_box dt").css({"background-color":"#3F3F3F","color":"#818181"})
-			$(this).css({"background-color": "#2DB7F5","color":"#fff"});
+			$(this).css({"background-color": "#38b8f2","color":"#fff"});
 			$(this).parent().find('dd').removeClass("menu_chioce");
 			$(".leftsidebar_box dt img").attr("src","img/select_xl01.png");
 			$(this).parent().find('img').attr("src","img/select_xl.png");

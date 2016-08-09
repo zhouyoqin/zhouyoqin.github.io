@@ -5,6 +5,24 @@
 	<title>basic</title>
 	<link rel="stylesheet" href="css/basic.css">
 	<script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+	<style>
+		.right_box{
+			bottom: 10px;
+		}
+		.content_box{
+			padding: 30px 50px;
+		}
+		.content_box h1{
+			font-size: 14px;
+			font-weight: bold;
+			line-height: 50px;
+		}
+		.content_box p{
+			font-size: 12px;
+			font-weight: lighter;
+			line-height: 20px;
+		}
+	</style>
 </head>
 <body ng-app="main" ng-controller="mainController">
 	<div class="header">
@@ -19,11 +37,11 @@
 		<div class="leftsidebar_box">
 			<div class="line"></div>
 			<dl>
-				<dt class="open">马匹信息化<span class="imgopen"></span></dt>
-				<dd class="first_dd show active"><a href="index.html">马匹库</a></dd>
-				<dd class="show"><a href="#">马匹登记</a></dd>
-				<dd class="show"><a href="#">马匹审核</a></dd>
-				<dd class="show"><a href="#">育马者管理</a></dd>
+				<dt class="basic">马匹信息化<span class="imgclose"></span></dt>
+				<dd class="first_dd active"><a href="index.html">马匹库</a></dd>
+				<dd><a href="#">马匹登记</a></dd>
+				<dd><a href="#">马匹审核</a></dd>
+				<dd><a href="#">育马者管理</a></dd>
 			</dl>
 			<dl>
 				<dt class="basic">马主管理<span class="imgclose"></dt>
@@ -43,53 +61,17 @@
 			</dl>
 		</div>
 		<div class="right_box">
-			<div class="table_basic">
-				<table>
-					<thead>
-						<tr><td colspan="13">马匹列表</td></tr>
-						<tr>
-							<th>英文名</th>
-							<th>中文名</th>
-							<th>护照号</th>
-							<th>芯片号</th>
-							<th>毛色</th>
-							<th>出生日期</th>
-							<th>性别</th>
-							<th>种类</th>
-							<th>来源</th>
-							<th>品种</th>
-							<th>护照是否发放</th>
-							<th>马匹状态</th>
-							<th>进口日期</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="horse in horseInfo">
-							<td><span ng-bind="horse.nameEng"></span></td>
-							<td><span ng-bind="horse.nameChi"></span></td>
-							<td><span ng-bind="horse.lifeNumber"></span></td>
-							<td><span ng-bind="horse.microchipNumber"></span></td>
-							<td><span ng-bind="horse.color"></span></td>
-							<td><span ng-bind="horse.birthday"></span></td>
-							<td><span ng-bind="horse.sex"></span></td>
-							<td><span ng-bind="horse.sort"></span></td>
-							<td><span ng-bind="horse.source"></span></td>
-							<td><span ng-bind="horse.breed"></span></td>
-							<td><span ng-bind="horse.passportFlag == '1' ? '已发放':'未发放'"></span></td>
-							<td>
-								<span ng-bind="horse.status1"></span>/<span ng-bind="horse.status2"></span>
-							</td>
-							<td><span ng-bind="horse.importDate"></span></td>
-						</tr>
-					</tbody>
-				</table>
-				<div id="kkpager"></div>
+			<div class="content_box">
+				<h1>关于 CSBC</h1>
+				<p>中国纯血马登记管理委员会 （CHINA STUD BOOK COMMITTEE , CSBC）是经中华人民共和国农业部、民政部批准，全面负责中国境内纯血马登记管理、国际交易的唯一权力机构。《中国纯血马登记管理规则》是根据国际纯血马登记管理委员会（INTERNATIONAL STUD BOOK COMMITTEE , ISBC） 登记管理规则和“中国种畜法”有关条例制定的。以保证登记的正确性、完整性、连续性和合法性，保护马主、育马者、马匹使用单位和个人的合法权益。</p>
+			</div>
+			<div class="content_box">
+				<h1>关于本站</h1>
+				<p>本后台信息管理系统为中国马业协会和北京马蹄铁科技有限公司深度合作，拟打造全国首个马匹信息化平台，包括纯血马信息库、马主信息、育马者信息、马场信息及赛事管理的信息化平台，并服务于移动端产品【赛马中华】。未来，我们将会打造全国最专业最有影响力的中国马匹信息平台、中国赛马信息平台，为中国赛马运动爱好者、厂商、从业人员提供优质的服务，促进中华民族赛马运动的发展！</p>
 			</div>
 		</div>
 	</div>
 	<script src="js/jquery.js"></script>
-	<script src="js/kkpager.js"></script>
-	<script src="js/angular.min.js"></script>
 	<script src="js/index.js"></script>
 	<script>
 	$(function(){

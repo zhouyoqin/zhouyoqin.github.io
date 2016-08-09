@@ -121,20 +121,35 @@ body{background-color: @color-bg;}
 		padding-right: 10px;
 		background-repeat: no-repeat;
 		background-position: 10px center;
-		color: @color-side-font;
-		font-size: 14px;
+		font-size: 12px;
 		position: relative;
 		line-height: 30px;
 		cursor: pointer;
-		img {
-			position: absolute;
-			right: 10px;
-			top: 13px;
+		&.basic{
+			background-color:#3F3F3F;
+			color: @color-side-font;
+		}
+		&.open{
+			background-color: #38b8f2;
+			color:#fff;
+		}
+		span{
+			display: inline-block;
+			background-position: center;
+			background-repeat: no-repeat;
+			float: right;
+			width: 10px;
+			height: 10px;
+			margin-top:10px;
+			&.imgopen{background-image:url(../img/select_xl.png)}
+			&.imgclose{background-image:url(../img/select_xl01.png)}
 		}
 	}
 	dd {
 		background-color: @color-side-bger ;
 		padding-left: 40px;
+		&.show{display: block !important;}
+		&.active a{color: #fff;}
 		a {
 			color: @color-side-font;
 			line-height: 30px;

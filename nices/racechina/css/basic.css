@@ -28,7 +28,16 @@ a {
 body {
   background-color: #f4f4f4;
 }
-.btn-basic {
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+.dis-inline {
+  display: inline-block;
+}
+.btn_basic {
   display: inline-block;
   height: 30px;
   line-height: 30px;
@@ -38,9 +47,16 @@ body {
   background-color: #2DB7F5;
   cursor: pointer;
   font-size: 14px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
-.btn-disable {
+.btn_disable {
   background-color: #969696;
+}
+.btn_cancel {
+  background-color: #fff;
+  border: 1px solid #e9e9e9;
+  color: #666666;
 }
 .input_basic {
   width: 100%;
@@ -69,6 +85,7 @@ body {
 }
 .table_basic table thead td {
   padding: 10px 10px;
+  line-height: 30px;
 }
 .table_basic table thead th {
   padding: 25px 5px;
@@ -76,6 +93,12 @@ body {
 }
 .table_basic table tbody td {
   padding: 10px 5px;
+}
+.table_basic table tbody td a {
+  color: #38b8f2;
+}
+.table_basic table tbody td a:hover {
+  color: #38b8f2;
 }
 .header {
   z-index: 99;

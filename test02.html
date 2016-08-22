@@ -6,34 +6,29 @@
 </head>
 <body>
 	<script>
-	var line;
-while(line = read_line()){
-    line = line.split(' ');
-  	var numstart = parseInt(line[0]);
-    var numend = parseInt(line[1]);
-    var minP = parseInt(line[2]);
-      
-      var count = 0;
-      var hasless = false;
-      for(var i = 0; (i+numstart) <= numend; i++){
-            if ( ((i+numstart) % minP) == 0) {
-                  for(var j = 2; j < minP; j++){
-                        if ( ((i+numstart) % j) == 0) {
-                              hasless = true;
-                              break;
-                        }
-                  }
-                  if(hasless){
-                        hasless = false;
-                  }else{
-                        count++;
-                  }
-            }
+  function countValue(n) {
+    debugger;
+    var value = 1;
+    var step = 1;
+    n--;
+    while(n){
+      for(var i=step;i>0;i--){
+        value++;
+        n--;
+        if(n == 0){break;}
       }
-      print(count)
-}
-
-
+      if(n == 0){break;}
+        value--;
+        n--;
+        step++;
+    }
+    return value;
+  }
+  console.dir(countValue(1));
+  console.dir(countValue(2));
+  console.dir(countValue(3));
+  console.dir(countValue(4));
+  console.dir(countValue(5));
 	</script>
 </body>
 </html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>马匹审核</title>
+	<link rel="stylesheet" href="css/basic.css">
+	<script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+</head>
+<body ng-app="main" ng-controller="mainController">
+	<div class="header">
+		<a href="welcome.html" id="logo">logo</a>
+		<a href="#" class="user_box">
+			<img src="img/usr4.png" alt="">
+			<span ng-bind="currentUser">username</span>
+			<span class="quit" ng-click="quitUser()">退出</span>
+		</a>
+	</div>
+	<div class="content">
+		<div class="leftsidebar_box">
+			<div class="line"></div>
+			<dl>
+				<dt class="open">马匹信息化<span class="imgopen"></span></dt>
+				<dd class="first_dd show"><a href="horse-stack.html">马匹库</a></dd>
+				<dd class="show"><a href="horse-register.html">马匹登记</a></dd>
+				<dd class="show active"><a href="horse-check.html">马匹审核</a></dd>
+				<dd class="show"><a href="horse-raise.html">育马者管理</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">马主管理<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">马场管理<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">赛事管理<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">其他<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+		</div>
+		<div class="right_box">
+			<div class="table_basic">
+				<table>
+					<thead>
+						<tr>
+							<td colspan="14">马匹列表
+								<a href="javascript:;" class="btn-basic pull-right">添加</a>
+							</td>
+						</tr>
+						<tr>
+							<th>英文名</th>
+							<th>中文名</th>
+							<th>护照号</th>
+							<th>芯片号</th>
+							<th>毛色</th>
+							<th>出生日期</th>
+							<th>性别</th>
+							<th>种类</th>
+							<th>来源</th>
+							<th>品种</th>
+							<th>护照是否发放</th>
+							<th>马匹状态</th>
+							<th>进口日期</th>
+							<th style="width:55px;text-align:center;" ng-if="isManager">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="horse in horseInfo">
+							<td><span ng-bind="horse.nameEng"></span></td>
+							<td><span ng-bind="horse.nameChi"></span></td>
+							<td><span ng-bind="horse.lifeNumber"></span></td>
+							<td><span ng-bind="horse.microchipNumber"></span></td>
+							<td><span ng-bind="horse.color"></span></td>
+							<td><span ng-bind="horse.birthday"></span></td>
+							<td><span ng-bind="horse.sex"></span></td>
+							<td><span ng-bind="horse.sort"></span></td>
+							<td><span ng-bind="horse.source"></span></td>
+							<td><span ng-bind="horse.breed"></span></td>
+							<td><span ng-bind="horse.passportFlag == '1' ? '已发放':'未发放'"></span></td>
+							<td>
+								<span ng-bind="horse.status1"></span>/<span ng-bind="horse.status2"></span>
+							</td>
+							<td><span ng-bind="horse.importDate"></span></td>
+							<td ng-if="isManager">
+								<a href="javascript:;">修改</a>
+								<a href="javascript:;">删除</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div id="kkpager"></div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/kkpager.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+	$(function(){
+		$(".leftsidebar_box dd").hide();
+		$(this).find(".show").removeClass("show").show();
+		$(".leftsidebar_box dt").click(function(){
+			var curItem = $(this);
+			if (curItem.attr("class") == 'open') {
+				curItem.removeClass("open").addClass("basic");
+				curItem.parent().find('span').removeClass("imgopen").addClass("imgclose");
+				curItem.parent().find('dd').slideUp().removeClass("menu_chioce");
+			}else if(curItem.attr("class") == 'basic'){
+				$(".open").removeClass("open").addClass("basic");
+				$(".basic").parent().find("dd").slideUp();
+				$(".basic span").removeClass("imgopen").addClass("imgclose");
+				curItem.removeClass("basic").addClass("open");
+				curItem.parent().find('span').removeClass("imgclose").addClass("imgopen");
+				curItem.parent().find('dd').addClass("menu_chioce").slideToggle();
+			}
+		});
+	})
+	</script>
+
+</body>
+</html>

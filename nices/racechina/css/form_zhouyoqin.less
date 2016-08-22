@@ -1,0 +1,185 @@
+@charset utf-8;
+@h-row : 40px;
+@w-label : 130px;
+@w-input : 200px;
+@w-input-sm : 150px;
+@w-input-l : 500px;
+@color-border : #E9E9E9;
+@color-label-bg : #F4F4F4;
+@color-label-font : #666666;
+@font-label : 12px;
+.form_box{
+	width: 100%;
+	min-width: 800px;
+	border-bottom: 1px solid @color-border;
+	.form_box_row{
+		width: 100%;
+		height: @h-row;
+		border: 1px solid @color-border;
+		border-bottom-color: transparent; 
+		.block{
+			overflow: hidden;
+			display: inline-block;
+			width: 100%;height: @h-row;
+			span.block_label{
+				display: inline-block;
+				width: @w-label;
+				height:@h-row;line-height: @h-row;
+				background-color: @color-label-bg;
+				text-align: right;
+				font-size: @font-label;
+				color : @color-label-font;
+				margin-right: 30px;
+				b{color: #ff5722;}
+			}
+			span.notNull{color: #ff5722;}
+			div.block_input{
+				display: inline-block;
+				width: @w-input;
+				&.small{
+					width: @w-input-sm;
+				}
+				&.long{
+					width: @w-input-l;
+				}
+			}
+			.select_res{
+				display: inline-block;
+				span{padding: 5px 10px;background-color: #eee;border-radius: 5px;}
+				span.close{
+					padding: 5px;
+					&:hover{background-color: #ddd;cursor: pointer;}
+				}
+			}
+
+		}
+		.half{width: 49%;}
+	}
+	.form_box_row-head{
+		height: 45px;line-height: 45px;
+		h1{margin: 0;}
+		a{margin-top: 7px;}
+	}
+}
+
+// input
+.input_basic{
+	width: 100%;height: 30px;
+	padding: 6px 10px;
+	box-sizing: border-box;
+	box-shadow: none;
+	background: #FAFAFA none repeat scroll 0% 0%;
+	border: 1px solid #D0D0D0;
+	border-radius: 5px;
+}
+.input_basic:focus{
+	border-color: #3090E4;
+	box-shadow: 0px 0px 0px 3px rgba(48, 144, 228, 0.1);
+}
+
+.select_basic{
+	width: 100%;height: 30px;
+	border: 1px solid #d0d0d0;
+	border-radius: 5px;
+}
+.radio_basic{
+	display: inline-block;
+	margin: auto 10px;
+}
+.btn_select{
+	display: inline-block;
+	text-align: center;
+	width: 300px;padding: 8px;
+	border-radius: 5px;
+	border: 1px dashed @color-border;
+	color: @color-border;
+}
+
+// alert
+@alert-w:550px;
+@alert-h:500px;
+@alert-head-h:45px;
+@alert-search-h:150px;
+@alert-res-h:150px;
+@alert-btns-h:55px;
+.alert_select{
+	z-index: 999;
+	position: fixed;
+	width: 100%;height: 100%;
+	left: 0;top: 0;
+	background-color: rgba(0,0,0,.5);
+	.wrap{
+		position: absolute;
+		width: @alert-w;
+		margin-left: -@alert-w * .5;
+		margin-top: 50px;
+		left: 50%;
+		background-color: #fff;
+		border: 1px solid @color-border;
+		border-radius: 5px;
+		>div{overflow: hidden;}
+		.head{
+			width: 100%;height: @alert-head-h;
+			border-bottom: 1px solid @color-border;
+			h1{display: inline-block;line-height: @alert-head-h;margin: 0;font-size: 14px;text-indent: 1em;}
+			a{float: right;line-height: @alert-head-h;width: @alert-head-h;text-align: center;}
+		}
+		.search{
+			width: 100%;height: @alert-search-h;
+			padding-top: 20px;
+			border-bottom: 1px solid @color-border;
+			.search_param{
+				position: relative;
+				width: 100%;height: 50px;
+				.label{display:inline-block;width: 20%;margin-left: 50px;}
+				.s_input{width: 60%;display: inline-block;}
+				.warning{position: absolute;left: 127px;top:22px;font-size: 12px;color:red;}
+			}
+		}
+		.res{
+			width: 100%;max-height: @alert-res-h;
+			overflow: scroll;
+			border-bottom: 1px solid @color-border;
+			margin: 0;padding: 0;list-style: none;
+			li{
+				height: 30px;line-height: 30px;
+				background-color: #F4F4F4;
+				margin: 5px auto;
+				span{margin-right: 1em;}
+				input{margin: auto 8px;}
+			}
+		}
+		.btns{
+			width: 100%;height: @alert-btns-h;line-height: @alert-btns-h;
+			text-align: right;margin-right: 20px;
+		}
+	}
+}
+
+// 错误样式
+#error-msg{
+	border: 1px solid #dedede;
+	z-index: 999;
+	position: fixed;
+	width: 400px;
+	left: 50%;top: 120px;
+	margin-left: -200px;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 10px;
+	.err-head{
+		font-size: 14px;
+		text-align: center;
+		border-bottom: 1px solid @color-border;
+		line-height: 30px;
+	}
+	.err-content{
+		height: 20px;
+		margin-top:20px;
+		margin-bottom:20px;
+	}
+	.btns{
+		height: 45px;
+		text-align: center;
+	}
+}

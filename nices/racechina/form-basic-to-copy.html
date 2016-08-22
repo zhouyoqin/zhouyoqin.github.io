@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>welcome_to_raceChina</title>
+	<link rel="stylesheet" href="css/basic.css">
+	<link rel="stylesheet" href="css/form_zhouyoqin.css">
+	<script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+</head>
+<body ng-app="main" ng-controller="mainController">
+	<div class="header">
+		<a href="welcome.html" id="logo">logo</a>
+		<a href="#" class="user_box">
+			<img src="img/usr4.png" alt="">
+			<span ng-bind="currentUser">username</span>
+			<span class="quit" ng-click="quitUser()">退出</span>
+		</a>
+	</div>
+	<div class="content">
+		<div class="leftsidebar_box">
+			<div class="line"></div>
+			<dl>
+				<dt class="basic">马匹信息化<span class="imgclose"></span></dt>
+				<dd class="first_dd"><a href="horse-stack.html">马匹库</a></dd>
+				<dd><a href="horse-register.html">马匹登记</a></dd>
+				<dd><a href="horse-check.html">马匹审核</a></dd>
+				<dd><a href="horse-raise.html">育马者管理</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">马主管理<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">马场管理<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">赛事管理<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">其他<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+		</div>
+		<div class="right_box">
+			<div class="form_box">
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">输入框：</span>
+						<div class="block_input">
+							<input type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label">数组选择：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="select_ed" ng-options="item for item in select_items">
+							</select>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label">对象选择：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="select_ed2" ng-options="item.id as item.name for item in select_items2" ng-change="selectChanged()">
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label">日期选择器：</span>
+						<div class="block_input small">
+							<input type="date" class="input_basic" ng-model="date1">
+						</div>
+						<span>{{date1}}</span>
+					</div>
+					<div class="block half">
+						<span class="block_label">带checkbox）：</span>
+						<div class="block_input small">
+							<input rquired type="date" class="input_basic" ng-model="date2" ng-change="change('date2','date2status')">
+						</div>
+						<div class="block_input small">
+							<input type="checkbox" ng-model="date2status">只记年份
+						</div>
+						<span>{{date2value}}</span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">radio_box：</span>
+						<div class="radio_basic" ng-repeat="item in horseColor">
+							<input type="radio" name="myradio" value="{{item}}" ng-model="$parent.myradio" ng-change="test()">
+							<span ng-bind="item.color"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">选择（弹窗）：</span>
+						<a class="btn_select" href="javascript:;" ng-click="openAlert()">+ 选择</a>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">马名（英文）：</span>
+						<div class="block_input long">
+							<input type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="alert_select" ng-show="alertOpen">
+		<div class="wrap">
+			<div class="head">
+				<h1 ng-bind="alertContent.head">马匹搜索</h1>
+				<a href="javascript:;"  ng-click="alertClose()">&times;</a>
+			</div>
+			<div class="search">
+				<div class="search_param">
+					<span class="label" ng-bind="alertContent.input1label">马名（中文）：</span>
+					<div class="s_input">
+						<input ng-bind="alertContent.input1" type="text" class="input_basic">
+					</div>
+					<p ng-bind="alertContent.warning" class="warning">该育马者不存在</p>
+				</div>
+				<div class="search_param">
+					<span ng-bind="alertContent.input2label" class="label">马名（英文）：</span>
+					<div class="s_input">
+						<input ng-bind="alertContent.input2" type="text" class="input_basic">
+					</div>
+				</div>
+				<div class="btns">
+					<a href="javascript:;" class="btn_basic" ng-click="alertSearch()">搜索</a>
+				</div>
+			</div>
+			<ul class="res" ng-show="alertSearched">
+				<li ng-repeat="item in alertContent.searchRes">
+					<input type="radio" class="radio_basic" value="{{$index}}" ng-model="$parent.alertContent.radiovalue">
+					<span ng-bind="item.nameEng">张柯</span>
+					<span ng-bind="item.nameChi">Kerry</span>
+					<span ng-bind="item.lifeNumber">mtt_zhangke@163.com</span>
+					<span ng-bind="item.microchipNumber">13126986725</span>
+				</li>
+			</ul>
+			<div class="btns" ng-show="alertSearched">
+				<a href="javascript:;" ng-click="alertClose()" class="btn_basic btn_cancel">取消</a>
+				<a href="javascript:;" ng-click="ensureAlert()" class="btn_basic">确定</a>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script>
+	$(function(){
+		$(".leftsidebar_box dd").hide();
+		$(this).find(".show").removeClass("show").show();
+		$(".leftsidebar_box dt").click(function(){
+			var curItem = $(this);
+			if (curItem.attr("class") == 'open') {
+				curItem.removeClass("open").addClass("basic");
+				curItem.parent().find('span').removeClass("imgopen").addClass("imgclose");
+				curItem.parent().find('dd').slideUp().removeClass("menu_chioce");
+			}else if(curItem.attr("class") == 'basic'){
+				$(".open").removeClass("open").addClass("basic");
+				$(".basic").parent().find("dd").slideUp();
+				$(".basic span").removeClass("imgopen").addClass("imgclose");
+				curItem.removeClass("basic").addClass("open");
+				curItem.parent().find('span').removeClass("imgclose").addClass("imgopen");
+				curItem.parent().find('dd').addClass("menu_chioce").slideToggle();
+			}
+		});
+	})
+	</script>
+	<script>
+	var mainApp = angular.module("main",[]);
+	mainApp.controller("mainController",function ($scope) {
+		$scope.select_ed = "ceshi";
+		$scope.alertOpen = false;
+		$scope.select_items = ['ceshi','kaifa','FE','android'];
+
+		$scope.select_ed2 = 4;
+		$scope.select_items2 = [
+			{id : 1, type : "string", name : "zhouzhou"},
+			{id : 2, type : "string", name : "zhangke"},
+			{id : 3, type : "string", name : "jiahe"},
+			{id : 4, type : "string", name : "handa"}
+			];
+		$scope.test = function () {
+			console.dir($scope.myradio);
+		};
+		$scope.selectChanged = function () {
+			console.dir($scope.select_ed2);
+		};
+		$scope.date2 = new Date('2015-12-12');
+		$scope.change = function (date,onlyYear) {
+			if ($scope[onlyYear]) {
+				$scope.date2value = $scope[date].getFullYear();
+			};
+		};
+
+		$scope.myradio = {"color":"白","color2":"wh."};
+		$scope.horseColor = [
+			{"color":"白","color2":"wh."},
+			{"color":"骝","color2":"b."},
+			{"color":"褐骝","color2":"br."},
+			{"color":"黑","color2":"bl."},
+			{"color":"栗","color2":"ch."},
+			{"color":"青","color2":"gr."},
+			{"color":"其它","color2":""}];
+		$scope.alertContent = {
+			head 		: "马匹搜索",
+			input1 		: "",
+			input2 		: "",
+			input1label : "马名（中文）：",
+			input2label : "马名（英文）：",
+			warning		: "该马匹不存在：",
+			radiovalue	: 0,
+			searchRes	: [{
+								nameEng : "zh",
+								nameChi : "chi",
+								lifeNumber : "lifeNumber",
+								microchipNumber : "microchipNumber"
+							},{
+								nameEng : "zh",
+								nameChi : "chi",
+								lifeNumber : "lifeNumber",
+								microchipNumber : "microchipNumber"
+							}]
+		};
+		$scope.openAlert = function(){
+			// initAlert
+			$scope.alertContent = {
+				head 		: "马匹搜索",
+				input1 		: "",
+				input2 		: "",
+				input1label : "马名（中文）：",
+				input2label : "马名（英文）：",
+				warning		: "该马匹不存在：",
+				radiovalue	: 0,
+				searchRes	: [{
+									nameEng : "zh",
+									nameChi : "chi",
+									lifeNumber : "lifeNumber",
+									microchipNumber : "microchipNumber"
+								},{
+									nameEng : "zh",
+									nameChi : "chi",
+									lifeNumber : "lifeNumber",
+									microchipNumber : "microchipNumber"
+								}]
+			};
+			$scope.alertOpen = true;
+		};
+		$scope.alertClose = function(){
+			$scope.alertOpen = false;
+		};
+		$scope.search1 = function(){
+			addResult();
+		}
+
+	});
+
+	
+	</script>
+
+</body>
+</html>

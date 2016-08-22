@@ -40,7 +40,7 @@
 </head>
 <body ng-app="main" ng-controller="mainController">
 	<div class="header">
-		<a href="#" id="logo">赛马中华</a>
+		<a href="welcome.html" id="logo">赛马中华</a>
 		<div id="log_box">
 			<a href="javascript:;" ng-click="isReg = false">登录</a>
 			<a href="javascript:;" ng-click="isReg = true">注册</a>
@@ -132,7 +132,7 @@
 				// 校验成功、登录
 				AV.User.logInWithMobilePhone($scope.user_cellphone, $scope.user_password).then(function (loginedUser) {
 					$scope.$apply(function(){
-					  	window.location.href = "index.html";
+					  	window.location.href = "welcome.html";
 					});
 				}, (function (error) {
 				}));
@@ -178,7 +178,7 @@
 						loginedUser.setPassword($scope.usernew_password);
 						loginedUser.signUp().then(function (loginedUser) {
 						  $scope.$apply(function(){
-						  	window.location.href = "index.html";
+						  	window.location.href = "welcome.html";
 						  });
 						}, (function (error) {
 						}));

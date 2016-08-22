@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>马匹登记</title>
+	<link rel="stylesheet" href="css/basic.css">
+	<link rel="stylesheet" href="css/form_zhouyoqin.css">
+	<script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+</head>
+<body ng-app="main" ng-controller="mainController">
+	<div class="header">
+		<a href="welcome.html" id="logo">logo</a>
+		<a href="#" class="user_box">
+			<img src="img/usr4.png" alt="">
+			<span ng-bind="currentUser">username</span>
+			<span class="quit" ng-click="quitUser()">退出</span>
+		</a>
+	</div>
+	<div class="content">
+		<div class="leftsidebar_box">
+			<div class="line"></div>
+			<dl>
+				<dt class="open">马匹信息化<span class="imgopen"></span></dt>
+				<dd class="first_dd show"><a href="horse-stack.html">马匹库</a></dd>
+				<dd class="show active"><a href="horse-register.html">马匹登记</a></dd>
+				<dd class="show"><a href="horse-check.html">马匹审核</a></dd>
+				<dd class="show"><a href="horse-raise.html">育马者管理</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">马主管理<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">马场管理<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">赛事管理<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+			<dl>
+				<dt class="basic">其他<span class="imgclose"></dt>
+				<dd class="first_dd"><a href="#">待续……</a></dd>
+			</dl>
+		</div>
+		<div class="right_box">
+			<form class="form_box" name="registerForm">
+				<div class="form_box_row form_box_row-head">
+					<h1 class="dis-inline">马匹信息录入</h1>
+					<a href="javascript:;" class="pull-right btn_basic" ng-click="saveHorse()">保存</a>
+					<a href="javascript:;" class="pull-right btn_basic btn_cancel">退出</a>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>马名（英文）：</span>
+						<div class="block_input">
+							<input 
+								ng-model="currentHorse.nameEng"
+								name="nameEng"
+								type="text" class="input_basic" required>
+						</div>
+						<span class="notNull" ng-if="invalid.nameEng">必填项</span>
+					</div>
+					<div class="block half">
+						<span class="block_label">马名（中文）：</span>
+						<div class="block_input">
+							<input ng-model="currentHorse.nameChi" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>国家代码：</span>
+						<div class="block_input">
+							<select ng-model="currentHorse.countryCode" ng-options="country.code as country.name for country in countrys" class="select_basic" >
+							</select>
+						</div>
+						<span class="notNull" ng-if="invalid.countryCode">必填项</span>
+					</div>
+					<div class="block half">
+						<span class="block_label">马名（其他）：</span>
+						<div class="block_input">
+							<input ng-model="currentHorse.nameOther" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label">护照号：</span>
+						<div class="block_input">
+							<input ng-model="currentHorse.lifeNumber" type="text" class="input_basic">
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label">芯片号：</span>
+						<div class="block_input">
+							<input ng-model="currentHorse.microchipNumber" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label"><b>*</b>父名：</span>
+						<a ng-hide="showSire" class="btn_select" href="javascript:;" ng-click="openAlert('sire')">+ 选择</a>
+						<p ng-if="showSire" class="select_res">
+							<span ng-bind="currentHorse.sireName">ceshiecsa</span>
+							<span class="close" ng-click="clearSelect('sire')">&times;</span>
+						</p>
+						<span class="notNull" ng-if="invalid.sire">必填项</span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label"><b>*</b>母名：</span>
+						<a ng-hide="showDam" class="btn_select" href="javascript:;" ng-click="openAlert('dam')">+ 选择</a>
+						<p ng-if="showDam" class="select_res">
+							<span ng-bind="currentHorse.damName"></span>
+							<span class="close" ng-click="clearSelect('dam')">&times;</span>
+						</p>
+						<span class="notNull" ng-if="invalid.dam">必填项</span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>种类：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="currentHorse.sort" ng-options="item for item in horseSort" ng-change="sortChange()">
+							</select>
+						</div>
+						<span class="notNull" ng-if="invalid.sort">必填项</span>
+					</div>
+					<div class="block half">
+						<span class="block_label"><b>*</b>性别：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="currentHorse.sex" ng-options="item for item in horseSex">
+							</select>
+						</div>
+						<span class="notNull" ng-if="invalid.sex">必填项</span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label"><b>*</b>毛色：</span>
+						<div class="radio_basic" ng-repeat="item in horseColor">
+							<input type="radio" name="color" value="{{item}}" ng-model="$parent.currentHorse.color">
+							<span ng-bind="item"></span>
+						</div>
+						<span class="notNull" ng-if="invalid.color">必填项</span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>品种：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="currentHorse.breed" ng-options="item.breed as item.breed for item in horseBreed">
+							</select>
+						</div>
+						<span class="notNull" ng-if="invalid.breed">必填项</span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>出生日期：</span>
+						<div class="block_input">
+							<input rquired type="date" class="input_basic" ng-model="currentHorse.birthday">
+						</div>
+						<span class="notNull" ng-if="invalid.birthday">必填项</span>
+					</div>
+					<div class="block half">
+						<span class="block_label"><b>*</b>来源：</span>
+						<div class="radio_basic" ng-repeat="item in horseSource">
+							<input type="radio" name="source" value="{{item}}" ng-model="$parent.currentHorse.source" ng-change="sourceChange()">
+							<span ng-bind="item"></span>
+						</div>
+						<span class="notNull" ng-if="invalid.source">必填项</span>
+					</div>
+				</div>
+				<div class="form_box_row" ng-if="sourceImport">
+					<div class="block half">
+						<span class="block_label"><b>*</b>进口日期：</span>
+						<div class="block_input">
+							<input rquired type="date" class="input_basic" ng-model="currentHorse.importDate">
+						</div>
+						<span class="notNull" ng-if="invalid.importDate">必填项</span>
+					</div>
+					<div class="block half" ng-if="sourceImport">
+						<span class="block_label"><b>*</b>用途：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="currentHorse.useful" ng-options="item for item in horseUseful">
+							</select>
+						</div>    
+						<span class="notNull" ng-if="invalid.useful">必填项</span>
+					</div>
+				</div>
+				<div class="form_box_row" ng-if="sourceImport">
+					<div class="block half">
+						<span class="block_label"><b>*</b>进口国家：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="currentHorse.importCountry" ng-options="country.code as country.name for country in countrys">
+							</select>
+						</div>
+						<span class="notNull" ng-if="invalid.importCountry">必填项</span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label"><b>*</b>马匹状态：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="currentHorse.status1" ng-options="item for item in horseStatus1" ng-change="status1Change()">
+							</select>
+						</div>
+						<div class="block_input">
+							<select class="select_basic" ng-model="currentHorse.status2" ng-options="item for item in horseStatus2">
+							</select>
+						</div>
+						<div class="block_input" ng-if="currentHorse.status2 == '死亡'">
+							<input type="date" class="input_basic" ng-model="currentHorse.deadDate">
+						</div>
+						<span class="notNull" ng-if="invalid.status">必填项</span>
+					</div>
+				</div>
+				<div class="form_box_row" ng-if="currentHorse.status1 == '出口'">
+					<div class="block half">
+						<span class="block_label"><b>*</b>出口日期：</span>
+						<div class="block_input">
+							<input rquired type="date" class="input_basic" ng-model="currentHorse.exportDate">
+						</div>
+						<span class="notNull" ng-if="invalid.exportDate">必填项</span>
+					</div>
+					<div class="block half">
+						<span class="block_label"><b>*</b>是否登记注册：</span>
+						<div class="radio_basic" ng-repeat="item in yesNo">
+							<input type="radio" name="registerFlag" value="{{item.value}}" ng-model="$parent.currentHorse.registerFlag">
+							<span ng-bind="item.name"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">育马者：</span>
+						<a ng-hide="showFeeder" class="btn_select" href="javascript:;" ng-click="openAlert('feeder')">+ 选择</a>
+						<p ng-if="showFeeder" class="select_res">
+							<span ng-bind="currentHorse.feederName"></span>
+							<span class="close" ng-click="clearSelect('feeder')">&times;</span>
+						</p>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">马主：</span>
+						<a ng-hide="showOwner" class="btn_select" href="javascript:;" ng-click="openAlert('owner')">+ 选择</a>
+						<p ng-if="showOwner" class="select_res">
+							<span ng-bind="currentHorse.ownerName"></span>
+							<span class="close" ng-click="clearSelect('owner')">&times;</span>
+						</p>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">马场：</span>
+						<a ng-hide="showRacecourse" class="btn_select" href="javascript:;" ng-click="openAlert('racecourse')">+ 选择</a>
+						<p ng-if="showRacecourse" class="select_res">
+							<span ng-bind="currentHorse.racecourseName"></span>
+							<span class="close" ng-click="clearSelect('racecourse')">&times;</span>
+						</p>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label">签发日期：</span>
+						<div class="block_input">
+							<input rquired type="date" class="input_basic" ng-model="currentHorse.issueDate">
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label">检查日期：</span>
+						<div class="block_input">
+							<input rquired type="date" class="input_basic" ng-model="currentHorse.examinationDate">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>护照是否发放：</span>
+			            <div class="radio_basic" ng-repeat="item in yesNo">
+							<input type="radio" name="passportFlag" value="{{item.value}}" ng-model="$parent.currentHorse.passportFlag">
+							<span ng-bind="item.name"></span>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label"><b>*</b>护照是否打印：</span>
+						<div class="radio_basic" ng-repeat="item in yesNo">
+							<input type="radio" name="passportPrint" value="{{item.value}}" ng-model="$parent.currentHorse.passportPrint">
+							<span ng-bind="item.name"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">登记册参照页：</span>
+						<div class="block_input">
+							<input ng-model="currentHorse.studBookReference" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<!-- 特征 -->
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">头部特征(中文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.headDetail" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">头部特征(英文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.headDetail2" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">颈部特征(中文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.neckDetail" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">颈部特征(英文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.neckDetail2" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">躯体特征(中文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.bodyDetail" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">躯体特征(英文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.bodyDetail2" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">左前肢特征(中文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.leftForce" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">左前肢特征(英文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.leftForce2" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">右前肢特征(中文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.rightForce" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">右前肢特征(英文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.rightForce2" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">左后肢特征(中文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.leftHind" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">左后肢特征(英文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.leftHind2" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">右后肢特征(中文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.rightHind" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">右后肢特征(英文)：</span>
+						<div class="block_input long">
+							<input ng-model="currentHorse.rightHind2" type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="alert_select" ng-show="alertOpen">
+		<div class="wrap">
+			<div class="head">
+				<h1 ng-bind="alertContent.head">马匹搜索</h1>
+				<a href="javascript:;"  ng-click="alertClose()">&times;</a>
+			</div>
+			<div class="search">
+				<div class="search_param">
+					<span class="label" ng-bind="alertContent.input1label">马名（中文）：</span>
+					<div class="s_input">
+						<input ng-model="alertContent.input1" type="text" class="input_basic">
+					</div>
+					<p ng-bind="alertContent.warning" ng-show="alertContent.warningShow" class="warning">该育马者不存在</p>
+				</div>
+				<div class="search_param">
+					<span ng-bind="alertContent.input2label" class="label">马名（英文）：</span>
+					<div class="s_input">
+						<input ng-model="alertContent.input2" type="text" class="input_basic">
+					</div>
+				</div>
+				<div class="btns">
+					<a href="javascript:;" class="btn_basic" ng-click="alertSearch()">搜索</a>
+				</div>
+			</div>
+			<ul class="res" ng-show="alertSearched">
+				<li ng-repeat="item in alertContent.searchRes">
+					<input type="radio" class="radio_basic" value="{{$index}}" ng-model="$parent.alertContent.radiovalue">
+					<span ng-bind="item.name">张柯</span>
+					<span ng-bind="item.name2">张柯</span>
+					<span ng-bind="item.nameEng">张柯</span>
+					<span ng-bind="item.nameChi">Kerry</span>
+					<span ng-bind="item.lifeNumber">mtt_zhangke@163.com</span>
+					<span ng-bind="item.microchipNumber">13126986725</span>
+				</li>
+			</ul>
+			<div class="btns" ng-show="alertSearched">
+				<a href="javascript:;" ng-click="alertClose()" class="btn_basic btn_cancel">取消</a>
+				<a href="javascript:;" ng-click="ensureAlert()" class="btn_basic">确定</a>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/kkpager.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/horseRegisterInput.js"></script>
+	<script>
+	$(function(){
+		$(".leftsidebar_box dd").hide();
+		$(this).find(".show").removeClass("show").show();
+		$(".leftsidebar_box dt").click(function(){
+			var curItem = $(this);
+			if (curItem.attr("class") == 'open') {
+				curItem.removeClass("open").addClass("basic");
+				curItem.parent().find('span').removeClass("imgopen").addClass("imgclose");
+				curItem.parent().find('dd').slideUp().removeClass("menu_chioce");
+			}else if(curItem.attr("class") == 'basic'){
+				$(".open").removeClass("open").addClass("basic");
+				$(".basic").parent().find("dd").slideUp();
+				$(".basic span").removeClass("imgopen").addClass("imgclose");
+				curItem.removeClass("basic").addClass("open");
+				curItem.parent().find('span').removeClass("imgclose").addClass("imgopen");
+				curItem.parent().find('dd').addClass("menu_chioce").slideToggle();
+			}
+		});
+	})
+	</script>
+
+</body>
+</html>

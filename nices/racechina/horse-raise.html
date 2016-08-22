@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>育马者管理</title>
+    <link rel="stylesheet" href="css/basic.css">
+    <script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+    <style>
+        .btn-basic.back {
+            margin-left: 10px;
+            color: #000;
+            background-color: #fff;
+            border: 1px solid #f4f4f4;
+        }
+        .table_basic tbody th {
+            background-color: #f4f4f4;
+            width: 100px;
+        }
+        .input_table tbody input{
+            margin-left: 10px;
+            background-color: #fff;
+            width: 50%;
+        }
+        .warning {
+            display: inline-block;
+            margin-left: 5px;
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body ng-app="raise" ng-controller="raiseController">
+<div class="header">
+    <a href="welcome.html" id="logo">logo</a>
+    <a href="#" class="user_box">
+        <img src="img/usr4.png" alt="">
+        <span ng-bind="currentUser">username</span>
+        <span class="quit" ng-click="quitUser()">退出</span>
+    </a>
+</div>
+<div class="content">
+    <div class="leftsidebar_box">
+        <div class="line"></div>
+        <dl>
+            <dt class="open">马匹信息化<span class="imgopen"></span></dt>
+            <dd class="first_dd show"><a href="horse-stack.html">马匹库</a></dd>
+            <dd class="show"><a href="horse-register.html">马匹登记</a></dd>
+            <dd class="show"><a href="horse-check.html">马匹审核</a></dd>
+            <dd class="show active"><a href="horse-raise.html">育马者管理</a></dd>
+        </dl>
+        <dl>
+            <dt class="basic">马主管理<span class="imgclose"></dt>
+            <dd class="first_dd"><a href="#">待续……</a></dd>
+        </dl>
+        <dl>
+            <dt class="basic">马场管理<span class="imgclose"></dt>
+            <dd class="first_dd"><a href="#">待续……</a></dd>
+        </dl>
+        <dl>
+            <dt class="basic">赛事管理<span class="imgclose"></dt>
+            <dd class="first_dd"><a href="#">待续……</a></dd>
+        </dl>
+        <dl>
+            <dt class="basic">其他<span class="imgclose"></dt>
+            <dd class="first_dd"><a href="#">待续……</a></dd>
+        </dl>
+    </div>
+    <div class="right_box">
+        <div class="table_basic" ng-show="isTableShow">
+            <table>
+                <thead>
+                <tr>
+                    <td colspan="6">育马者管理
+                        <a href="javascript:;" class="btn-basic pull-right" ng-click="updateOrAddFeeder('')">添加</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>姓名</th>
+                    <th>联系方式</th>
+                    <th>电话</th>
+                    <th>传真</th>
+                    <th>电子邮箱</th>
+                    <th style="width:55px;text-align:center;" ng-if="isManager">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="feeder in feederInfo">
+                    <td><span ng-bind="feeder.name"></span></td>
+                    <td><span ng-bind="feeder.address"></span></td>
+                    <td><span ng-bind="feeder.tel"></span></td>
+                    <td><span ng-bind="feeder.fax"></span></td>
+                    <td><span ng-bind="feeder.email"></span></td>
+                    <td ng-if="isManager">
+                        <a href="javascript:;" ng-click="updateOrAddFeeder(feeder)">修改</a>
+                        <a href="javascript:;" ng-click="deleteFeeder(feeder)">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="kkpager"></div>
+
+
+        </div>
+        <div class="table_basic" ng-show="isModifyShow">
+            <table class="input_table">
+                <thead>
+                <tr>
+                    <td colspan="6">{{updateOrAdd}}
+                        <a href="javascript:;" class="btn-basic pull-right back" ng-click="reset()">退出</a>
+                        <a href="javascript:;" class="btn-basic pull-right" ng-click="commit()">保存</a>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>姓名*:</th>
+                    <td>
+                        <input class="input_basic" type="text" ng-model="nameOfFeeder"/>
+                        <span class="warning">{{invalid_name}}</span>
+                    </td>
+                    <th>电话*:</th>
+                    <td>
+                        <input class="input_basic" type="tel" ng-model="telOfFeeder">
+                        <span class="warning">{{invalid_tel}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>
+                        <input class="input_basic" type="text" ng-model="emailOfFeeder"/>
+                        <span class="warning">{{invalid_email}}</span>
+                    </td>
+                    <th>传真:</th>
+                    <td>
+                        <input class="input_basic" type="tel" ng-model="faxOfFeeder">
+                        <span class="warning">{{invalid_fax}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>地址*:</th>
+                    <td colspan="4">
+                        <input class="input_basic" type="text" ng-model="addressOfFeeder">
+                        <span class="warning">{{invalid_address}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/kkpager.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/raise.js"></script>
+<script>
+    $(function () {
+        $(".leftsidebar_box dd").hide();
+        $(this).find(".show").removeClass("show").show();
+        $(".leftsidebar_box dt").click(function () {
+            var curItem = $(this);
+            if (curItem.attr("class") == 'open') {
+                curItem.removeClass("open").addClass("basic");
+                curItem.parent().find('span').removeClass("imgopen").addClass("imgclose");
+                curItem.parent().find('dd').slideUp().removeClass("menu_chioce");
+            } else if (curItem.attr("class") == 'basic') {
+                $(".open").removeClass("open").addClass("basic");
+                $(".basic").parent().find("dd").slideUp();
+                $(".basic span").removeClass("imgopen").addClass("imgclose");
+                curItem.removeClass("basic").addClass("open");
+                curItem.parent().find('span').removeClass("imgclose").addClass("imgopen");
+                curItem.parent().find('dd').addClass("menu_chioce").slideToggle();
+            }
+        });
+    })
+</script>
+
+</body>
+</html>

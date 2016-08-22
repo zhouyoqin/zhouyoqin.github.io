@@ -1,7 +1,7 @@
 var mainApp = angular.module("main",[]);
 mainApp.service('leancloud', function leancloud() {
     var ClassDefines = {
-      'BaseInfo': {attributes: ["nameEng","nameChi","lifeNumber","microchipNumber","color", 	
+      'BaseInfo': {attributes: ["objectId","nameEng","nameChi","lifeNumber","microchipNumber","color", 	
 			"birthday", "sex", "sort", "source", "breed", "passportFlag", "status1", "status2", "importDate"]}
     };
     return {
@@ -24,13 +24,39 @@ mainApp.service('leancloud', function leancloud() {
   });
 mainApp.run(function(leancloud) {
 	leancloud.angularizeAll();
-	AV.initialize("9yFukzmtOwmePyoc9GYjmHJ5-gzGzoHsz", "iUHln5KjOlOefVClzIDIEkXe");
+	AV.init({ 
+      appId: '9yFukzmtOwmePyoc9GYjmHJ5-gzGzoHsz', 
+      appKey: 'iUHln5KjOlOefVClzIDIEkXe' 
+    });
 });
 mainApp.controller("mainController",function ($scope) {
   $scope.horseInfo = [];
   $scope.pageStatus = false;
   $scope.eachPageCount = 10;
-	$scope.queryList = function (){
+  $scope.updateHorse = function(action,objId){
+    switch(action){
+      case 0 :
+        // delete
+        break;
+      case 1:
+        // change
+        window.location.href = "horse-register-input.html#"+objId;
+
+    }
+  };
+  $scope.quitUser = function() {
+    AV.User.logOut();
+    window.location.href = "login.html";
+  };
+  if (AV.User.current()) {
+    $scope.currentUser =  AV.User.current().get('username');
+    $scope.isManager =  AV.User.current().get('role') ==1?true:false;
+    queryList();
+  }else{
+    window.location.href = "login.html";
+  };
+
+	function queryList (){
 		var query = new AV.Query('BaseInfo');
 		query.count().then(function(count){
 			$scope.$apply(function(){
@@ -76,14 +102,4 @@ mainApp.controller("mainController",function ($scope) {
           }
       }, true);
 	};
-	$scope.quitUser = function() {
-		AV.User.logOut();
-		window.location.href = "login.html";
-	};
-	if (AV.User.current()) {
-		$scope.currentUser =  AV.User.current().get('username');
-		$scope.queryList();
-	}else{
-		window.location.href = "login.html";
-	}
 });

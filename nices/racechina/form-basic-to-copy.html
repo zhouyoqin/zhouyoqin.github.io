@@ -475,7 +475,7 @@
 				"</div>";
 			}
 		    $scope.alertdiv = 
-			   	"<div class='alert_select' id=" + $scope.alertContent.id + ">"+
+			   	"<div class='alert_select' id=" + $scope.alertContent.id + " style='display:block'>"+
 				"	<div class='wrap'>"+
 				"		<div class='head'>"+
 				"			<h1>" + $scope.alertContent.head + "</h1>"+
@@ -490,7 +490,6 @@
 				"		</div>"+
 				"	</div>"+
 				"</div>";
-			$("#"+$scope.alertContent.id).show();
 		};
 		$scope.alertremove = function() {
 			$scope.alertdiv = "";

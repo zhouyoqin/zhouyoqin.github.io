@@ -2,12 +2,6 @@
  * Created by zhouyoqin on 10/08/2016.
  */
 var mainApp = angular.module("main",[]);
-var APP_ID = "9yFukzmtOwmePyoc9GYjmHJ5-gzGzoHsz";
-var APP_KEY = "iUHln5KjOlOefVClzIDIEkXe";
-AV.init({
-    appId: APP_ID,
-    appKey: APP_KEY
-});
 mainApp.controller("mainController",function ($scope) {
   var HorseObject = AV.Object.extend("BaseInfo");
   var PreHorseObject = AV.Object.extend("PreBaseInfo");
@@ -31,24 +25,24 @@ mainApp.controller("mainController",function ($scope) {
     name  : "否"
   }];
 
-  $scope.alertOpen = false;
+  // $scope.alertOpen = false;
   $scope.show = false;
   $scope.invalid = {
-    nameEng     : false,
-    countryCode : false,
-    sire        : false,
-    dam         : false,
-    sort        : false,
-    sex         : false,
-    color       : false,
-    breed       : false,
-    birthday    : false,
-
-    importDate  : false,
-    useful      : false,
-    importCountry : false,
-    
-    status      : false
+      nameEng     : false,
+      countryCode : false,
+      sire        : false,
+      dam         : false,
+      sort        : false,
+      sex         : false,
+      color       : false,
+      breed       : false,
+      birthday    : false,
+      source      : false,
+      importDate  : false,
+      useful      : false,
+      importCountry : false,
+      status      : false,
+      exportDate  : false
   };
   $scope.quitUser = function() {
     AV.User.logOut();
@@ -69,6 +63,7 @@ mainApp.controller("mainController",function ($scope) {
     var query = new AV.Query("BaseInfo");
     query.get($scope.currentHorseID).then(function(data){
       $scope.$apply(function(){
+        debugger;
         $scope.currentHorse =  JSON.parse(JSON.stringify(data));
         $scope.currentHorse.birthday          = new Date($scope.currentHorse.birthday);
         $scope.currentHorse.deadDate          = new Date($scope.currentHorse.deadDate);//status2为死亡需要填写
@@ -76,6 +71,20 @@ mainApp.controller("mainController",function ($scope) {
         $scope.currentHorse.exportDate        = new Date($scope.currentHorse.exportDate);
         $scope.currentHorse.issueDate         = new Date($scope.currentHorse.issueDate);//签发日期
         $scope.currentHorse.examinationDate   = new Date($scope.currentHorse.examinationDate);//检查日期
+        switch($scope.currentHorse.sort){
+          case "种公马":
+            $scope.horseSex = ["公马"];
+            break;
+          case "种母马":
+            $scope.horseSex = ["母马"];
+            break;
+          case "马驹":
+            $scope.horseSex = ["公驹","母驹"];
+            break;
+          case "其他":
+            $scope.horseSex = ["公马","母马","骟马"];
+            break;
+        }
       });
     }, function (err){
     });
@@ -421,10 +430,12 @@ mainApp.controller("mainController",function ($scope) {
         };
         break;
     }
-    $scope.alertOpen = true;
+    // $scope.alertOpen = true;
+    $("#alertOpen").show();
   };
   $scope.alertClose = function(){
-    $scope.alertOpen = false;
+    $("#alertOpen").hide();
+    // $scope.alertOpen = false;
   };
   $scope.alertSearch = function(){
     var query1 = new AV.Query($scope.alertContent.searchTable);
@@ -471,7 +482,8 @@ mainApp.controller("mainController",function ($scope) {
         $scope.currentHorse.racecourseName = $scope.alertContent.searchRes[index]["name"];
         break;
       }
-      $scope.alertOpen = false;
+      // $scope.alertOpen = false;
+      $("#alertOpen").hide();
   };
   $scope.clearSelect = function(obj){
     switch(obj){

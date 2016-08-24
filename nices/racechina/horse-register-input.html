@@ -7,13 +7,13 @@
 	<link rel="stylesheet" href="css/form_zhouyoqin.css">
 	<script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
 </head>
-<body ng-app="main" ng-controller="mainController">
+<body ng-app="main" ng-controller="mainController" ng-cloak>
 	<div class="header">
 		<a href="welcome.html" id="logo">logo</a>
 		<a href="#" class="user_box">
 			<img src="img/usr4.png" alt="">
 			<span ng-bind="currentUser">username</span>
-			<span class="quit" ng-click="quitUser()">退出</span>
+			<span class="quit" onclick="quitUser()">退出</span>
 		</a>
 	</div>
 	<div class="content">
@@ -43,12 +43,12 @@
 				<dd class="first_dd"><a href="#">待续……</a></dd>
 			</dl>
 		</div>
-		<div class="right_box">
+		<div class="right_box" ng-cloak>
 			<form class="form_box" name="registerForm">
 				<div class="form_box_row form_box_row-head">
 					<h1 class="dis-inline">马匹信息录入</h1>
 					<a href="javascript:;" class="pull-right btn_basic" ng-click="saveHorse()">保存</a>
-					<a href="javascript:;" class="pull-right btn_basic btn_cancel">退出</a>
+					<a href="horse-register.html" class="pull-right btn_basic btn_cancel">退出</a>
 				</div>
 				<div class="form_box_row">
 					<div class="block half">
@@ -419,7 +419,7 @@
 			</form>
 		</div>
 	</div>
-	<div class="alert_select" ng-show="alertOpen">
+	<div class="alert_select" id="alertOpen">
 		<div class="wrap">
 			<div class="head">
 				<h1 ng-bind="alertContent.head">马匹搜索</h1>

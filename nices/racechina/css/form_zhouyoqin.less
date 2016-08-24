@@ -51,6 +51,17 @@
 					&:hover{background-color: #ddd;cursor: pointer;}
 				}
 			}
+			.select_res_multi{
+				display: inline-block;
+				background-color: RGBA(56, 184, 242, 1.00); 
+				padding: 5px 10px;
+				margin:-1px 5px auto auto;
+				border-radius: 5px;
+				span{color:#fff;}
+				span.close{
+					&:hover{color: #ddd;cursor: pointer;}
+				}
+			}
 
 		}
 		.half{width: 49%;}
@@ -94,6 +105,9 @@
 	border: 1px dashed @color-border;
 	color: @color-border;
 }
+.btn_select_sm{
+	width: 100px;
+}
 
 // alert
 @alert-w:550px;
@@ -103,6 +117,7 @@
 @alert-res-h:150px;
 @alert-btns-h:55px;
 .alert_select{
+	display: none;
 	z-index: 999;
 	position: fixed;
 	width: 100%;height: 100%;
@@ -125,7 +140,8 @@
 			a{float: right;line-height: @alert-head-h;width: @alert-head-h;text-align: center;}
 		}
 		.search{
-			width: 100%;height: @alert-search-h;
+			width: 100%;
+			// height: @alert-search-h;
 			padding-top: 20px;
 			border-bottom: 1px solid @color-border;
 			.search_param{
@@ -133,7 +149,7 @@
 				width: 100%;height: 50px;
 				.label{display:inline-block;width: 20%;margin-left: 50px;}
 				.s_input{width: 60%;display: inline-block;}
-				.warning{position: absolute;left: 127px;top:22px;font-size: 12px;color:red;}
+				.warning{position: absolute;left: 163px;top:22px;font-size: 12px;color:red;}
 			}
 		}
 		.res{
@@ -149,13 +165,30 @@
 				input{margin: auto 8px;}
 			}
 		}
+		.res_noradio{
+			width: 100%;
+			border-bottom: 1px solid @color-border;
+			margin: 0;padding: 0;list-style: none;
+			li{
+				margin: 5px;
+				height: 45px;
+				line-height: 45px;
+				background-color: #F4F4F4;
+				span{
+					margin-left: 1em;
+				}
+
+			}
+		}
 		.btns{
 			width: 100%;height: @alert-btns-h;line-height: @alert-btns-h;
 			text-align: right;margin-right: 20px;
 		}
 	}
 }
-
+#addHorseroad{
+	// display: block;
+}
 // 错误样式
 #error-msg{
 	border: 1px solid #dedede;
@@ -181,5 +214,19 @@
 	.btns{
 		height: 45px;
 		text-align: center;
+	}
+}
+// loading
+.loading_basic{
+	z-index: 999;
+	position: fixed;
+	width:100%;height: 100%;
+	left: 0;top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	text-align: center;
+	img{
+		height: 100px;
+		position: absolute;
+		top: 50%;margin-top: -50px;
 	}
 }

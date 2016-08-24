@@ -1,3 +1,13 @@
+var APP_ID = "9yFukzmtOwmePyoc9GYjmHJ5-gzGzoHsz";
+var APP_KEY = "iUHln5KjOlOefVClzIDIEkXe";
+AV.init({
+    appId: APP_ID,
+    appKey: APP_KEY
+});
+function quitUser() {
+    AV.User.logOut();
+    window.location.href = "login.html";
+};
 /*
 *传入Date()对象获取yyyy-mm-dd
 */ 
@@ -24,7 +34,7 @@ function getFormatDate(date){
 function makeAlert(mes,location) {
     var closeAction = "";
     if (location == undefined){
-        closeAction = "removeAlert()";
+        closeAction = "removeAlert(\"error-msg\")";
     }else{
         closeAction = "jumpLocation(\"" + location + "\")";
     }
@@ -40,9 +50,24 @@ function makeAlert(mes,location) {
     var first=document.body.firstChild;//得到页面的第一个元素
     document.body.insertBefore(alertDiv,first);//在得到的第一个元素之前插入
 }
-function removeAlert() {
-    document.body.removeChild(document.getElementById("error-msg"));
+function removeAlert(id) {
+    document.body.removeChild(document.getElementById(id));
 }
 function jumpLocation(location){
     window.location.href = location;
+}
+
+/*
+*makeloading
+*/
+function makeLoading() {
+    var alertDiv=document.createElement("div");
+    alertDiv.setAttribute('id','loading');
+    alertDiv.setAttribute('class','loading_basic');
+    alertDiv.innerHTML = "<img src='img/loading.gif' alt=''>";
+    var first=document.body.firstChild;//得到页面的第一个元素
+    document.body.insertBefore(alertDiv,first);//在得到的第一个元素之前插入
+}
+function closeLoading(){
+    document.body.removeChild(document.getElementById("loading"));
 }

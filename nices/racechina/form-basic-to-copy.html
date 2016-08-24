@@ -13,7 +13,7 @@
 		<a href="#" class="user_box">
 			<img src="img/usr4.png" alt="">
 			<span ng-bind="currentUser">username</span>
-			<span class="quit" ng-click="quitUser()">退出</span>
+			<span class="quit" onclick="quitUser()">退出</span>
 		</a>
 	</div>
 	<div class="content">
@@ -21,10 +21,10 @@
 			<div class="line"></div>
 			<dl>
 				<dt class="basic">马匹信息化<span class="imgclose"></span></dt>
-				<dd class="first_dd"><a href="horse-stack.html">马匹库</a></dd>
-				<dd><a href="horse-register.html">马匹登记</a></dd>
-				<dd><a href="horse-check.html">马匹审核</a></dd>
-				<dd><a href="horse-raise.html">育马者管理</a></dd>
+				<dd class="first_dd "><a href="horse-stack.html">马匹库</a></dd>
+				<dd class=" active"><a href="horse-register.html">马匹登记</a></dd>
+				<dd class=""><a href="horse-check.html">马匹审核</a></dd>
+				<dd class=""><a href="horse-raise.html">育马者管理</a></dd>
 			</dl>
 			<dl>
 				<dt class="basic">马主管理<span class="imgclose"></dt>
@@ -45,9 +45,29 @@
 		</div>
 		<div class="right_box">
 			<div class="form_box">
+				<div class="form_box_row form_box_row-head">
+					<h1 class="dis-inline">马匹信息录入</h1>
+					<a href="javascript:;" class="pull-right btn_basic">保存</a>
+					<a href="horse-register.html" class="pull-right btn_basic btn_cancel">退出</a>
+				</div>
 				<div class="form_box_row">
 					<div class="block">
-						<span class="block_label">输入框：</span>
+						<span class="block_label">长输入框：</span>
+						<div class="block_input long">
+							<input type="text" class="input_basic">
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>半行输入框（必填）：</span>
+						<div class="block_input">
+							<input type="text" class="input_basic" >
+						</div>
+						<span class="notNull" ng-if="showWarning">通用错误提示</span>
+					</div>
+					<div class="block half">
+						<span class="block_label">半行输入框：</span>
 						<div class="block_input">
 							<input type="text" class="input_basic">
 						</div>
@@ -57,64 +77,105 @@
 					<div class="block half">
 						<span class="block_label">数组选择：</span>
 						<div class="block_input">
-							<select class="select_basic" ng-model="select_ed" ng-options="item for item in select_items">
-							</select>
-						</div>
-					</div>
-					<div class="block half">
-						<span class="block_label">对象选择：</span>
-						<div class="block_input">
-							<select class="select_basic" ng-model="select_ed2" ng-options="item.id as item.name for item in select_items2" ng-change="selectChanged()">
+							<select class="select_basic" ng-model="select_ed" ng-options="item for item in select_items" ng-change="selectChanged(0)">
 							</select>
 						</div>
 					</div>
 				</div>
 				<div class="form_box_row">
 					<div class="block half">
-						<span class="block_label">日期选择器：</span>
-						<div class="block_input small">
-							<input type="date" class="input_basic" ng-model="date1">
+						<span class="block_label">对象选择：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="select_ed1" ng-options="item as item.name for item in select_items2" ng-change="selectChanged(1)">
+							</select>
 						</div>
-						<span>{{date1}}</span>
 					</div>
 					<div class="block half">
-						<span class="block_label">带checkbox）：</span>
-						<div class="block_input small">
-							<input rquired type="date" class="input_basic" ng-model="date2" ng-change="change('date2','date2status')">
+						<span class="block_label">（输出属性）：</span>
+						<div class="block_input">
+							<select class="select_basic" ng-model="select_ed2" ng-options="item.id as item.name for item in select_items2" ng-change="selectChanged(2)">
+							</select>
 						</div>
-						<div class="block_input small">
-							<input type="checkbox" ng-model="date2status">只记年份
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">日期选择器：</span>
+						<div class="block_input">
+							<input type="date" class="input_basic" ng-model="date1" ng-change="dateChange()">
 						</div>
-						<span>{{date2value}}</span>
+						<span>{{dateres}}</span>
 					</div>
 				</div>
 				<div class="form_box_row">
 					<div class="block">
 						<span class="block_label">radio_box：</span>
 						<div class="radio_basic" ng-repeat="item in horseColor">
-							<input type="radio" name="myradio" value="{{item}}" ng-model="$parent.myradio" ng-change="test()">
-							<span ng-bind="item.color"></span>
+							<input type="radio" name="myradio" value="{{item}}" ng-model="$parent.myradio" ng-change="radioChange()">
+							<span ng-bind="item"></span>
 						</div>
+						<span class="notNull">selected:</span>
+						<span class="notNull" ng-bind="myradio"></span>
+						<span class="notNull" ng-bind="myradio2"></span>
 					</div>
 				</div>
 				<div class="form_box_row">
 					<div class="block">
-						<span class="block_label">选择（弹窗）：</span>
-						<a class="btn_select" href="javascript:;" ng-click="openAlert()">+ 选择</a>
+						<span class="block_label">选择（BaseInfo）：</span>
+						<a ng-hide="showSire" class="btn_select" href="javascript:;" ng-click="openAlert('sire')">+ 选择</a>
+						<p ng-if="showSire" class="select_res">
+							<span ng-bind="selected_sire">ceshiecsa</span>
+							<span class="close" ng-click="clearSelect('sire')">&times;</span>
+						</p>
 					</div>
 				</div>
 				<div class="form_box_row">
 					<div class="block">
-						<span class="block_label">马名（英文）：</span>
-						<div class="block_input long">
-							<input type="text" class="input_basic">
-						</div>
+						<span class="block_label">（Racecourse）：</span>
+						<a ng-hide="showRacecourse" class="btn_select" href="javascript:;" ng-click="openAlert('racecourse')">+ 选择</a>
+						<p ng-if="showRacecourse" class="select_res">
+							<span ng-bind="selected_racecourse"></span>
+							<span class="close" ng-click="clearSelect('racecourse')">&times;</span>
+						</p>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">添加跑道：</span>
+						<a class="btn_select btn_select_sm" href="javascript:;" ng-click="openAlert2('horseroad')">+ 选择</a>
+						<p ng-repeat="selected in selected_horseroad" class="select_res_multi">
+							<span ng-bind="selected.name"></span>
+							<span class="close" ng-click="deleteSelect('selected_horseroad',$index)">&times;</span>
+						</p>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">添加闸门：</span>
+						<a class="btn_select btn_select_sm" href="javascript:;" ng-click="openAlert2('horsedoor')">+ 选择</a>
+						<p ng-repeat="selected in selected_door" class="select_res_multi">
+							<span ng-bind="selected.name"></span>
+							<span class="close" ng-click="deleteSelect('selected_door',$index)">&times;</span>
+						</p>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">查看跑道：</span>
+						<a class="btn_basic" href="javascript:;" ng-click="openAlert3('horseroad')">查看跑道</a>
+						<a class="btn_basic" href="javascript:;" ng-click="openAlert3('horsedoor')">查看闸门</a>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">添加loading：</span>
+						<a class="btn_basic" href="javascript:;" ng-click="makeloading()">添加一个3s的loading</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="alert_select" ng-show="alertOpen">
+	<div class="alert_select" id="alertOpen">
 		<div class="wrap">
 			<div class="head">
 				<h1 ng-bind="alertContent.head">马匹搜索</h1>
@@ -124,14 +185,14 @@
 				<div class="search_param">
 					<span class="label" ng-bind="alertContent.input1label">马名（中文）：</span>
 					<div class="s_input">
-						<input ng-bind="alertContent.input1" type="text" class="input_basic">
+						<input ng-model="alertContent.input1" type="text" class="input_basic">
 					</div>
-					<p ng-bind="alertContent.warning" class="warning">该育马者不存在</p>
+					<p ng-bind="alertContent.warning" ng-show="alertContent.warningShow" class="warning">该育马者不存在</p>
 				</div>
 				<div class="search_param">
 					<span ng-bind="alertContent.input2label" class="label">马名（英文）：</span>
 					<div class="s_input">
-						<input ng-bind="alertContent.input2" type="text" class="input_basic">
+						<input ng-model="alertContent.input2" type="text" class="input_basic">
 					</div>
 				</div>
 				<div class="btns">
@@ -141,6 +202,8 @@
 			<ul class="res" ng-show="alertSearched">
 				<li ng-repeat="item in alertContent.searchRes">
 					<input type="radio" class="radio_basic" value="{{$index}}" ng-model="$parent.alertContent.radiovalue">
+					<span ng-bind="item.name">张柯</span>
+					<span ng-bind="item.name2">张柯</span>
 					<span ng-bind="item.nameEng">张柯</span>
 					<span ng-bind="item.nameChi">Kerry</span>
 					<span ng-bind="item.lifeNumber">mtt_zhangke@163.com</span>
@@ -153,8 +216,38 @@
 			</div>
 		</div>
 	</div>
+	<!-- 动态添加弹窗 -->
+	<div compile="alertdiv"></div>
+	<!-- <div class="alert_select" id="addHorseroad">
+		<div class="wrap">
+			<div class="head">
+				<h1>添加跑道</h1>
+				<a href="javascript:;"  ng-click="alertClose()">&times;</a>
+			</div>
+			<div class="search">
+				<div class="search_param">
+					<span class="label">马名（中文）：</span>
+					<div class="s_input">
+						<input ng-model="alertContent.input1" type="text" class="input_basic">
+					</div>
+					<p class="warning">该育马者不存在</p>
+				</div>
+				<div class="search_param">
+					<span class="label">马名（中文）：</span>
+					<div class="s_input">
+						<input ng-model="alertContent.input2" type="text" class="input_basic">
+					</div>
+				</div>
+				<div class="btns">
+					<a href="javascript:;" ng-click="alertClose()" class="btn_basic btn_cancel">取消</a>
+					<a href="javascript:;" class="btn_basic" ng-click="alertSearch()">搜索</a>
+				</div>
+			</div>
+		</div>
+	</div> -->
 	<script src="js/jquery.js"></script>
 	<script src="js/angular.min.js"></script>
+	<script src="js/common.js"></script>
 	<script>
 	$(function(){
 		$(".leftsidebar_box dd").hide();
@@ -177,90 +270,319 @@
 	})
 	</script>
 	<script>
-	var mainApp = angular.module("main",[]);
-	mainApp.controller("mainController",function ($scope) {
-		$scope.select_ed = "ceshi";
+	var mainApp = angular.module("main",[], function($compileProvider) {
+    // configure new 'compile' directive by passing a directive
+    // factory function. The factory function injects the '$compile'
+    $compileProvider.directive('compile', function($compile) {
+      // directive factory creates a link function
+      return function(scope, element, attrs) {
+        scope.$watch(
+          function(scope) {
+            return scope.$eval(attrs.compile);
+          },
+          function(value) {
+            element.html(value);
+            $compile(element.contents())(scope);
+          }
+        );
+      };
+    });
+  });
+	mainApp.controller("mainController",function ($scope,$compile) {
+		$scope.showWarning = true;
 		$scope.alertOpen = false;
+
+		$scope.select_ed = "ceshi";
 		$scope.select_items = ['ceshi','kaifa','FE','android'];
 
-		$scope.select_ed2 = 4;
 		$scope.select_items2 = [
 			{id : 1, type : "string", name : "zhouzhou"},
 			{id : 2, type : "string", name : "zhangke"},
 			{id : 3, type : "string", name : "jiahe"},
 			{id : 4, type : "string", name : "handa"}
 			];
-		$scope.test = function () {
-			console.dir($scope.myradio);
-		};
-		$scope.selectChanged = function () {
-			console.dir($scope.select_ed2);
-		};
-		$scope.date2 = new Date('2015-12-12');
-		$scope.change = function (date,onlyYear) {
-			if ($scope[onlyYear]) {
-				$scope.date2value = $scope[date].getFullYear();
-			};
+		$scope.select_ed1 = $scope.select_items2[2];
+		$scope.select_ed2 = 4;
+		
+		$scope.selectChanged = function (i) {
+			switch(i){
+				case 0:
+					console.dir($scope.select_ed);
+					break;
+				case 1:
+					console.dir($scope.select_ed1);
+					break;
+				case 2:
+					console.dir($scope.select_ed2);
+					break;
+			}
 		};
 
-		$scope.myradio = {"color":"白","color2":"wh."};
-		$scope.horseColor = [
-			{"color":"白","color2":"wh."},
-			{"color":"骝","color2":"b."},
-			{"color":"褐骝","color2":"br."},
-			{"color":"黑","color2":"bl."},
-			{"color":"栗","color2":"ch."},
-			{"color":"青","color2":"gr."},
-			{"color":"其它","color2":""}];
-		$scope.alertContent = {
-			head 		: "马匹搜索",
-			input1 		: "",
-			input2 		: "",
-			input1label : "马名（中文）：",
-			input2label : "马名（英文）：",
-			warning		: "该马匹不存在：",
-			radiovalue	: 0,
-			searchRes	: [{
-								nameEng : "zh",
-								nameChi : "chi",
-								lifeNumber : "lifeNumber",
-								microchipNumber : "microchipNumber"
-							},{
-								nameEng : "zh",
-								nameChi : "chi",
-								lifeNumber : "lifeNumber",
-								microchipNumber : "microchipNumber"
-							}]
+		$scope.date1 = new Date("2016-05-22");
+		$scope.dateChange = function () {
+			$scope.dateres =  getFormatDate($scope.date1);
 		};
-		$scope.openAlert = function(){
-			// initAlert
-			$scope.alertContent = {
-				head 		: "马匹搜索",
-				input1 		: "",
-				input2 		: "",
-				input1label : "马名（中文）：",
-				input2label : "马名（英文）：",
-				warning		: "该马匹不存在：",
-				radiovalue	: 0,
-				searchRes	: [{
-									nameEng : "zh",
-									nameChi : "chi",
-									lifeNumber : "lifeNumber",
-									microchipNumber : "microchipNumber"
-								},{
-									nameEng : "zh",
-									nameChi : "chi",
-									lifeNumber : "lifeNumber",
-									microchipNumber : "microchipNumber"
-								}]
-			};
-			$scope.alertOpen = true;
+
+		$scope.horseColor = ["白","骝","褐骝","黑","栗","青","其它"];
+		$scope.horseColor2 = {"白":"wh.","骝":"b.","褐骝":"br.","黑":"bl.","栗":"ch.","青":"gr.","其它":""};
+
+		$scope.myradio = "白";
+		$scope.myradio2 = "wh.";
+		$scope.radioChange = function(){
+			$scope.myradio2 = $scope.horseColor2[$scope.myradio];
+		};
+		
+		// 选择弹窗逻辑+清除
+		$scope.openAlert = function(obj){
+			$scope.alertSearched = false;
+			$scope.alertItem = obj;
+			switch(obj){
+			  case "sire":
+			    $scope.alertContent = {
+			      head    : "马匹搜索",
+			      input1    : "",
+			      input2    : "",
+			      input1tag    : "nameEng",
+			      input2tag    : "lifeNumber",
+			      input1label : "马名（英文）：",
+			      input2label : "护照号：",
+			      warning   : "该马匹不存在",
+			      radiovalue  : 0,
+			      searchTable : "BaseInfo",
+			      searchRes : []
+			    };
+			    break;
+			  case "racecourse":
+			    $scope.alertContent = {
+			      head    : "马场搜索",
+			      input1    : "",
+			      input2    : "",
+			      input1tag    : "name",
+			      input2tag    : "name2",
+			      input1label : "中文名：",
+			      input2label : "英文名：",
+			      warning   : "该马场不存在",
+			      radiovalue  : 0,
+			      searchTable : "Racecourse",
+			      searchRes : []
+			    };
+			    break;
+			}
+			$("#alertOpen").show();
 		};
 		$scope.alertClose = function(){
-			$scope.alertOpen = false;
+			$("#alertOpen").hide();
 		};
-		$scope.search1 = function(){
-			addResult();
+		$scope.alertSearch = function(){
+			var query1 = new AV.Query($scope.alertContent.searchTable);
+			var query2 = new AV.Query($scope.alertContent.searchTable);
+			query1.startsWith($scope.alertContent.input1tag,$scope.alertContent.input1);
+			query2.startsWith($scope.alertContent.input2tag,$scope.alertContent.input2);
+			var queryAlert = AV.Query.and(query1,query2);
+			queryAlert.find().then(function(data){
+			  $scope.$apply(function(){
+			    if(data.length == 0){$scope.alertContent.warningShow = true;return;}else{$scope.alertContent.warningShow = false;}
+			    $scope.alertSearched = true;
+			    $scope.alertleancloud = data;
+			    $scope.alertContent.searchRes =  JSON.parse(JSON.stringify(data));
+			  });
+			}, function (err){
+			});
+		};
+		$scope.ensureAlert = function(){
+			var index = $scope.alertContent.radiovalue;
+			switch($scope.alertItem){
+				case "sire":
+					$scope.showSire = true;
+					$scope.selected_sire_item = $scope.alertleancloud[index];
+					$scope.selected_sire = $scope.alertContent.searchRes[index]["nameChi"];
+					break;
+				case "racecourse":
+					$scope.showRacecourse = true;
+					$scope.selected_racecourse_item = $scope.alertleancloud[index];
+					$scope.selected_racecourse = $scope.alertContent.searchRes[index]["name"];
+					break;
+			}
+			// $scope.alertOpen = false;
+			$("#alertOpen").hide();
+		};
+		$scope.clearSelect = function(obj){
+			switch(obj){
+			  case "sire":
+			    $scope.showSire = false;
+			    $scope.currentHorse.sire = "";
+			    $scope.currentHorse.sireName = "";
+			    break;
+			  case "racecourse":
+			    $scope.showRacecourse = false;
+			    $scope.currentHorse.racecourse = "";
+			    $scope.currentHorse.racecourseName = "";
+			    break;
+			}
+		};
+
+		// 没有弹窗的搜索 openalert2
+		$scope.selected_horseroad = [{
+			name : "name",
+			type : "type",
+			round : "round",
+			wid	: "wid"
+		},{
+			name : "name2",
+			type : "type",
+			round : "round",
+			wid	: "wid"
+		}];
+		$scope.selected_door = [];
+		$scope.openAlert2 = function(obj){
+			$scope.alertwarning = false;
+			switch(obj){
+			  case "horseroad":
+			    $scope.alertContent = {
+			    	id 		: "addHorseroad",
+			      	head    : "添加跑道",
+			      	inputs 	: [
+			      	{	tag	: "alertinput1",label : "名称"},
+			      	{	tag	: "alertinput2",label : "类型"},
+			      	{	tag	: "alertinput3",label : "周长"},
+			      	{	tag	: "alertinput4",label : "宽度"}
+			      	],
+					warning   : "名称不能为空",
+					getres 	: "alertensure()"
+			    };
+			    break;
+			  case "horsedoor":
+			    $scope.alertContent = {
+			    	id 		: "addHorsedoor",
+			      	head    : "添加马闸",
+			      	inputs 	: [
+			      	{	tag	: "alertinput5",label : "名称"},
+			      	{	tag	: "alertinput6",label : "闸位数"}
+			      	],
+					warning   : "名称不能为空",
+					getres 	: "alertensure()"
+			    };
+			    break;
+			};
+			var paramsdom = "";
+			for(item in $scope.alertContent.inputs ){
+				paramsdom +=  
+				"<div class='search_param'>"+
+				"				<span class='label'>" + $scope.alertContent.inputs[item].label + "</span>"+
+				"				<div class='s_input'>"+
+				"					<input ng-model='" + $scope.alertContent.inputs[item].tag + "' type='text' class='input_basic'>"+
+				"				</div>"+(item==0?("<p class='warning' ng-if='alertwarning'>"+ $scope.alertContent.warning +"</p>"):"")+
+				"</div>";
+			}
+		    $scope.alertdiv = 
+			   	"<div class='alert_select' id=" + $scope.alertContent.id + ">"+
+				"	<div class='wrap'>"+
+				"		<div class='head'>"+
+				"			<h1>" + $scope.alertContent.head + "</h1>"+
+				"			<a href='javascript:;' ng-click='alertremove()'>&times;</a>"+
+				"		</div>"+
+				"		<div class='search'>"+paramsdom+
+				"			</div>"+
+				"			<div class='btns'>"+
+				"				<a href='javascript:;' ng-click='alertremove()' class='btn_basic btn_cancel'>取消</a>"+
+				"				<a href='javascript:;' class='btn_basic' ng-click='" + $scope.alertContent.getres +"'>确定</a>"+
+				"			</div>"+
+				"		</div>"+
+				"	</div>"+
+				"</div>";
+			$("#"+$scope.alertContent.id).show();
+		};
+		$scope.alertremove = function() {
+			$scope.alertdiv = "";
+		};
+		$scope.alertensure = function() {
+			switch($scope.alertContent.id){
+				case "addHorseroad":
+					console.log("名称" + $scope.alertinput1);
+					console.log("类型" + $scope.alertinput2);
+					console.log("周长" + $scope.alertinput3);
+					console.log("宽度" + $scope.alertinput4);
+					if ($scope.alertinput1 == undefined || $scope.alertinput1 == "" ){
+						$scope.alertwarning = true;
+						return;
+					}else{
+						$scope.alertwarning = false;
+						$scope.selected_horseroad.push({
+							name : $scope.alertinput1,
+							type : $scope.alertinput2==undefined?"":$scope.alertinput2,
+							round : $scope.alertinput3==undefined?"":$scope.alertinput3,
+							wid : $scope.alertinput4==undefined?"":$scope.alertinput4,
+						});
+						$scope.alertdiv = "";
+					}
+					break;
+				case "addHorsedoor":
+					console.log("名称" + $scope.alertinput5);
+					console.log("闸位数" + $scope.alertinput6);
+					if ($scope.alertinput5 == undefined || $scope.alertinput5 == "" ){
+						$scope.alertwarning = true;
+						return;
+					}else{
+						$scope.alertwarning = false;
+						$scope.selected_door.push({
+							name : $scope.alertinput5,
+							num : $scope.alertinput6==undefined?"":$scope.alertinput6
+						});
+						$scope.alertdiv = "";
+					}
+					break;
+			}
+		};
+		$scope.deleteSelect = function(table,index){
+			$scope[table].splice(index,1);
+		};
+		// 查看
+		$scope.openAlert3 = function(obj){
+			switch(obj){
+			  case "horseroad":
+			    $scope.alertContent = {
+			    	id 		: "checkHorseroad",
+			      	head    : "查看跑道",
+			      	content : $scope.selected_horseroad,
+			      	items  	: ["name","type","round","wid"]
+			    };
+			    break;
+			  case "horsedoor":
+			    $scope.alertContent = {
+			    	id 		: "checkHorsedoor",
+			      	head    : "查看马闸",
+			      	content : $scope.selected_door,
+			      	items  	: ["name","num"]
+			    };
+			    break;
+			};
+			var resDom = "";
+			lis = $scope.alertContent.content;
+			spans = $scope.alertContent.items;
+			for(li in lis){
+				resDom +=  "<li>";
+				for(span in spans){
+					resDom += "<span>" + lis[li][spans[span]] + "</span>"
+				}
+				resDom +=  "</li>";
+			}
+		    var newalertdiv =
+				"	<div class='alert_select' id='" + $scope.alertContent.id + "' style='display:block'>"+
+				"	<div class='wrap'>"+
+				"		<div class='head'>"+
+				"			<h1>" + $scope.alertContent.head + "</h1>"+
+				"			<a href='javascript:;' onclick='removeAlert(\"" + $scope.alertContent.id + "\")'>&times;</a>"+
+				"		</div>"+
+				"		<ul class='res_noradio'>"+resDom +
+				"		</ul>"+
+				"</div>"+
+				"</div>";
+			$("body").append(newalertdiv);//在得到的第一个元素之前插入
+		};
+
+		$scope.makeloading = function(){
+			makeLoading();
+			setTimeout("closeLoading()",3000);
 		}
 
 	});

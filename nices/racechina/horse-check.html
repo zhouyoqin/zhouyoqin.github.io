@@ -4,15 +4,16 @@
 	<meta charset="UTF-8">
 	<title>马匹审核</title>
 	<link rel="stylesheet" href="css/basic.css">
+	<link rel="stylesheet" href="css/form_zhouyoqin.css">
 	<script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
 </head>
-<body ng-app="main" ng-controller="mainController">
+<body ng-app="main" ng-controller="mainController" ng-cloak>
 	<div class="header">
 		<a href="welcome.html" id="logo">logo</a>
 		<a href="#" class="user_box">
 			<img src="img/usr4.png" alt="">
-			<span ng-bind="currentUser">username</span>
-			<span class="quit" ng-click="quitUser()">退出</span>
+			<span ng-bind="role[roleid]"></span>
+			<span class="quit" onclick="quitUser()">退出</span>
 		</a>
 	</div>
 	<div class="content">
@@ -21,8 +22,8 @@
 			<dl>
 				<dt class="open">马匹信息化<span class="imgopen"></span></dt>
 				<dd class="first_dd show"><a href="horse-stack.html">马匹库</a></dd>
-				<dd class="show"><a href="horse-register.html">马匹登记</a></dd>
-				<dd class="show active"><a href="horse-check.html">马匹审核</a></dd>
+				<dd class="show active"><a href="horse-prestack.html">预存马匹库</a></dd>
+				<dd class="show"><a href="horse-failed.html">驳回信息</a></dd>
 				<dd class="show"><a href="horse-raise.html">育马者管理</a></dd>
 			</dl>
 			<dl>
@@ -42,64 +43,353 @@
 				<dd class="first_dd"><a href="#">待续……</a></dd>
 			</dl>
 		</div>
-		<div class="right_box">
-			<div class="table_basic">
-				<table>
-					<thead>
-						<tr>
-							<td colspan="14">马匹列表
-								<a href="javascript:;" class="btn-basic pull-right">添加</a>
-							</td>
-						</tr>
-						<tr>
-							<th>英文名</th>
-							<th>中文名</th>
-							<th>护照号</th>
-							<th>芯片号</th>
-							<th>毛色</th>
-							<th>出生日期</th>
-							<th>性别</th>
-							<th>种类</th>
-							<th>来源</th>
-							<th>品种</th>
-							<th>护照是否发放</th>
-							<th>马匹状态</th>
-							<th>进口日期</th>
-							<th style="width:55px;text-align:center;" ng-if="isManager">操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="horse in horseInfo">
-							<td><span ng-bind="horse.nameEng"></span></td>
-							<td><span ng-bind="horse.nameChi"></span></td>
-							<td><span ng-bind="horse.lifeNumber"></span></td>
-							<td><span ng-bind="horse.microchipNumber"></span></td>
-							<td><span ng-bind="horse.color"></span></td>
-							<td><span ng-bind="horse.birthday"></span></td>
-							<td><span ng-bind="horse.sex"></span></td>
-							<td><span ng-bind="horse.sort"></span></td>
-							<td><span ng-bind="horse.source"></span></td>
-							<td><span ng-bind="horse.breed"></span></td>
-							<td><span ng-bind="horse.passportFlag == '1' ? '已发放':'未发放'"></span></td>
-							<td>
-								<span ng-bind="horse.status1"></span>/<span ng-bind="horse.status2"></span>
-							</td>
-							<td><span ng-bind="horse.importDate"></span></td>
-							<td ng-if="isManager">
-								<a href="javascript:;">修改</a>
-								<a href="javascript:;">删除</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div id="kkpager"></div>
+		<div class="right_box" ng-cloak>
+			<form class="form_box" name="registerForm">
+				<div class="form_box_row form_box_row-head">
+					<h1 class="dis-inline">马匹信息录入</h1>
+					<a href="javascript:;" class="pull-right btn_basic" ng-click="passHorse()">审核通过</a>
+					<a href="javascript:;" class="pull-right btn_basic" ng-click="rejectHorse()">驳 回</a>
+					<a href="horse-prestack.html" class="pull-right btn_basic btn_cancel">退 出</a>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>马名（英文）：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.nameEng"></span>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label">马名（中文）：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.nameChi"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>国家代码：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.countryCode"></span>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label">马名（其他）：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.nameOther"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label">护照号：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.lifeNumber"></span>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label">芯片号：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.microchipNumber"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label"><b>*</b>父名：</span>
+						<span ng-bind="currentHorse.sireName"></span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label"><b>*</b>母名：</span>
+						<span ng-bind="currentHorse.damName"></span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>种类：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.sort"></span>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label"><b>*</b>性别：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.sex"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label"><b>*</b>毛色：</span>
+						<span ng-bind="currentHorse.color"></span>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>品种：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.breed"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>出生日期：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.birthday"></span>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label"><b>*</b>来源：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.source"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row" ng-if="sourceImport">
+					<div class="block half">
+						<span class="block_label"><b>*</b>进口日期：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.importDate"></span>
+						</div>
+					</div>
+					<div class="block half" ng-if="sourceImport">
+						<span class="block_label"><b>*</b>用途：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.useful"></span>
+						</div>    
+					</div>
+				</div>
+				<div class="form_box_row" ng-if="sourceImport">
+					<div class="block half">
+						<span class="block_label"><b>*</b>进口国家：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.importCountry"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label"><b>*</b>马匹状态：</span>
+							<span ng-bind="currentHorse.status1"></span>/
+							<span ng-bind="currentHorse.status2"></span>/
+							<span ng-if="currentHorse.status2 == '死亡'">
+								死亡时间：
+								<span ng-bind="currentHorse.deadDate"></span>
+							</span>
+					</div>
+				</div>
+				<div class="form_box_row" ng-if="currentHorse.status1 == '出口'">
+					<div class="block half">
+						<span class="block_label"><b>*</b>出口日期：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.exportDate"></span>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label"><b>*</b>是否登记注册：</span>
+						<div class="block_input">
+							<span ng-bind="yesNo[currentHorse.registerFlag]"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">育马者：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.feederName"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">马主：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.ownerName"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">马场：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.racecourseName"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label">签发日期：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.issueDate"></span>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label">检查日期：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.examinationDate"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block half">
+						<span class="block_label"><b>*</b>护照是否发放：</span>
+						<div class="block_input">
+							<span ng-bind="yesNo[currentHorse.passportFlag]"></span>
+						</div>
+					</div>
+					<div class="block half">
+						<span class="block_label"><b>*</b>护照是否打印：</span>
+						<div class="block_input">
+							<span ng-bind="yesNo[currentHorse.passportPrint]"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">登记册参照页：</span>
+						<div class="block_input">
+							<span ng-bind="currentHorse.studBookReference"></span>
+						</div>
+					</div>
+				</div>
+				<!-- 特征 -->
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">头部特征(中文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.headDetail"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">头部特征(英文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.headDetail2"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">颈部特征(中文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.neckDetail"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">颈部特征(英文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.neckDetail2"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">躯体特征(中文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.bodyDetail"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">躯体特征(英文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.bodyDetail2"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">左前肢特征(中文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.leftForce"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">左前肢特征(英文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.leftForce2"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">右前肢特征(中文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.rightForce"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">右前肢特征(英文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.rightForce2"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">左后肢特征(中文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.leftHind"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">左后肢特征(英文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.leftHind2"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">右后肢特征(中文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.rightHind"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form_box_row">
+					<div class="block">
+						<span class="block_label">右后肢特征(英文)：</span>
+						<div class="block_input long">
+							<span ng-bind="currentHorse.rightHind2"></span>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="alert_select" id="rejectAlert">
+		<div class="wrap">
+			<div class="head">
+				<h1>驳回</h1>
+				<a href="javascript:;"  ng-click="alertClose()">&times;</a>
+			</div>
+			<div class="inputrow">
+				<span>驳回原因：</span>
+				<textarea ng-model="refuseReason"></textarea>
+			</div>
+			<div class="btns">
+				<a href="javascript:;" ng-click="alertClose()" class="btn_basic btn_cancel">取 消</a>
+				<a href="javascript:;" ng-click="ensureReject()" class="btn_basic">确 定</a>
 			</div>
 		</div>
 	</div>
 	<script src="js/jquery.js"></script>
 	<script src="js/kkpager.js"></script>
 	<script src="js/angular.min.js"></script>
-	<script src="js/index.js"></script>
+	<script src="js/common.js"></script>
 	<script>
 	$(function(){
 		$(".leftsidebar_box dd").hide();
@@ -120,6 +410,168 @@
 			}
 		});
 	})
+	/**
+	 * Created by zhouyoqin on 10/08/2016.
+	 */
+	var mainApp = angular.module("main",[]);
+	mainApp.controller("mainController",function ($scope) {
+		var HorseObject = AV.Object.extend("BaseInfo");
+		var PreHorseObject = AV.Object.extend("PreBaseInfo");
+		$scope.role = { 0 : "普通用户", 1 : "超级管理员", 2 : "录入员", 3 : "审核员"};
+		$scope.yesNo = { 1 : "是", 0 : "否"};
+
+		// 判断用户是否登录且是否有权限
+		if (AV.User.current()) {
+			$scope.roleid =  AV.User.current().get('role');
+			if ($scope.roleid != 1 && $scope.roleid != 3){
+				makeAlert("您没有权限审核马匹信息！", "horse-stack.html");
+			}
+		}else{
+			window.location.href = "login.html";
+		};
+
+		var param = window.location.href.split("#");
+		if (param[1]) {
+			$scope.currentHorseID = param[1];
+			$scope.currentTable = "PreBaseInfo";
+			// 回填
+			var query = new AV.Query($scope.currentTable);
+			query.get($scope.currentHorseID).then(function(data){
+			  $scope.$apply(function(){
+			    $scope.currentHorse =  JSON.parse(JSON.stringify(data));
+			   	
+			   	switch($scope.currentHorse.source){
+			      case "进口":
+			        $scope.sourceImport = true;
+			        break;
+			      case "国产":
+			        $scope.sourceImport = false;
+			        break;
+			      case "国外":
+			        $scope.sourceImport = false;
+			        break;
+			    }
+			  });
+			}, function (err){
+			});
+		}else{
+			makeAlert("没有找到相应信息", "horse-prestack.html");
+		}
+
+	  	// save
+		$scope.passHorse = function(){
+			var horseObj = new HorseObject();
+
+			//属性设置
+			horseObj.set("nameEng"           ,$scope.currentHorse.nameEng)
+			horseObj.set("nameChi"           , $scope.currentHorse.nameChi);
+			horseObj.set("nameOther"         , $scope.currentHorse.nameOther);
+			horseObj.set("countryCode"       , $scope.currentHorse.countryCode);
+			horseObj.set("lifeNumber"        , $scope.currentHorse.lifeNumber);
+			horseObj.set("microchipNumber"   , $scope.currentHorse.microchipNumber);
+			horseObj.set("sire"              , $scope.currentHorse.sire);
+			horseObj.set("sireName"          , $scope.currentHorse.sireName);
+			horseObj.set("dam"               , $scope.currentHorse.dam);
+			horseObj.set("damName"           , $scope.currentHorse.damName);
+			horseObj.set("sort"              , $scope.currentHorse.sort);
+			horseObj.set("sex"               , $scope.currentHorse.sex);
+			horseObj.set("color"             , $scope.currentHorse.color);
+			horseObj.set("breed"             , $scope.currentHorse.breed);
+			horseObj.set("sex2"              , $scope.currentHorse.sex2);
+			horseObj.set("color2"            , $scope.currentHorse.color2);
+			horseObj.set("breed2"            , $scope.currentHorse.breed2);
+			horseObj.set("birthday"          , $scope.currentHorse.birthday);
+			horseObj.set("source"            , $scope.currentHorse.source);
+			horseObj.set("deadDate"          , $scope.currentHorse.deadDate);//status2为死亡需要填写
+			horseObj.set("status1"           , $scope.currentHorse.status1);
+			horseObj.set("status2"           , $scope.currentHorse.status2);//当种类为种公马时，状态为死亡/不再种用/开始种用
+			horseObj.set("importDate"        , $scope.currentHorse.importDate);
+			horseObj.set("useful"            , $scope.currentHorse.useful);
+			horseObj.set("importCountry"     , $scope.currentHorse.importCountry);
+			horseObj.set("exportDate"        , $scope.currentHorse.exportDate);
+			horseObj.set("registerFlag"      , $scope.currentHorse.registerFlag);
+			if ($scope.currentHorse.feeder != "") {
+				horseObj.set("feeder"        , $scope.currentHorse.feeder);
+			};
+			if ($scope.currentHorse.racecourse != "") {
+				horseObj.set("racecourse"        , $scope.currentHorse.racecourse);
+			};
+			if ($scope.currentHorse.owner != "") {
+				horseObj.set("owner"             , $scope.currentHorse.owner);
+			};
+			horseObj.set("feederName"        , $scope.currentHorse.feederName);//leancloud对象
+			horseObj.set("ownerName"         , $scope.currentHorse.ownerName);
+			horseObj.set("racecourseName"    , $scope.currentHorse.racecourseName);
+			horseObj.set("issueDate"         , $scope.currentHorse.issueDate);//签发日期
+			horseObj.set("examinationDate"   , $scope.currentHorse.examinationDate);//检查日期
+			horseObj.set("passportFlag"      , $scope.currentHorse.passportFlag);
+			horseObj.set("passportPrint"     , $scope.currentHorse.passportPrint);
+			horseObj.set("studBookReference" , $scope.currentHorse.studBookReference);//登记册参照页
+
+			horseObj.set("headDetail"        , $scope.currentHorse.headDetail);
+			horseObj.set("neckDetail"        , $scope.currentHorse.neckDetail);
+			horseObj.set("bodyDetail"        , $scope.currentHorse.bodyDetail);
+			horseObj.set("leftForce"         , $scope.currentHorse.leftForce);
+			horseObj.set("rightForce"        , $scope.currentHorse.rightForce);
+			horseObj.set("leftHind"          , $scope.currentHorse.leftHind);
+			horseObj.set("rightHind"         , $scope.currentHorse.headDetail2);
+			horseObj.set("headDetail2"       , $scope.currentHorse.headDetail2);
+			horseObj.set("neckDetail2"       , $scope.currentHorse.neckDetail2);
+			horseObj.set("bodyDetail2"       , $scope.currentHorse.bodyDetail2);
+			horseObj.set("leftForce2"        , $scope.currentHorse.leftForce2);
+			horseObj.set("rightForce2"       , $scope.currentHorse.rightForce2);
+			horseObj.set("leftHind2"         , $scope.currentHorse.leftHind2);
+			horseObj.set("rightHind2"        , $scope.currentHorse.rightHind2);
+
+			var queryName = new AV.Query("BaseInfo");
+			debugger;
+		    queryName.equalTo("nameEng",$scope.currentHorse.nameEng);
+		    queryName.count().then(function(count){
+		        if (count > 1) {
+		          makeAlert("英文名不唯一");
+		          return;
+		        }else{
+		        	horseObj.save().then(function(horseObj){
+						console.log("newhorseid:" + horseObj.id);
+						var deleteobj = AV.Object.createWithoutData("PreBaseInfo",$scope.currentHorseID);
+						deleteobj.destroy().then(function (success){
+							$scope.$apply(function(){
+								makeAlert("保存成功！","horse-stack.html");
+							});
+						},function (error){});
+						
+					}, function(err){
+						makeAlert("保存失败！</br>" + err.message);			
+					});
+		        }
+		  	});
+			
+		};
+
+		//reject
+		$scope.rejectHorse = function(){
+			// 弹窗、回调。
+			$("#rejectAlert").show();
+		};
+		$scope.alertClose = function(){
+			$("#rejectAlert").hide();
+		};
+		$scope.ensureReject = function(){
+			var horseObj = AV.Object.createWithoutData("PreBaseInfo", param[1]);
+    		horseObj.set("registerFlag", 1);
+    		horseObj.set("refuseReason",$scope.refuseReason);
+    		horseObj.set("refuseDate",getFormatDate(new Date()));
+    		horseObj.save().then(function(horseObj){
+		        console.log("horseid:" + horseObj.id);
+		        $("#rejectAlert").hide();
+		        makeAlert("保存成功！","horse-failed.html");
+		    }, function(err){
+		    	$("#rejectAlert").hide();
+		        makeAlert("保存失败！</br>" + err.message);
+		    });
+		};
+
+	});
 	</script>
 
 </body>

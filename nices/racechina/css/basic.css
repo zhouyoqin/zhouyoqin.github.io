@@ -41,8 +41,8 @@ body {
   display: inline-block;
   height: 30px;
   line-height: 30px;
-  padding: 0 20px;
-  border-radius: 3px;
+  padding: 0 15px;
+  border-radius: 5px;
   color: #fff;
   background-color: #2DB7F5;
   cursor: pointer;
@@ -96,6 +96,7 @@ body {
 }
 .table_basic table tbody td a {
   color: #38b8f2;
+  line-height: 20px;
 }
 .table_basic table tbody td a:hover {
   color: #38b8f2;

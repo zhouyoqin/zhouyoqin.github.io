@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>马匹库</title>
+	<title>马匹登记</title>
 	<link rel="stylesheet" href="css/basic.css">
 	<link rel="stylesheet" href="css/form_zhouyoqin.css">
 	<script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
@@ -21,8 +21,8 @@
 			<div class="line"></div>
 			<dl>
 				<dt class="open">马匹信息化<span class="imgopen"></span></dt>
-				<dd class="first_dd show active"><a href="horse-stack.html">马匹库</a></dd>
-				<dd class="show"><a href="horse-prestack.html">预存马匹库</a></dd>
+				<dd class="first_dd show"><a href="horse-stack.html">马匹库</a></dd>
+				<dd class="show active"><a href="horse-prestack.html">预存马匹库</a></dd>
 				<dd class="show"><a href="horse-failed.html">驳回信息</a></dd>
 				<dd class="show"><a href="horse-raise.html">育马者管理</a></dd>
 			</dl>
@@ -47,12 +47,16 @@
 			<div class="table_basic">
 				<table>
 					<thead>
-						<tr><td colspan="14">马匹列表</td></tr>
+						<tr>
+							<td colspan="14">马匹列表
+								<a href="horse-register.html" class="btn_basic pull-right">添 加</a>
+							</td>
+						</tr>
 						<tr>
 							<th width="10%">英文名</th>
-							<th width="10%">中文名</th>
-							<th width="10%">护照号</th>
-							<th width="10%">芯片号</th>
+							<th width="5%">中文名</th>
+							<th width="5%">护照号</th>
+							<th width="5%">芯片号</th>
 							<th width="3%">毛色</th>
 							<th width="6%">出生日期</th>
 							<th width="3%">性别</th>
@@ -62,7 +66,7 @@
 							<th width="5%">护照是否发放</th>
 							<th width="5%">马匹状态</th>
 							<th width="6%">进口日期</th>
-							<th width="6%">操作</th>
+							<th width="7%" style="text-align:center;" ng-if="roleid != 0">操作</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -82,9 +86,10 @@
 								<span ng-bind="horse.status1"></span>/<span ng-bind="horse.status2"></span>
 							</td>
 							<td><span ng-bind="horse.importDate"></span></td>
-							<td ng-if="roleid==1">
-								<a href="horse-register.html#{{horse.objectId}}#BaseInfo">修改</a>
+							<td>
+								<a ng-if="roleid==1 || roleid==2" ng-click="updateHorse('update',horse.objectId)" href="javascript:;">修改</a>
 								<a href="javascript:;" ng-click="openEnsure('你是否确认删除这项内容?',['马匹信息删除后无法恢复'],'delete',horse.objectId)" >删除</a>
+								<a ng-if="roleid==1 || roleid==3" ng-click="updateHorse('check',horse.objectId)" href="javascript:;">审核</a>
 							</td>
 						</tr>
 					</tbody>

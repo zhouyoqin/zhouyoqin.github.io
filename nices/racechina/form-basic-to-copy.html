@@ -22,8 +22,8 @@
 			<dl>
 				<dt class="basic">马匹信息化<span class="imgclose"></span></dt>
 				<dd class="first_dd "><a href="horse-stack.html">马匹库</a></dd>
-				<dd class=" active"><a href="horse-register.html">马匹登记</a></dd>
-				<dd class=""><a href="horse-check.html">马匹审核</a></dd>
+				<dd class=" active"><a href="horse-prestack.html">预存马匹库</a></dd>
+				<dd class=""><a href="horse-failed.html">驳回信息</a></dd>
 				<dd class=""><a href="horse-raise.html">育马者管理</a></dd>
 			</dl>
 			<dl>
@@ -47,8 +47,8 @@
 			<div class="form_box">
 				<div class="form_box_row form_box_row-head">
 					<h1 class="dis-inline">马匹信息录入</h1>
-					<a href="javascript:;" class="pull-right btn_basic">保存</a>
-					<a href="horse-register.html" class="pull-right btn_basic btn_cancel">退出</a>
+					<a href="javascript:;" class="pull-right btn_basic">保 存</a>
+					<a href="horse-register.html" class="pull-right btn_basic btn_cancel">退 出</a>
 				</div>
 				<div class="form_box_row">
 					<div class="block">
@@ -196,7 +196,7 @@
 					</div>
 				</div>
 				<div class="btns">
-					<a href="javascript:;" class="btn_basic" ng-click="alertSearch()">搜索</a>
+					<a href="javascript:;" class="btn_basic" ng-click="alertSearch()">搜 索</a>
 				</div>
 			</div>
 			<ul class="res" ng-show="alertSearched">
@@ -211,8 +211,8 @@
 				</li>
 			</ul>
 			<div class="btns" ng-show="alertSearched">
-				<a href="javascript:;" ng-click="alertClose()" class="btn_basic btn_cancel">取消</a>
-				<a href="javascript:;" ng-click="ensureAlert()" class="btn_basic">确定</a>
+				<a href="javascript:;" ng-click="alertClose()" class="btn_basic btn_cancel">取 消</a>
+				<a href="javascript:;" ng-click="ensureAlert()" class="btn_basic">确 定</a>
 			</div>
 		</div>
 	</div>
@@ -484,8 +484,8 @@
 				"		<div class='search'>"+paramsdom+
 				"			</div>"+
 				"			<div class='btns'>"+
-				"				<a href='javascript:;' ng-click='alertremove()' class='btn_basic btn_cancel'>取消</a>"+
-				"				<a href='javascript:;' class='btn_basic' ng-click='" + $scope.alertContent.getres +"'>确定</a>"+
+				"				<a href='javascript:;' ng-click='alertremove()' class='btn_basic btn_cancel'>取 消</a>"+
+				"				<a href='javascript:;' class='btn_basic' ng-click='" + $scope.alertContent.getres +"'>确 定</a>"+
 				"			</div>"+
 				"		</div>"+
 				"	</div>"+

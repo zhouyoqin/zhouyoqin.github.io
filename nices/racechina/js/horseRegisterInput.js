@@ -5,6 +5,12 @@ var mainApp = angular.module("main",[]);
 mainApp.controller("mainController",function ($scope) {
   var HorseObject = AV.Object.extend("BaseInfo");
   var PreHorseObject = AV.Object.extend("PreBaseInfo");
+  $scope.role = {
+    0 : "普通用户",
+    1 : "超级管理员",
+    2 : "录入员",
+    3 : "审核员"
+  };
   // 辅助变量
   $scope.countrys = [{"code":"ALG","name":"阿尔及利亚"},{"code":"ARG","name":"阿根廷"},{"code":"AUS","name":"澳大利亚"},{"code":"AUT","name":"奥地利"},{"code":"AZE","name":"阿塞拜疆"},{"code":"BAR","name":"巴巴多斯岛"},{"code":"BEL","name":"比利时"},{"code":"BHR","name":"巴林"},{"code":"BOL","name":"玻利维亚"},{"code":"BRZ","name":"巴西"},{"code":"BUL","name":"保加利亚"},{"code":"CAN","name":"加拿大"},{"code":"CEY","name":"锡兰"},{"code":"CHI","name":"智利"},{"code":"CHN","name":"中国"},{"code":"COL","name":"哥伦比亚"},{"code":"CRI","name":"哥斯达黎加"},{"code":"CRO","name":"克罗地亚"},{"code":"CUB","name":"古巴"},{"code":"CYP","name":"塞浦路斯"},{"code":"CZE","name":"捷克斯洛伐克"},{"code":"DEN","name":"丹麦"},{"code":"DOM","name":"多米尼加共和国"},{"code":"ECU","name":"厄瓜多尔"},{"code":"EGY","name":"埃及"},{"code":"FIN","name":"芬兰"},{"code":"FR","name":"法国"},{"code":"GB","name":"英国"},{"code":"GEO","name":"乔治亚苏维埃共和国"},{"code":"GER","name":"德国"},{"code":"GR","name":"希腊"},{"code":"GTM","name":"危地马拉"},{"code":"HK","name":"香港"},{"code":"HOL","name":"荷兰"},{"code":"HUN","name":"匈牙利"},{"code":"IND","name":"印度"},{"code":"IRA","name":"伊朗"},{"code":"IRE","name":"爱尔兰"},{"code":"ISR","name":"以色列"},{"code":"ITY","name":"意大利"},{"code":"JAM","name":"牙买加"},{"code":"JPN","name":"日本"},{"code":"KAZ","name":"哈萨克斯坦"},{"code":"KEN","name":"肯尼亚"},{"code":"KOR","name":"韩国"},{"code":"LEB","name":"黎巴嫩"},{"code":"LIB","name":"利比亚"},{"code":"LUX","name":"卢森堡"},{"code":"MAL","name":"马来西亚"},{"code":"MAU","name":"毛里求斯"},{"code":"MDA","name":"摩尔多瓦"},{"code":"MEX","name":"墨西哥"},{"code":"MOR","name":"摩洛哥"},{"code":"MTA","name":"马耳他"},{"code":"NDO","name":"印尼"},{"code":"NOR","name":"挪威"},{"code":"NZ","name":"新西兰"},{"code":"PAK","name":"巴基斯坦"},{"code":"PAN","name":"巴拿马"},{"code":"PHI","name":"菲律宾"},{"code":"POL","name":"波兰"},{"code":"POR","name":"葡萄牙"},{"code":"PR","name":"波多黎各"},{"code":"PRY","name":"巴拉圭"},{"code":"QA","name":"卡塔尔"},{"code":"RUM","name":"罗马尼亚"},{"code":"RUS","name":"俄罗斯"},{"code":"SAF","name":"南非"},{"code":"SEN","name":"塞内加尔"},{"code":"SLV","name":"塞尔瓦多"},{"code":"SPA","name":"西班牙"},{"code":"SRB","name":"塞尔维亚"},{"code":"SRH","name":"南罗得西亚"},{"code":"SUD","name":"苏丹"},{"code":"SVK","name":"斯洛伐克"},{"code":"SVN","name":"斯洛文尼亚"},{"code":"SWE","name":"瑞典"},{"code":"SWI","name":"瑞士"},{"code":"THA","name":"泰国"},{"code":"TRI","name":"特立尼达岛"},{"code":"TUN","name":"突尼斯"},{"code":"TUR","name":"土耳其"},{"code":"UAE","name":"阿拉伯联合酋长国"},{"code":"UKR","name":"乌克兰"},{"code":"URU","name":"乌拉圭"},{"code":"USA","name":"美国"},{"code":"VEN","name":"委内瑞拉"},{"code":"YUG","name":"南斯拉夫"},{"code":"ZIM","name":"津巴布韦"},{"code":"KGZ","name":"吉尔吉斯斯坦"}];
   $scope.horseSort = ["种公马","种母马","马驹","其他"];
@@ -16,17 +22,7 @@ mainApp.controller("mainController",function ($scope) {
   $scope.horseSource = ["进口","国产","国外"];
   $scope.horseStatus2 = ["正常","死亡"];
   $scope.horseUseful = ["比赛","繁殖"];
-  // $scope.yesNo = ["是","否"];
-  $scope.yesNo = [{
-    value : 1,
-    name  : "是"
-  },{
-    value : 0,
-    name  : "否"
-  }];
-
-  // $scope.alertOpen = false;
-  $scope.show = false;
+  $scope.yesNo = [{value : 1,name  : "是"},{value : 0,name  : "否"}];
   $scope.invalid = {
       nameEng     : false,
       countryCode : false,
@@ -44,26 +40,31 @@ mainApp.controller("mainController",function ($scope) {
       status      : false,
       exportDate  : false
   };
-  $scope.quitUser = function() {
-    AV.User.logOut();
-    window.location.href = "login.html";
-  };
+  // $scope.show = false;
+
   // 判断用户是否登录且是否有权限
   if (AV.User.current()) {
-    $scope.currentUser =  AV.User.current().get("username");
-    if (AV.User.current().get("role") != 1) {
-      window.location.href = "horse-register.html"
-    };
+    $scope.roleid =  AV.User.current().get('role');
+    if ($scope.roleid == 1) {
+    }else if ($scope.roleid == 2){
+      if($scope.currentTable == "BaseInfo"){
+        makeAlert("您没有权限修改BaseInfo！", "horse-stack.html");
+      }
+    }else{
+        makeAlert("您没有权限修改马匹信息！", "horse-stack.html");
+    }
   }else{
     window.location.href = "login.html";
   };
-  if (window.location.href.split("#")[1]) {
-    $scope.currentHorseID = window.location.href.split("#")[1];
+
+  var param = window.location.href.split("#");
+  if (param[1]) {
+    $scope.currentHorseID = param[1];
+    $scope.currentTable = (param[2]==undefined?"PreBaseInfo":"BaseInfo");
     // 回填
-    var query = new AV.Query("BaseInfo");
+    var query = new AV.Query($scope.currentTable);
     query.get($scope.currentHorseID).then(function(data){
       $scope.$apply(function(){
-        debugger;
         $scope.currentHorse =  JSON.parse(JSON.stringify(data));
         $scope.currentHorse.birthday          = new Date($scope.currentHorse.birthday);
         $scope.currentHorse.deadDate          = new Date($scope.currentHorse.deadDate);//status2为死亡需要填写
@@ -83,6 +84,20 @@ mainApp.controller("mainController",function ($scope) {
             break;
           case "其他":
             $scope.horseSex = ["公马","母马","骟马"];
+            break;
+        }
+        switch($scope.currentHorse.source){
+          case "进口":
+            $scope.sourceImport = true;
+            $scope.horseStatus1 = ["进口"];
+            break;
+          case "国产":
+            $scope.sourceImport = false;
+            $scope.horseStatus1 = ["出口","国产","国外"];
+            break;
+          case "国外":
+            $scope.sourceImport = false;
+            $scope.horseStatus1 = ["出口","国产","国外"];
             break;
         }
       });
@@ -207,72 +222,78 @@ mainApp.controller("mainController",function ($scope) {
       };
     }
     // 保存对象
-    if (window.location.href.split("#")[1]) {
-      var horseObj = AV.Object.createWithoutData('BaseInfo', window.location.href.split("#")[1]);
+    if (param[1]) {
+      var horseObj = AV.Object.createWithoutData($scope.currentTable, window.location.href.split("#")[1]);
     }else{
       var horseObj = new PreHorseObject();
     }
-    horseObj.set("nameEng"           ,$scope.currentHorse.nameEng)
-    horseObj.set("nameChi"           , $scope.currentHorse.nameChi);
-    horseObj.set("nameOther"         , $scope.currentHorse.nameOther);
-    horseObj.set("countryCode"       , $scope.currentHorse.countryCode);
-    horseObj.set("lifeNumber"        , $scope.currentHorse.lifeNumber);
-    horseObj.set("microchipNumber"   , $scope.currentHorse.microchipNumber);
-    horseObj.set("sire"              , $scope.currentHorse.sire);
-    horseObj.set("sireName"          , $scope.currentHorse.sireName);
-    horseObj.set("dam"               , $scope.currentHorse.dam);
-    horseObj.set("damName"           , $scope.currentHorse.damName);
-    horseObj.set("sort"              , $scope.currentHorse.sort);
-    horseObj.set("sex"               , $scope.currentHorse.sex);
-    horseObj.set("color"             , $scope.currentHorse.color);
-    horseObj.set("breed"             , $scope.currentHorse.breed);
-    horseObj.set("sex2"              , $scope.currentHorse.sex2);
-    horseObj.set("color2"            , $scope.horseBreed2[$scope.currentHorse.color]);
-    horseObj.set("breed2"            , $scope.horseBreed2[$scope.currentHorse.breed]);
-    horseObj.set("birthday"          , getFormatDate($scope.currentHorse.birthday));
-    horseObj.set("source"            , $scope.currentHorse.source);
-    horseObj.set("deadDate"          , getFormatDate($scope.currentHorse.deadDate));//status2为死亡需要填写
-    horseObj.set("status1"           , $scope.currentHorse.status1);
-    horseObj.set("status2"           , $scope.currentHorse.status2);//当种类为种公马时，状态为死亡/不再种用/开始种用
-    horseObj.set("importDate"        , getFormatDate($scope.currentHorse.importDate));
-    horseObj.set("useful"            , $scope.currentHorse.useful);
-    horseObj.set("importCountry"     , $scope.currentHorse.importCountry);
-    horseObj.set("exportDate"        , getFormatDate($scope.currentHorse.exportDate));
-    horseObj.set("registerFlag"      , $scope.currentHorse.registerFlag);
-    if ($scope.currentHorse.feeder != "") {
-      horseObj.set("feeder"        , $scope.currentHorse.feeder);
-    };
-    if ($scope.currentHorse.racecourse != "") {
-      horseObj.set("racecourse"        , $scope.currentHorse.racecourse);
-    };
-    if ($scope.currentHorse.owner != "") {
-      horseObj.set("owner"             , $scope.currentHorse.owner);
-    };
-    horseObj.set("feederName"        , $scope.currentHorse.feederName);//leancloud对象
-    horseObj.set("ownerName"         , $scope.currentHorse.ownerName);
-    horseObj.set("racecourseName"    , $scope.currentHorse.racecourseName);
-    horseObj.set("issueDate"         , getFormatDate($scope.currentHorse.issueDate));//签发日期
-    horseObj.set("examinationDate"   , getFormatDate($scope.currentHorse.examinationDate));//检查日期
-    horseObj.set("passportFlag"      , $scope.currentHorse.passportFlag);
-    horseObj.set("passportPrint"     , $scope.currentHorse.passportPrint);
-    horseObj.set("studBookReference" , $scope.currentHorse.studBookReference);//登记册参照页
+    //属性设置
+      horseObj.set("nameEng"           ,$scope.currentHorse.nameEng)
+      horseObj.set("nameChi"           , $scope.currentHorse.nameChi);
+      horseObj.set("nameOther"         , $scope.currentHorse.nameOther);
+      horseObj.set("countryCode"       , $scope.currentHorse.countryCode);
+      horseObj.set("lifeNumber"        , $scope.currentHorse.lifeNumber);
+      horseObj.set("microchipNumber"   , $scope.currentHorse.microchipNumber);
+      horseObj.set("sire"              , $scope.currentHorse.sire);
+      horseObj.set("sireName"          , $scope.currentHorse.sireName);
+      horseObj.set("dam"               , $scope.currentHorse.dam);
+      horseObj.set("damName"           , $scope.currentHorse.damName);
+      horseObj.set("sort"              , $scope.currentHorse.sort);
+      horseObj.set("sex"               , $scope.currentHorse.sex);
+      horseObj.set("color"             , $scope.currentHorse.color);
+      horseObj.set("breed"             , $scope.currentHorse.breed);
+      horseObj.set("sex2"              , $scope.currentHorse.sex2);
+      horseObj.set("color2"            , $scope.horseColor2[$scope.currentHorse.color]);
+      horseObj.set("breed2"            , $scope.horseBreed2[$scope.currentHorse.breed]);
+      horseObj.set("birthday"          , getFormatDate($scope.currentHorse.birthday));
+      horseObj.set("source"            , $scope.currentHorse.source);
+      horseObj.set("deadDate"          , getFormatDate($scope.currentHorse.deadDate));//status2为死亡需要填写
+      horseObj.set("status1"           , $scope.currentHorse.status1);
+      horseObj.set("status2"           , $scope.currentHorse.status2);//当种类为种公马时，状态为死亡/不再种用/开始种用
+      horseObj.set("importDate"        , getFormatDate($scope.currentHorse.importDate));
+      horseObj.set("useful"            , $scope.currentHorse.useful);
+      horseObj.set("importCountry"     , $scope.currentHorse.importCountry);
+      horseObj.set("exportDate"        , getFormatDate($scope.currentHorse.exportDate));
+      horseObj.set("registerFlag"      , $scope.currentHorse.registerFlag);
+      if ($scope.currentHorse.feeder != "") {
+        horseObj.set("feeder"        , $scope.currentHorse.feeder);
+      };
+      if ($scope.currentHorse.racecourse != "") {
+        horseObj.set("racecourse"        , $scope.currentHorse.racecourse);
+      };
+      if ($scope.currentHorse.owner != "") {
+        horseObj.set("owner"             , $scope.currentHorse.owner);
+      };
+      horseObj.set("feederName"        , $scope.currentHorse.feederName);//leancloud对象
+      horseObj.set("ownerName"         , $scope.currentHorse.ownerName);
+      horseObj.set("racecourseName"    , $scope.currentHorse.racecourseName);
+      horseObj.set("issueDate"         , getFormatDate($scope.currentHorse.issueDate));//签发日期
+      horseObj.set("examinationDate"   , getFormatDate($scope.currentHorse.examinationDate));//检查日期
+      horseObj.set("passportFlag"      , $scope.currentHorse.passportFlag);
+      horseObj.set("passportPrint"     , $scope.currentHorse.passportPrint);
+      horseObj.set("studBookReference" , $scope.currentHorse.studBookReference);//登记册参照页
 
-    horseObj.set("headDetail"        , $scope.currentHorse.headDetail);
-    horseObj.set("neckDetail"        , $scope.currentHorse.neckDetail);
-    horseObj.set("bodyDetail"        , $scope.currentHorse.bodyDetail);
-    horseObj.set("leftForce"         , $scope.currentHorse.leftForce);
-    horseObj.set("rightForce"        , $scope.currentHorse.rightForce);
-    horseObj.set("leftHind"          , $scope.currentHorse.leftHind);
-    horseObj.set("rightHind"         , $scope.currentHorse.headDetail2);
-    horseObj.set("headDetail2"       , $scope.currentHorse.headDetail2);
-    horseObj.set("neckDetail2"       , $scope.currentHorse.neckDetail2);
-    horseObj.set("bodyDetail2"       , $scope.currentHorse.bodyDetail2);
-    horseObj.set("leftForce2"        , $scope.currentHorse.leftForce2);
-    horseObj.set("rightForce2"       , $scope.currentHorse.rightForce2);
-    horseObj.set("leftHind2"         , $scope.currentHorse.leftHind2);
-    horseObj.set("rightHind2"        , $scope.currentHorse.rightHind2);
+      horseObj.set("headDetail"        , $scope.currentHorse.headDetail);
+      horseObj.set("neckDetail"        , $scope.currentHorse.neckDetail);
+      horseObj.set("bodyDetail"        , $scope.currentHorse.bodyDetail);
+      horseObj.set("leftForce"         , $scope.currentHorse.leftForce);
+      horseObj.set("rightForce"        , $scope.currentHorse.rightForce);
+      horseObj.set("leftHind"          , $scope.currentHorse.leftHind);
+      horseObj.set("rightHind"         , $scope.currentHorse.headDetail2);
+      horseObj.set("headDetail2"       , $scope.currentHorse.headDetail2);
+      horseObj.set("neckDetail2"       , $scope.currentHorse.neckDetail2);
+      horseObj.set("bodyDetail2"       , $scope.currentHorse.bodyDetail2);
+      horseObj.set("leftForce2"        , $scope.currentHorse.leftForce2);
+      horseObj.set("rightForce2"       , $scope.currentHorse.rightForce2);
+      horseObj.set("leftHind2"         , $scope.currentHorse.leftHind2);
+      horseObj.set("rightHind2"        , $scope.currentHorse.rightHind2);
 
-    var queryName = new AV.Query("BaseInfo");
+
+      horseObj.set("registerFlag", 0);
+      horseObj.set("refuseReason","");
+      horseObj.set("refuseDate","");
+
+    var queryName = new AV.Query($scope.currentTable==undefined?"PreBaseInfo":$scope.currentTable);
     queryName.equalTo("nameEng",$scope.currentHorse.nameEng);
     queryName.count().then(function(count){
       if (window.location.href.split("#")[1]) {
@@ -288,7 +309,8 @@ mainApp.controller("mainController",function ($scope) {
       }
       horseObj.save().then(function(horseObj){
         console.log("horseid:" + horseObj.id);
-        makeAlert("保存成功！","horse-register.html");
+        var nextLocation = $scope.currentTable == "BaseInfo"?"horse-stack.html":"horse-prestack.html";
+        makeAlert("保存成功！",nextLocation);
 
       }, function(err){
         makeAlert("保存失败！</br>" + err.message);
